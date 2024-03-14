@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'midtermnode'
+package_name = 'midterm'
 
 setup(
     name=package_name,
