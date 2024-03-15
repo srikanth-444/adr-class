@@ -20,7 +20,7 @@ class Distance_Calculator(Node):
         self.publisher= self.create_publisher(ServoCtrlMsg,'/ctrl_pkg/servo_msg',1)
         timer_period = 0.1  
         self.timer = self.create_timer(timer_period, self.timer_callback)
-        self.angle=0
+        self.angle=0.0
         self.throttle=0.5
       
         
@@ -50,8 +50,8 @@ class Distance_Calculator(Node):
        
         
         if least_distance<0.5:
-            self.angle=0
-            self.throttle=0
+            self.angle=0.0
+            self.throttle=0.0
    
 
 
@@ -61,8 +61,8 @@ class Distance_Calculator(Node):
         msg.angle= self.angle 
         msg.throttle= self.throttle
         self.publisher.publish(msg)
-        print("message published")
-        self.get_logger().info('Publishing: "%d"' % self.i)
+        print("message publisheds")
+        
        
 
            
