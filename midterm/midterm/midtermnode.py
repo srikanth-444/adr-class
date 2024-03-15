@@ -4,6 +4,7 @@ import numpy as np
     
 from deepracer_interfaces_pkg.msg import EvoSensorMsg
 from deepracer_interfaces_pkg.srv import LidarConfigSrv
+from deepracer_interfaces_pkg.msg import ServoCtrlMsg
     
     
 class Distance_Calculator(Node):
@@ -15,6 +16,13 @@ class Distance_Calculator(Node):
         while not self.client.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('service not available, waiting again...')
         self.req = LidarConfigSrv.Request()
+
+        self.publisher= self.create_publisher(ServoCtrlMsg,'/ctrl_pkg/servo_msg',1)
+        timer_period = 0.1  
+        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.angle=0
+        self.throttle=0.5
+      
         
        
     def send_request(self,):
@@ -41,9 +49,20 @@ class Distance_Calculator(Node):
         least_distance=distance_matrix[np.argmin(distance_matrix)]
        
         
-        print(least_distance)
+        if least_distance<0.5:
+            self.angle=0
+            self.throttle=0
    
 
+
+    def timer_callback(self):
+        msg = ServoCtrlMsg()   
+                                                    
+        msg.angle= self.angle 
+        msg.throttle= self.throttle
+        self.publisher.publish(msg)
+        print("message published")
+        self.get_logger().info('Publishing: "%d"' % self.i)
        
 
            
