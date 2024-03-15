@@ -8,7 +8,7 @@ class Distance_Calculator(Node):
 
     def __init__(self):
         super().__init__('distance_calculator')
-        self.subcriber= self.create_subscription(EvoSensorMsg, 'topic',self.listen,10,)
+        self.subcriber= self.create_subscription(EvoSensorMsg, '/sensor_fusion_pkg/sensor_msg',self.listen,10,)
         self.data_subscriber=[]
        
                             
