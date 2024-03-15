@@ -38,7 +38,7 @@ class Distance_Calculator(Node):
         
         distance_matrix=np.concatenate((lidar_data[1:100],lidar_data[-100:]))
 
-        least_distance=distance_matrix[np.argmax(distance_matrix)]
+        least_distance=distance_matrix[np.argmin(distance_matrix)]
        
         
         print(least_distance)
