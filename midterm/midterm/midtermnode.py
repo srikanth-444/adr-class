@@ -2,6 +2,7 @@ import rclpy
 from rclpy.node import Node
     
 from deepracer_interfaces_pkg.msg import EvoSensorMsg
+from deepracer_interface_pkg.srv import LidarConfigSrv
     
     
 class Distance_Calculator(Node):
@@ -9,16 +10,26 @@ class Distance_Calculator(Node):
     def __init__(self):
         super().__init__('distance_calculator')
         self.subcriber= self.create_subscription(EvoSensorMsg, '/sensor_fusion_pkg/sensor_msg',self.listen,10,)
-        self.data_subscriber=[]
+        self.client=self.create_client(LidarConfigSrv,"configure_lidat")
+        while not self.cli.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('service not available, waiting again...')
+        self.req = LidarConfigSrv.Request()
+        
        
-                            
+    def send_request(self,):
+        self.req.min_angle= -120
+        self.req.max_angle= 120
+        
+        self.future = self.cli.call_async(self.req)
+        rclpy.spin_until_future_complete(self, self.future)
+        return self.future.result()                      
 
     def listen(self, msg):
         
         lidar_data = msg.lidar_data 
         
-        self.data_subscriber.append(lidar_data)
-        self.get_logger().info(lidar_data)
+        
+        print(lidar_data)
    
 
        
@@ -31,7 +42,11 @@ def main(args=None):
 
     distance_calculator = Distance_Calculator()
 
+
+    res=distance_calculator.send_request()
+
     rclpy.spin(distance_calculator)
+
 
     # Destroy the node explicitly
     # (optional - otherwise it will be done automatically
