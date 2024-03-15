@@ -10,16 +10,22 @@ class Distance_Calculator(Node):
     def __init__(self):
         super().__init__('distance_calculator')
         self.subcriber= self.create_subscription(EvoSensorMsg, '/sensor_fusion_pkg/sensor_msg',self.listen,10,)
-        self.client=self.create_client(LidarConfigSrv,"configure_lidar")
+        self.client=self.create_client(LidarConfigSrv,'configure_lidar')
         while not self.client.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('service not available, waiting again...')
         self.req = LidarConfigSrv.Request()
         
        
     def send_request(self,):
+        self.req.use_lidar=False
         self.req.min_angle= -120
         self.req.max_angle= 120
-        
+        self.req.num_values=64
+        self.req.min_distance=0.15
+        self.req.max_distance=1.0
+        self.req.clipping_distance=1.0
+        self.req.num_sectors=64
+        self.req.preprocess_type=0
         self.future = self.client.call_async(self.req)
         rclpy.spin_until_future_complete(self, self.future)
         return self.future.result()                      
@@ -44,7 +50,8 @@ def main(args=None):
 
 
     res=distance_calculator.send_request()
-
+    if (res.error==1):
+        rclpy.shutdown()
     rclpy.spin(distance_calculator)
 
 
