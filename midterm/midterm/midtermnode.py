@@ -62,6 +62,7 @@ class Distance_Calculator(Node):
         msg.throttle= self.throttle
         self.publisher.publish(msg)
         print("message publisheds")
+        print(msg.throttle)
         
        
 
