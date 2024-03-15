@@ -1,0 +1,110 @@
+[2.201s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[2.202s] DEBUG:colcon:Parsed command line arguments: Namespace(ament_cmake_args=None, base_paths=['.'], build_base='build', catkin_cmake_args=None, catkin_skip_building_tests=False, cmake_args=None, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, cmake_target=None, cmake_target_skip_unavailable=False, continue_on_error=False, event_handlers=None, executor='parallel', ignore_user_meta=False, install_base='install', log_base=None, log_level=None, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f566d90a820>>, merge_install=False, metas=['./colcon.meta'], packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_end=None, packages_ignore=None, packages_ignore_regex=None, packages_select=None, packages_select_build_failed=False, packages_select_by_dep=None, packages_select_regex=None, packages_select_test_failures=False, packages_skip=None, packages_skip_build_finished=False, packages_skip_by_dep=None, packages_skip_regex=None, packages_skip_test_passed=False, packages_skip_up_to=None, packages_start=None, packages_up_to=None, packages_up_to_regex=None, parallel_workers=2, paths=None, symlink_install=False, test_result_base=None, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f566d90a820>, verb_name='build', verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f566d90ad90>)
+[2.253s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[2.253s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[2.254s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[2.254s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[2.254s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[2.254s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[2.254s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/root/adr-class'
+[2.255s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[2.255s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[2.255s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[2.256s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[2.256s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[2.256s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[2.256s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[2.256s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[2.256s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[2.346s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[2.346s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[2.347s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[2.347s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[2.347s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[2.347s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[2.348s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[2.348s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[2.349s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[2.349s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[2.357s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[2.358s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[2.359s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[2.359s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[2.359s] Level 1:colcon.colcon_core.package_identification:_identify(midterm) by extensions ['ignore', 'ignore_ament_install']
+[2.360s] Level 1:colcon.colcon_core.package_identification:_identify(midterm) by extension 'ignore'
+[2.360s] Level 1:colcon.colcon_core.package_identification:_identify(midterm) by extension 'ignore_ament_install'
+[2.360s] Level 1:colcon.colcon_core.package_identification:_identify(midterm) by extensions ['colcon_pkg']
+[2.360s] Level 1:colcon.colcon_core.package_identification:_identify(midterm) by extension 'colcon_pkg'
+[2.360s] Level 1:colcon.colcon_core.package_identification:_identify(midterm) by extensions ['colcon_meta']
+[2.361s] Level 1:colcon.colcon_core.package_identification:_identify(midterm) by extension 'colcon_meta'
+[2.361s] Level 1:colcon.colcon_core.package_identification:_identify(midterm) by extensions ['ros']
+[2.361s] Level 1:colcon.colcon_core.package_identification:_identify(midterm) by extension 'ros'
+[2.540s] DEBUG:colcon.colcon_core.package_identification:Package 'midterm' with type 'ros.ament_python' and name 'midterm'
+[2.540s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[2.540s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[2.540s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[2.541s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[2.541s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[2.697s] Level 5:colcon.colcon_core.verb:set package 'midterm' build argument 'cmake_args' from command line to 'None'
+[2.697s] Level 5:colcon.colcon_core.verb:set package 'midterm' build argument 'cmake_target' from command line to 'None'
+[2.697s] Level 5:colcon.colcon_core.verb:set package 'midterm' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[2.698s] Level 5:colcon.colcon_core.verb:set package 'midterm' build argument 'cmake_clean_cache' from command line to 'False'
+[2.698s] Level 5:colcon.colcon_core.verb:set package 'midterm' build argument 'cmake_clean_first' from command line to 'False'
+[2.698s] Level 5:colcon.colcon_core.verb:set package 'midterm' build argument 'cmake_force_configure' from command line to 'False'
+[2.698s] Level 5:colcon.colcon_core.verb:set package 'midterm' build argument 'ament_cmake_args' from command line to 'None'
+[2.698s] Level 5:colcon.colcon_core.verb:set package 'midterm' build argument 'catkin_cmake_args' from command line to 'None'
+[2.698s] Level 5:colcon.colcon_core.verb:set package 'midterm' build argument 'catkin_skip_building_tests' from command line to 'False'
+[2.698s] DEBUG:colcon.colcon_core.verb:Building package 'midterm' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/adr-class/build/midterm', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/adr-class/install/midterm', 'merge_install': False, 'path': '/root/adr-class/midterm', 'symlink_install': False, 'test_result_base': None}
+[2.700s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[2.722s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[2.723s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/root/adr-class/midterm' with build type 'ament_python'
+[2.724s] Level 1:colcon.colcon_core.shell:create_environment_hook('midterm', 'ament_prefix_path')
+[2.920s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[2.921s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/adr-class/install/midterm/share/midterm/hook/ament_prefix_path.ps1'
+[2.928s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/adr-class/install/midterm/share/midterm/hook/ament_prefix_path.dsv'
+[2.930s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/adr-class/install/midterm/share/midterm/hook/ament_prefix_path.sh'
+[2.935s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[2.935s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[2.979s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/opt/ros/foxy'
+[4.423s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/root/adr-class/midterm'
+[4.426s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[4.427s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[4.444s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/opt/ros/foxy'
+[4.487s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/adr-class/midterm': PYTHONPATH=/root/adr-class/install/midterm/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/midterm build --build-base /root/adr-class/build/midterm/build install --prefix /root/adr-class/install/midterm --record /root/adr-class/build/midterm/install.log --single-version-externally-managed
+[7.142s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/adr-class/midterm' returned '0': PYTHONPATH=/root/adr-class/install/midterm/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/midterm build --build-base /root/adr-class/build/midterm/build install --prefix /root/adr-class/install/midterm --record /root/adr-class/build/midterm/install.log --single-version-externally-managed
+[7.308s] Level 1:colcon.colcon_core.environment:checking '/root/adr-class/install/midterm' for CMake module files
+[7.323s] Level 1:colcon.colcon_core.environment:checking '/root/adr-class/install/midterm' for CMake config files
+[7.326s] Level 1:colcon.colcon_core.environment:checking '/root/adr-class/install/midterm/lib'
+[7.327s] Level 1:colcon.colcon_core.environment:checking '/root/adr-class/install/midterm/bin'
+[7.327s] Level 1:colcon.colcon_core.environment:checking '/root/adr-class/install/midterm/lib/pkgconfig/midterm.pc'
+[7.328s] Level 1:colcon.colcon_core.environment:checking '/root/adr-class/install/midterm/lib/python3.8/site-packages'
+[7.328s] Level 1:colcon.colcon_core.shell:create_environment_hook('midterm', 'pythonpath')
+[7.338s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/adr-class/install/midterm/share/midterm/hook/pythonpath.ps1'
+[7.340s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/adr-class/install/midterm/share/midterm/hook/pythonpath.dsv'
+[7.350s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/adr-class/install/midterm/share/midterm/hook/pythonpath.sh'
+[7.352s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(midterm)
+[7.354s] INFO:colcon.colcon_core.shell:Creating package script '/root/adr-class/install/midterm/share/midterm/package.ps1'
+[7.532s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/adr-class/install/midterm/share/midterm/package.dsv'
+[7.534s] INFO:colcon.colcon_core.shell:Creating package script '/root/adr-class/install/midterm/share/midterm/package.sh'
+[7.549s] INFO:colcon.colcon_core.shell:Creating package script '/root/adr-class/install/midterm/share/midterm/package.bash'
+[7.553s] INFO:colcon.colcon_core.shell:Creating package script '/root/adr-class/install/midterm/share/midterm/package.zsh'
+[7.556s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/adr-class/install/midterm/share/colcon-core/packages/midterm)
+[7.562s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[7.565s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[7.565s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[7.565s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[7.644s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[7.645s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[7.645s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[7.701s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.Notifications was not provided by any .service files
+[7.701s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[7.704s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/adr-class/install/local_setup.ps1'
+[7.711s] INFO:colcon.colcon_core.shell:Creating prefix util module '/root/adr-class/install/_local_setup_util_ps1.py'
+[7.724s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/adr-class/install/setup.ps1'
+[7.750s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/adr-class/install/local_setup.sh'
+[7.755s] INFO:colcon.colcon_core.shell:Creating prefix util module '/root/adr-class/install/_local_setup_util_sh.py'
+[7.760s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/adr-class/install/setup.sh'
+[7.784s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/adr-class/install/local_setup.bash'
+[7.788s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/adr-class/install/setup.bash'
+[7.809s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/adr-class/install/local_setup.zsh'
+[7.815s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/adr-class/install/setup.zsh'

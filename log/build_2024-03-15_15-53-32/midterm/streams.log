@@ -1,0 +1,24 @@
+[1.181s] Invoking command in '/root/adr-class/midterm': PYTHONPATH=/root/adr-class/install/midterm/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/midterm build --build-base /root/adr-class/build/midterm/build install --prefix /root/adr-class/install/midterm --record /root/adr-class/build/midterm/install.log --single-version-externally-managed
+[2.096s] running egg_info
+[2.100s] writing ../build/midterm/midterm.egg-info/PKG-INFO
+[2.102s] writing dependency_links to ../build/midterm/midterm.egg-info/dependency_links.txt
+[2.103s] writing entry points to ../build/midterm/midterm.egg-info/entry_points.txt
+[2.104s] writing requirements to ../build/midterm/midterm.egg-info/requires.txt
+[2.106s] writing top-level names to ../build/midterm/midterm.egg-info/top_level.txt
+[2.246s] reading manifest file '../build/midterm/midterm.egg-info/SOURCES.txt'
+[2.249s] writing manifest file '../build/midterm/midterm.egg-info/SOURCES.txt'
+[2.250s] running build
+[2.256s] running build_py
+[2.257s] copying midterm/midtermnode.py -> /root/adr-class/build/midterm/build/lib/midterm
+[2.257s] running install
+[2.257s] running install_lib
+[2.258s] copying /root/adr-class/build/midterm/build/lib/midterm/midtermnode.py -> /root/adr-class/install/midterm/lib/python3.8/site-packages/midterm
+[2.261s] byte-compiling /root/adr-class/install/midterm/lib/python3.8/site-packages/midterm/midtermnode.py to midtermnode.cpython-38.pyc
+[2.267s] running install_data
+[2.269s] running install_egg_info
+[2.275s] removing '/root/adr-class/install/midterm/lib/python3.8/site-packages/midterm-0.0.0-py3.8.egg-info' (and everything under it)
+[2.276s] Copying ../build/midterm/midterm.egg-info to /root/adr-class/install/midterm/lib/python3.8/site-packages/midterm-0.0.0-py3.8.egg-info
+[2.280s] running install_scripts
+[2.342s] Installing midterm script to /root/adr-class/install/midterm/lib/midterm
+[2.344s] writing list of installed files to '/root/adr-class/build/midterm/install.log'
+[2.423s] Invoked command in '/root/adr-class/midterm' returned '0': PYTHONPATH=/root/adr-class/install/midterm/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/midterm build --build-base /root/adr-class/build/midterm/build install --prefix /root/adr-class/install/midterm --record /root/adr-class/build/midterm/install.log --single-version-externally-managed

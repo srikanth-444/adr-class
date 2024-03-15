@@ -1,0 +1,35 @@
+running egg_info
+creating ../build/midterm/midterm.egg-info
+writing ../build/midterm/midterm.egg-info/PKG-INFO
+writing dependency_links to ../build/midterm/midterm.egg-info/dependency_links.txt
+writing entry points to ../build/midterm/midterm.egg-info/entry_points.txt
+writing requirements to ../build/midterm/midterm.egg-info/requires.txt
+writing top-level names to ../build/midterm/midterm.egg-info/top_level.txt
+writing manifest file '../build/midterm/midterm.egg-info/SOURCES.txt'
+reading manifest file '../build/midterm/midterm.egg-info/SOURCES.txt'
+writing manifest file '../build/midterm/midterm.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /root/adr-class/build/midterm/build
+creating /root/adr-class/build/midterm/build/lib
+creating /root/adr-class/build/midterm/build/lib/midterm
+copying midterm/__init__.py -> /root/adr-class/build/midterm/build/lib/midterm
+copying midterm/midtermnode.py -> /root/adr-class/build/midterm/build/lib/midterm
+running install
+running install_lib
+creating /root/adr-class/install/midterm/lib/python3.8/site-packages/midterm
+copying /root/adr-class/build/midterm/build/lib/midterm/__init__.py -> /root/adr-class/install/midterm/lib/python3.8/site-packages/midterm
+copying /root/adr-class/build/midterm/build/lib/midterm/midtermnode.py -> /root/adr-class/install/midterm/lib/python3.8/site-packages/midterm
+byte-compiling /root/adr-class/install/midterm/lib/python3.8/site-packages/midterm/__init__.py to __init__.cpython-38.pyc
+byte-compiling /root/adr-class/install/midterm/lib/python3.8/site-packages/midterm/midtermnode.py to midtermnode.cpython-38.pyc
+running install_data
+creating /root/adr-class/install/midterm/share/ament_index
+creating /root/adr-class/install/midterm/share/ament_index/resource_index
+creating /root/adr-class/install/midterm/share/ament_index/resource_index/packages
+copying resource/midterm -> /root/adr-class/install/midterm/share/ament_index/resource_index/packages
+copying package.xml -> /root/adr-class/install/midterm/share/midterm
+running install_egg_info
+Copying ../build/midterm/midterm.egg-info to /root/adr-class/install/midterm/lib/python3.8/site-packages/midterm-0.0.0-py3.8.egg-info
+running install_scripts
+Installing midterm script to /root/adr-class/install/midterm/lib/midterm
+writing list of installed files to '/root/adr-class/build/midterm/install.log'

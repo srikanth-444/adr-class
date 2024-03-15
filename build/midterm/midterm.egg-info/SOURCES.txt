@@ -1,0 +1,16 @@
+package.xml
+setup.cfg
+setup.py
+../build/midterm/midterm.egg-info/PKG-INFO
+../build/midterm/midterm.egg-info/SOURCES.txt
+../build/midterm/midterm.egg-info/dependency_links.txt
+../build/midterm/midterm.egg-info/entry_points.txt
+../build/midterm/midterm.egg-info/requires.txt
+../build/midterm/midterm.egg-info/top_level.txt
+../build/midterm/midterm.egg-info/zip-safe
+midterm/__init__.py
+midterm/midtermnode.py
+resource/midterm
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py

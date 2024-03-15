@@ -1,0 +1,21 @@
+[1.398s] Invoking command in '/root/adr-class/midterm': PYTHONPATH=/root/adr-class/install/midterm/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/midterm build --build-base /root/adr-class/build/midterm/build install --prefix /root/adr-class/install/midterm --record /root/adr-class/build/midterm/install.log --single-version-externally-managed
+[2.758s] running egg_info
+[2.762s] writing ../build/midterm/midterm.egg-info/PKG-INFO
+[2.769s] writing dependency_links to ../build/midterm/midterm.egg-info/dependency_links.txt
+[2.769s] writing entry points to ../build/midterm/midterm.egg-info/entry_points.txt
+[2.770s] writing requirements to ../build/midterm/midterm.egg-info/requires.txt
+[2.770s] writing top-level names to ../build/midterm/midterm.egg-info/top_level.txt
+[3.161s] reading manifest file '../build/midterm/midterm.egg-info/SOURCES.txt'
+[3.175s] writing manifest file '../build/midterm/midterm.egg-info/SOURCES.txt'
+[3.176s] running build
+[3.177s] running build_py
+[3.181s] running install
+[3.184s] running install_lib
+[3.202s] running install_data
+[3.207s] running install_egg_info
+[3.224s] removing '/root/adr-class/install/midterm/lib/python3.8/site-packages/midterm-0.0.0-py3.8.egg-info' (and everything under it)
+[3.231s] Copying ../build/midterm/midterm.egg-info to /root/adr-class/install/midterm/lib/python3.8/site-packages/midterm-0.0.0-py3.8.egg-info
+[3.240s] running install_scripts
+[3.340s] Installing midterm script to /root/adr-class/install/midterm/lib/midterm
+[3.341s] writing list of installed files to '/root/adr-class/build/midterm/install.log'
+[3.447s] Invoked command in '/root/adr-class/midterm' returned '0': PYTHONPATH=/root/adr-class/install/midterm/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../build/midterm build --build-base /root/adr-class/build/midterm/build install --prefix /root/adr-class/install/midterm --record /root/adr-class/build/midterm/install.log --single-version-externally-managed

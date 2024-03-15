@@ -1,0 +1,71 @@
+[0.000000] (-) TimerEvent: {}
+[0.000775] (midterm) JobQueued: {'identifier': 'midterm', 'dependencies': OrderedDict()}
+[0.002530] (midterm) JobStarted: {'identifier': 'midterm'}
+[0.098909] (-) TimerEvent: {}
+[0.200031] (-) TimerEvent: {}
+[0.300938] (-) TimerEvent: {}
+[0.402344] (-) TimerEvent: {}
+[0.502983] (-) TimerEvent: {}
+[0.603651] (-) TimerEvent: {}
+[0.704275] (-) TimerEvent: {}
+[0.804882] (-) TimerEvent: {}
+[0.905543] (-) TimerEvent: {}
+[1.006256] (-) TimerEvent: {}
+[1.107015] (-) TimerEvent: {}
+[1.207734] (-) TimerEvent: {}
+[1.257491] (midterm) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../build/midterm', 'build', '--build-base', '/root/adr-class/build/midterm/build', 'install', '--prefix', '/root/adr-class/install/midterm', '--record', '/root/adr-class/build/midterm/install.log', '--single-version-externally-managed'], 'cwd': '/root/adr-class/midterm', 'env': {'SUDO_GID': '1000', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'MAIL': '/var/mail/root', 'USER': 'root', 'ROS_PACKAGE_PATH': '/opt/aws/deepracer/lib/async_web_server_cpp/share', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/aws/deepracer/lib/rplidar_ros/lib:/opt/aws/deepracer/lib/deepracer_interfaces_pkg/lib:/opt/aws/deepracer/lib/async_web_server_cpp/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib', 'HOME': '/root', 'OLDPWD': '/root', 'ROS_PYTHON_VERSION': '3', 'COLORTERM': 'truecolor', 'COLCON_PREFIX_PATH': '/opt/aws/deepracer/lib:/root/deepracer_ws/install', 'SUDO_UID': '1000', 'ROS_DISTRO': 'foxy', 'LOGNAME': 'root', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'PKG_CONFIG_PATH': '/opt/aws/deepracer/lib/async_web_server_cpp/lib/x86_64-linux-gnu/pkgconfig:/opt/aws/deepracer/lib/async_web_server_cpp/lib/pkgconfig', 'TERM': 'xterm-256color', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'SUDO_COMMAND': '/usr/bin/su', 'ROS_DOMAIN_ID': '74', 'AMENT_PREFIX_PATH': '/root/deepracer_ws/install/hello_deepracer_package:/opt/aws/deepracer/lib/deepracer_launcher:/opt/aws/deepracer/lib/webserver_pkg:/opt/aws/deepracer/lib/web_video_server:/opt/aws/deepracer/lib/deepracer_systems_pkg:/opt/aws/deepracer/lib/usb_monitor_pkg:/opt/aws/deepracer/lib/status_led_pkg:/opt/aws/deepracer/lib/ctrl_pkg:/opt/aws/deepracer/lib/servo_pkg:/opt/aws/deepracer/lib/sensor_fusion_pkg:/opt/aws/deepracer/lib/rplidar_ros:/opt/aws/deepracer/lib/model_optimizer_pkg:/opt/aws/deepracer/lib/inference_pkg:/opt/aws/deepracer/lib/i2c_pkg:/opt/aws/deepracer/lib/device_info_pkg:/opt/aws/deepracer/lib/deepracer_navigation_pkg:/opt/aws/deepracer/lib/camera_pkg:/opt/aws/deepracer/lib/deepracer_interfaces_pkg:/opt/ros/foxy', 'SHELL': '/bin/bash', 'SUDO_USER': 'deepracer', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'PWD': '/root/adr-class/build/midterm', 'LC_ALL': 'en_US.UTF-8', 'PYTHONPATH': '/root/adr-class/install/midterm/lib/python3.8/site-packages:/root/deepracer_ws/install/hello_deepracer_package/lib/python3.8/site-packages:/opt/aws/deepracer/lib/webserver_pkg/lib/python3.8/site-packages:/opt/aws/deepracer/lib/deepracer_systems_pkg/lib/python3.8/site-packages:/opt/aws/deepracer/lib/usb_monitor_pkg/lib/python3.8/site-packages:/opt/aws/deepracer/lib/status_led_pkg/lib/python3.8/site-packages:/opt/aws/deepracer/lib/model_optimizer_pkg/lib/python3.8/site-packages:/opt/aws/deepracer/lib/device_info_pkg/lib/python3.8/site-packages:/opt/aws/deepracer/lib/deepracer_navigation_pkg/lib/python3.8/site-packages:/opt/aws/deepracer/lib/deepracer_interfaces_pkg/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/aws/deepracer/lib/deepracer_launcher:/opt/aws/deepracer/lib/web_video_server:/opt/aws/deepracer/lib/ctrl_pkg:/opt/aws/deepracer/lib/servo_pkg:/opt/aws/deepracer/lib/sensor_fusion_pkg:/opt/aws/deepracer/lib/rplidar_ros:/opt/aws/deepracer/lib/inference_pkg:/opt/aws/deepracer/lib/i2c_pkg:/opt/aws/deepracer/lib/camera_pkg:/opt/aws/deepracer/lib/deepracer_interfaces_pkg:/opt/aws/deepracer/lib/async_web_server_cpp'}, 'shell': False}
+[1.307961] (-) TimerEvent: {}
+[1.408951] (-) TimerEvent: {}
+[1.509940] (-) TimerEvent: {}
+[1.610830] (-) TimerEvent: {}
+[1.711629] (-) TimerEvent: {}
+[1.812354] (-) TimerEvent: {}
+[1.913119] (-) TimerEvent: {}
+[2.013783] (-) TimerEvent: {}
+[2.114766] (-) TimerEvent: {}
+[2.215535] (-) TimerEvent: {}
+[2.316295] (-) TimerEvent: {}
+[2.417064] (-) TimerEvent: {}
+[2.451058] (midterm) StdoutLine: {'line': b'running egg_info\n'}
+[2.454407] (midterm) StdoutLine: {'line': b'creating ../build/midterm/midterm.egg-info\n'}
+[2.455273] (midterm) StdoutLine: {'line': b'writing ../build/midterm/midterm.egg-info/PKG-INFO\n'}
+[2.457371] (midterm) StdoutLine: {'line': b'writing dependency_links to ../build/midterm/midterm.egg-info/dependency_links.txt\n'}
+[2.458900] (midterm) StdoutLine: {'line': b'writing entry points to ../build/midterm/midterm.egg-info/entry_points.txt\n'}
+[2.460464] (midterm) StdoutLine: {'line': b'writing requirements to ../build/midterm/midterm.egg-info/requires.txt\n'}
+[2.467805] (midterm) StdoutLine: {'line': b'writing top-level names to ../build/midterm/midterm.egg-info/top_level.txt\n'}
+[2.468330] (midterm) StdoutLine: {'line': b"writing manifest file '../build/midterm/midterm.egg-info/SOURCES.txt'\n"}
+[2.517349] (-) TimerEvent: {}
+[2.618149] (-) TimerEvent: {}
+[2.718882] (-) TimerEvent: {}
+[2.761124] (midterm) StdoutLine: {'line': b"reading manifest file '../build/midterm/midterm.egg-info/SOURCES.txt'\n"}
+[2.763572] (midterm) StdoutLine: {'line': b"writing manifest file '../build/midterm/midterm.egg-info/SOURCES.txt'\n"}
+[2.764242] (midterm) StdoutLine: {'line': b'running build\n'}
+[2.764686] (midterm) StdoutLine: {'line': b'running build_py\n'}
+[2.765187] (midterm) StdoutLine: {'line': b'creating /root/adr-class/build/midterm/build\n'}
+[2.765602] (midterm) StdoutLine: {'line': b'creating /root/adr-class/build/midterm/build/lib\n'}
+[2.765936] (midterm) StdoutLine: {'line': b'creating /root/adr-class/build/midterm/build/lib/midterm\n'}
+[2.766321] (midterm) StdoutLine: {'line': b'copying midterm/__init__.py -> /root/adr-class/build/midterm/build/lib/midterm\n'}
+[2.766638] (midterm) StdoutLine: {'line': b'copying midterm/midtermnode.py -> /root/adr-class/build/midterm/build/lib/midterm\n'}
+[2.766947] (midterm) StdoutLine: {'line': b'running install\n'}
+[2.770510] (midterm) StdoutLine: {'line': b'running install_lib\n'}
+[2.773716] (midterm) StdoutLine: {'line': b'creating /root/adr-class/install/midterm/lib/python3.8/site-packages/midterm\n'}
+[2.774468] (midterm) StdoutLine: {'line': b'copying /root/adr-class/build/midterm/build/lib/midterm/__init__.py -> /root/adr-class/install/midterm/lib/python3.8/site-packages/midterm\n'}
+[2.774834] (midterm) StdoutLine: {'line': b'copying /root/adr-class/build/midterm/build/lib/midterm/midtermnode.py -> /root/adr-class/install/midterm/lib/python3.8/site-packages/midterm\n'}
+[2.780380] (midterm) StdoutLine: {'line': b'byte-compiling /root/adr-class/install/midterm/lib/python3.8/site-packages/midterm/__init__.py to __init__.cpython-38.pyc\n'}
+[2.781365] (midterm) StdoutLine: {'line': b'byte-compiling /root/adr-class/install/midterm/lib/python3.8/site-packages/midterm/midtermnode.py to midtermnode.cpython-38.pyc\n'}
+[2.782505] (midterm) StdoutLine: {'line': b'running install_data\n'}
+[2.784472] (midterm) StdoutLine: {'line': b'creating /root/adr-class/install/midterm/share/ament_index\n'}
+[2.785187] (midterm) StdoutLine: {'line': b'creating /root/adr-class/install/midterm/share/ament_index/resource_index\n'}
+[2.785688] (midterm) StdoutLine: {'line': b'creating /root/adr-class/install/midterm/share/ament_index/resource_index/packages\n'}
+[2.786018] (midterm) StdoutLine: {'line': b'copying resource/midterm -> /root/adr-class/install/midterm/share/ament_index/resource_index/packages\n'}
+[2.786322] (midterm) StdoutLine: {'line': b'copying package.xml -> /root/adr-class/install/midterm/share/midterm\n'}
+[2.786623] (midterm) StdoutLine: {'line': b'running install_egg_info\n'}
+[2.791533] (midterm) StdoutLine: {'line': b'Copying ../build/midterm/midterm.egg-info to /root/adr-class/install/midterm/lib/python3.8/site-packages/midterm-0.0.0-py3.8.egg-info\n'}
+[2.801367] (midterm) StdoutLine: {'line': b'running install_scripts\n'}
+[2.819161] (-) TimerEvent: {}
+[2.869081] (midterm) StdoutLine: {'line': b'Installing midterm script to /root/adr-class/install/midterm/lib/midterm\n'}
+[2.870441] (midterm) StdoutLine: {'line': b"writing list of installed files to '/root/adr-class/build/midterm/install.log'\n"}
+[2.919411] (-) TimerEvent: {}
+[2.968705] (midterm) CommandEnded: {'returncode': 0}
+[3.007917] (midterm) JobEnded: {'identifier': 'midterm', 'rc': 0}
+[3.011965] (-) EventReactorShutdown: {}

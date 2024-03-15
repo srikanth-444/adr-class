@@ -1,0 +1,3 @@
+[console_scripts]
+midterm = midterm.midtermnode:main
+
