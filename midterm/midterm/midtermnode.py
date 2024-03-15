@@ -10,7 +10,7 @@ class Distance_Calculator(Node):
     def __init__(self):
         super().__init__('distance_calculator')
         self.subcriber= self.create_subscription(EvoSensorMsg, '/sensor_fusion_pkg/sensor_msg',self.listen,10,)
-        self.client=self.create_client(LidarConfigSrv,'configure_lidar')
+        self.client=self.create_client(LidarConfigSrv,'/sensor_fusion_pkg/configure_lidar')
         while not self.client.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('service not available, waiting again...')
         self.req = LidarConfigSrv.Request()
