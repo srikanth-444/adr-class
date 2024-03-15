@@ -2,7 +2,7 @@ import rclpy
 from rclpy.node import Node
     
 from deepracer_interfaces_pkg.msg import EvoSensorMsg
-from deepracer_interface_pkg.srv import LidarConfigSrv
+from deepracer_interfaces_pkg.srv import LidarConfigSrv
     
     
 class Distance_Calculator(Node):
@@ -10,8 +10,8 @@ class Distance_Calculator(Node):
     def __init__(self):
         super().__init__('distance_calculator')
         self.subcriber= self.create_subscription(EvoSensorMsg, '/sensor_fusion_pkg/sensor_msg',self.listen,10,)
-        self.client=self.create_client(LidarConfigSrv,"configure_lidat")
-        while not self.cli.wait_for_service(timeout_sec=1.0):
+        self.client=self.create_client(LidarConfigSrv,"configure_lidar")
+        while not self.client.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('service not available, waiting again...')
         self.req = LidarConfigSrv.Request()
         
@@ -20,7 +20,7 @@ class Distance_Calculator(Node):
         self.req.min_angle= -120
         self.req.max_angle= 120
         
-        self.future = self.cli.call_async(self.req)
+        self.future = self.client.call_async(self.req)
         rclpy.spin_until_future_complete(self, self.future)
         return self.future.result()                      
 
