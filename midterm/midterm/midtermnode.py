@@ -37,9 +37,11 @@ class Distance_Calculator(Node):
         distance_matrix=np.array([])
         
         distance_matrix=np.concatenate((lidar_data[1:100],lidar_data[-100:]))
+
+        least_distance=np.argmax(distance_matrix)
        
         
-        print(distance_matrix)
+        print(least_distance)
    
 
        
@@ -58,11 +60,6 @@ def main(args=None):
         print("lidar config wrong you idiot")
         rclpy.shutdown()
     rclpy.spin(distance_calculator)
-
-
-    # Destroy the node explicitly
-    # (optional - otherwise it will be done automatically
-    # when the garbage collector destroys the node object)
     distance_calculator.destroy_node()
     rclpy.shutdown()
 
