@@ -29,7 +29,7 @@ class Distance_Calculator(Node):
         self.req.use_lidar=True
         self.req.min_angle= -179.0
         self.req.max_angle= 179.0
-        self.req.num_values=600
+        self.req.num_values=60
         self.req.min_distance=0.15
         self.req.max_distance=1.0
         self.req.clipping_distance=1.0
@@ -44,7 +44,7 @@ class Distance_Calculator(Node):
         lidar_data = np.array(msg.lidar_data) 
         distance_matrix=np.array([])
         
-        distance_matrix=np.concatenate((lidar_data[1:100],lidar_data[-100:]))
+        distance_matrix=np.concatenate((lidar_data[1:5],lidar_data[-5:]))
 
         least_distance=distance_matrix[np.argmin(distance_matrix)]
        
