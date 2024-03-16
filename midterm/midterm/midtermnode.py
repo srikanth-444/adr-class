@@ -49,7 +49,7 @@ class Distance_Calculator(Node):
         least_distance=distance_matrix[np.argmin(distance_matrix)]
        
         
-        if least_distance<0.5:
+        if least_distance<1.0:
             self.angle=0.0
             self.throttle=0.0
         else:
