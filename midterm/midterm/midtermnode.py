@@ -21,7 +21,7 @@ class Distance_Calculator(Node):
         timer_period = 0.1  
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.angle=0.0
-        self.throttle=0.5
+        self.throttle=1.0
       
         
        
