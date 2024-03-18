@@ -54,7 +54,7 @@ class Distance_Calculator(Node):
             self.throttle=0.0
         else:
             self.angle=0.0
-            self.throttle=1.0
+            self.throttle=0.5
     
 
     
