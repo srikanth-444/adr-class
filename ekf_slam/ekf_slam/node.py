@@ -26,7 +26,7 @@ class Service_Node(Node):
             if distance[i]==float('inf'):
                 distance[i]=8
 
-        map_space=np.squeeze(np.column_stack((angle,distance)),axis=1)
+        map_space=np.squeeze(np.column_stack((angle,distance)))
 
         print(map_space)
 
