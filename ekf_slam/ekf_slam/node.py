@@ -22,11 +22,11 @@ class Service_Node(Node):
         samples=distance.size
         angle=np.linspace(min_angle,max_angle,samples)
 
-        print(distance.size)
+        for i in len(range(samples)):
+            if distance[i]==float('inf'):
+                distance[i]=8
 
-        print(angle.size)
-
-        map_space=np.column_stack((angle,distance))
+        map_space=np.squeeze(np.column_stack((angle,distance)),axis=0)
 
         print(map_space)
 
