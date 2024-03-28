@@ -18,7 +18,7 @@ class Service_Node(Node):
         angle_increment=lidar_data.angle_increment
         distance=np.array(lidar_data.ranges)
 
-        angle=np.linspace(min_angle,max_angle,retstep=angle_increment)
+        angle=np.arange(min_angle,max_angle+0.5,angle_increment)
 
         print(distance)
 
