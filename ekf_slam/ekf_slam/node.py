@@ -16,7 +16,7 @@ class Service_Node(Node):
         min_angle=lidar_data.angle_min
         max_angle=lidar_data.angle_max
         angle_increment=lidar_data.angle_increment
-        distance=lidar_data.ranges
+        distance=np.array(lidar_data.ranges)
 
         angle=np.linspace(min_angle,max_angle,retstep=angle_increment)
 
