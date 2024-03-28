@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'EKF_slam'
+package_name = 'ekf_slam'
 
 setup(
     name=package_name,
@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'efk_slam=EKF_slam.node:main'
+            'ekf_slam=ekf_slam.node:main'
         ],
     },
 )
