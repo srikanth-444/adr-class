@@ -20,7 +20,7 @@ class Service_Node(Node):
         
         distance=np.array(lidar_data.ranges)
         samples=distance.size
-        angle=np.linespace(min_angle,max_angle,samples)
+        angle=np.linspace(min_angle,max_angle,samples)
 
         print(distance.size)
 
