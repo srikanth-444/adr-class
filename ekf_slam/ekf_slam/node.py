@@ -13,8 +13,16 @@ class Service_Node(Node):
     def listen(self, msg):
         
         lidar_data = np.array(msg) 
-        print(lidar_data)
-       
+        min_angle=lidar_data[0]
+        max_angle=lidar_data[1]
+        angle_increment=lidar_data[2]
+        distance=lidar_data[6]
+
+        angle=np.linspace(min_angle,max_angle,retstep=angle_increment)
+
+        map_space=np.column_stack((angle,distance))
+
+        print(map_space)
 
 def main(args=None):
     rclpy.init(args=args)
