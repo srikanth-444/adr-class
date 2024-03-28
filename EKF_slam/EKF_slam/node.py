@@ -15,4 +15,18 @@ class Service_Node(Node):
         lidar_data = np.array(msg) 
         print(lidar_data)
        
+
+def main(args=None):
+    rclpy.init(args=args)
+
+    service_node = Service_Node()
+
+
     
+    rclpy.spin(service_node)
+    service_node.destroy_node()
+    rclpy.shutdown()
+
+
+if __name__ == '__main__':
+    main()
