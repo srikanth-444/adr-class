@@ -20,6 +20,10 @@ class Service_Node(Node):
 
         angle=np.linspace(min_angle,max_angle,retstep=angle_increment)
 
+        print(distance)
+
+        print(angle)
+
         map_space=np.column_stack((angle,distance))
 
         print(map_space)
