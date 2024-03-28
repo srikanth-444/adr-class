@@ -12,7 +12,7 @@ class Service_Node(Node):
 
     def listen(self, msg):
         
-        lidar_data = np.array(msg) 
+        lidar_data = msg 
         min_angle=lidar_data.angle_min
         max_angle=lidar_data.angle_max
         angle_increment=lidar_data.angle_increment
