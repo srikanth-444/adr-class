@@ -29,8 +29,8 @@ from rclpy.node import Node
 from rclpy.executors import MultiThreadedExecutor
 from rclpy.callback_groups import ReentrantCallbackGroup
 
-from BMI160_i2c import Driver
-from BMI160_i2c import definitions
+from imu_pkg.BMI160_i2c import Driver
+from imu_pkg.BMI160_i2c import definitions
 
 from sensor_msgs.msg import Imu
 from nav_msgs.msg import Odometry
