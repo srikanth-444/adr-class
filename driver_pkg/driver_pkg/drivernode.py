@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 import numpy as np
-import drivier
+from driver import Driver
     
 from deepracer_interfaces_pkg.msg import EvoSensorMsg
 from deepracer_interfaces_pkg.srv import LidarConfigSrv
@@ -32,7 +32,7 @@ class Drive(Node):
         #initial values of steering and throttle
         self.angle=0.0
         self.throttle=0.0
-        self.driver=Drivier()
+        self.driver=Driver()
         self.distance_matrix=np.array([])
 
     def set_lidar_configuration(self,):
