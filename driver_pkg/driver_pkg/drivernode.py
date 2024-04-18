@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 import numpy as np
-import Drivier
+import drivier
     
 from deepracer_interfaces_pkg.msg import EvoSensorMsg
 from deepracer_interfaces_pkg.srv import LidarConfigSrv
@@ -34,9 +34,7 @@ class Drive(Node):
         self.throttle=0.0
         self.driver=Drivier()
         self.distance_matrix=np.array([])
-        
-  
-       
+
     def set_lidar_configuration(self,):
         self.req.use_lidar=True
         #setting up the area of scan
@@ -57,21 +55,11 @@ class Drive(Node):
         return self.future.result()                      
 
     def lidar_listen(self, msg):
-        
-       
-       
-        
         self.distance_matrix=np.array(msg.lidar_data)
         
         self.driver.get_controls(self.distance_matrix)
         self.angle=self.driver.get_angle()
         self.throttle=self.driver.get_throttle()
-        
-    
-
-    
-   
-
 
     def drive_timer_callback(self):
         msg = ServoCtrlMsg()   
