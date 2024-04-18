@@ -41,13 +41,13 @@ class Drive(Node):
         self.req.min_angle= -179.0
         self.req.max_angle= 179.0
         # sets the number of points in array 
-        self.req.num_values=60
+        self.req.num_values=359 # using 359 it gives data for each degree
         # doesn't scan the objects less than this distance(m)
         self.req.min_distance=0.15
         # doesn't scan the objects greater than this distance(m)
-        self.req.max_distance=1.0
+        self.req.max_distance=5
         # clips the distance greater than self.clipping_distance to self.clipping_distance
-        self.req.clipping_distance=1.0
+        self.req.clipping_distance=5
         self.req.num_sectors=60
         self.req.preprocess_type=0
         self.future = self.lidar_client.call_async(self.req)
@@ -90,7 +90,7 @@ def main(args=None):
         rclpy.shutdown()
 
     except:
-        drive.get_logger().warn("lidar config wrong you idiot")
+        drive.get_logger().error("lidar config wrong you idiot")
     
 
 if __name__ == '__main__':
