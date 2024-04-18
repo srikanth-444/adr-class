@@ -80,15 +80,18 @@ def main(args=None):
 
     drive = Drive()
 
-
-    res=drive.set_lidar_configuration()
-    if (res.error==1):
-        print("lidar config wrong you idiot")
+    try:
+        res=drive.set_lidar_configuration()
+        if (res.error==1):
+            raise Exception
+        drive.get_logger.info('lidar has been configured')
+        rclpy.spin(drive)
+        drive.destroy_node()
         rclpy.shutdown()
-    rclpy.spin(drive)
-    drive.destroy_node()
-    rclpy.shutdown()
 
+    except:
+        drive.get_logger().warn("lidar config wrong you idiot")
+    
 
 if __name__ == '__main__':
     main()
