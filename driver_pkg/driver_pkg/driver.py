@@ -1,5 +1,5 @@
 import numpy as np
-from driver_pkg.Filters import Filters
+from driver_pkg import Filters
 
 class Driver():
     def __init__(self) -> None:
