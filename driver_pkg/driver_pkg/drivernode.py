@@ -88,7 +88,7 @@ def main(args=None):
 
     except:
         drive.get_logger().error("lidar config wrong you idiot")
-    drive.get_logger.info('lidar has been configured')
+    drive.get_logger().info('lidar has been configured')
     rclpy.spin(drive)
     drive.destroy_node()
     rclpy.shutdown()
