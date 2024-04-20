@@ -36,8 +36,8 @@ class Drive(Node):
         self.distance_matrix=np.array([])
 
     def set_lidar_configuration(self,):
-        self.req.use_lidar=True
-        #setting up the area of scan
+        self.req.use_lidar=False
+        #setting up the area of scan       
         self.req.min_angle= -179.0
         self.req.max_angle= 179.0
         # sets the number of points in array 
@@ -84,13 +84,14 @@ def main(args=None):
         res=drive.set_lidar_configuration()
         if (res.error==1):
             raise Exception
-        drive.get_logger.info('lidar has been configured')
-        rclpy.spin(drive)
-        drive.destroy_node()
-        rclpy.shutdown()
+        
 
     except:
         drive.get_logger().error("lidar config wrong you idiot")
+    drive.get_logger.info('lidar has been configured')
+    rclpy.spin(drive)
+    drive.destroy_node()
+    rclpy.shutdown()
     
 
 if __name__ == '__main__':
