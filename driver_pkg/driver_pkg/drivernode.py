@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 import numpy as np
-from driver import Driver
+from driver_pkg.driver import Driver
     
 from deepracer_interfaces_pkg.msg import EvoSensorMsg
 from deepracer_interfaces_pkg.srv import LidarConfigSrv
