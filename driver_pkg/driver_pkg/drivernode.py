@@ -83,21 +83,26 @@ def main(args=None):
     rclpy.init(args=args)
 
     drive = Drive()
-
     try:
-        res=drive.set_lidar_configuration()
-        if (res.error==1):
-            raise Exception
-        
+        try:
+            res=drive.set_lidar_configuration()
+            if (res.error==1):
+                raise Exception
+            
 
-    except:
-        drive.get_logger().error("lidar config wrong you idiot")
+        except:
+            drive.get_logger().error("lidar config wrong you idiot")
+            rclpy.shutdown()
+    
+
+        drive.get_logger().info('lidar has been configured')
+        executor = MultiThreadedExecutor()
+        rclpy.spin(drive,executor)
+    except KeyboardInterrupt:
+        drive.angle=0.0
+        drive.throttle=0.0
+        drive.destroy_node()
         rclpy.shutdown()
-    drive.get_logger().info('lidar has been configured')
-    executor = MultiThreadedExecutor()
-    rclpy.spin(drive,executor)
-    drive.destroy_node()
-    rclpy.shutdown()
     
 
 if __name__ == '__main__':
