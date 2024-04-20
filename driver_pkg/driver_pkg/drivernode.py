@@ -28,7 +28,7 @@ class Drive(Node):
         # steering publisher
         self.steering_publisher= self.create_publisher(ServoCtrlMsg,'/ctrl_pkg/servo_msg',1)
 
-        timer_period = 1
+        timer_period = 0.01
 
         self.timer = self.create_timer(timer_period, self.drive_timer_callback)
 
@@ -59,11 +59,11 @@ class Drive(Node):
 
     def lidar_listen(self, msg):
         self.distance_matrix=np.array(msg.lidar_data)
-        self.get_logger().info("working")
+        
         self.driver.get_controls(self.distance_matrix)
         self.angle=self.driver.get_angle()
         self.throttle=self.driver.get_throttle()
-        print(self.driver.get_throttle())
+    
 
     def drive_timer_callback(self):
         msg = ServoCtrlMsg()   
