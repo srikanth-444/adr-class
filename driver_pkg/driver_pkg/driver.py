@@ -22,8 +22,8 @@ class Driver():
     def get_controls(self,distance_matrix):
         self.distance_matrix=distance_matrix
         
-        left_distances=self.distance_matrix[1:self.distance_matrix.size//2-1]
-        right_distances=self.distance_matrix[self.distance_matrix.size//2+1 :]
+        left_distances=self.distance_matrix[1:self.distance_matrix.size//2]
+        right_distances=self.distance_matrix[self.distance_matrix.size//2 :]
         
         # logic start here 
         e=self.scan_for_turn(left_distances,right_distances)
