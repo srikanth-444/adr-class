@@ -56,7 +56,7 @@ class Drive(Node):
 
     def lidar_listen(self, msg):
         self.distance_matrix=np.array(msg.lidar_data)
-        
+        self.get_logger().info(self.driver.get_throttle())
         self.driver.get_controls(self.distance_matrix)
         self.angle=self.driver.get_angle()
         self.throttle=self.driver.get_throttle()
