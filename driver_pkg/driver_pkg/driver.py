@@ -24,7 +24,7 @@ class Driver():
         
         left_distances=self.distance_matrix[1:self.distance_matrix.size//2-1]
         right_distances=self.distance_matrix[self.distance_matrix.size//2+1 :]
-        print(left_distances)
+        
         # logic start here 
         e=self.scan_for_turn(left_distances,right_distances)
         if abs(e)>0:
@@ -35,11 +35,11 @@ class Driver():
 
     
     def scan_for_turn(self,left_distances,right_distances)-> int:
-
-        left=left_distances[30:90]
-        right=right_distances[30:90]
         
+        left=left_distances
+        right=right_distances
         
+        print(len(left))
 
         left_max_distance=left[np.argmax(left)]
         right_max_distance=right[np.argmax(right)]
