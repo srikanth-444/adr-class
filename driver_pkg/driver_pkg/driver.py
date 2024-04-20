@@ -32,7 +32,7 @@ class Driver():
             self.angle=0
         
 
-        return self.throttle
+    
     def scan_for_turn(self,left_distances,right_distances)-> int:
 
         left=left_distances[30:90]

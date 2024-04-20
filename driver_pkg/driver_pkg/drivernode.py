@@ -60,6 +60,7 @@ class Drive(Node):
         self.driver.get_controls(self.distance_matrix)
         self.angle=self.driver.get_angle()
         self.throttle=self.driver.get_throttle()
+        print(self.driver.get_throttle())
 
     def drive_timer_callback(self):
         msg = ServoCtrlMsg()   
