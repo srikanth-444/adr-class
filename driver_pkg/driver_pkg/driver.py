@@ -29,7 +29,7 @@ class Driver():
         if abs(e)>0:
             self.angle=float(e/90)
         else:
-            self.angle=0
+            self.angle=0.0
         
 
     
