@@ -2,7 +2,7 @@ import numpy as np
 
 class Driver():
     def __init__(self) -> None:
-        self.distance_matrix=np.argmax([])
+        self.distance_matrix=np.array([])
         self.throttle=0.5
         self.angle=0.0
 
