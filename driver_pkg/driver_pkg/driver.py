@@ -37,7 +37,8 @@ class Driver():
 
         left=left_distances[30:90]
         right=right_distances[30:90]
-
+        
+        print(left)
 
         left_max_distance=left[np.argmax(left)]
         right_max_distance=right[np.argmax(right)]
@@ -45,9 +46,9 @@ class Driver():
 
         if (left_max_distance>right_max_distance and left_max_distance>=0.5):
                 e=30+np.argmax(left)
-                return -e
+                return e
         elif(right_max_distance>left_max_distance and right_max_distance>=0.5):
                 e=30+np.argmax(right)
-                return e
+                return -e
         else:
             return 0
