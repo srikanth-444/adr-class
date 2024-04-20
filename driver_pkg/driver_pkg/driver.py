@@ -3,7 +3,7 @@ import numpy as np
 class Driver():
     def __init__(self) -> None:
         self.distance_matrix=np.array([])
-        self.throttle=0.3
+        self.throttle=1
         self.angle=0.0
 
     def get_throttle(self):
