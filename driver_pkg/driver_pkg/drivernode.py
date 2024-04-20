@@ -2,6 +2,8 @@ import rclpy
 from rclpy.node import Node
 import numpy as np
 from driver_pkg.driver import Driver
+from rclpy.executors import MultiThreadedExecutor
+from rclpy.callback_groups import ReentrantCallbackGroup
     
 from deepracer_interfaces_pkg.msg import EvoSensorMsg
 from deepracer_interfaces_pkg.srv import LidarConfigSrv
@@ -12,6 +14,7 @@ class Drive(Node):
 
     def __init__(self):
         super().__init__('Drive')
+        self.lidar_message_sub_cb_grp = ReentrantCallbackGroup()
         #client for configuring lidar
         self.lidar_client=self.create_client(LidarConfigSrv,"/sensor_fusion_pkg/configure_lidar")
         while not self.lidar_client.wait_for_service(timeout_sec=1.0):
@@ -90,7 +93,8 @@ def main(args=None):
     except:
         drive.get_logger().error("lidar config wrong you idiot")
     drive.get_logger().info('lidar has been configured')
-    rclpy.spin(drive)
+    executor = MultiThreadedExecutor()
+    rclpy.spin(drive,executor)
     drive.destroy_node()
     rclpy.shutdown()
     
