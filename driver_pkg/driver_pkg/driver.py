@@ -1,9 +1,9 @@
 import numpy as np
-from driver_pkg import Filters
+from driver_pkg.Filters import Filters
 
 class Driver():
     def __init__(self) -> None:
-        self.filter=Filters
+        self.filter=Filters()
         self.distance_matrix=np.array([])
         self.throttle=0.1
         self.angle=0.0

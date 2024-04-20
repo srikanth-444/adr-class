@@ -2,7 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 class Filters:
-    def gaussian_filter(matrix):
+    def __init__(self) -> None:
+        pass
+    def signal_smoothing_filter(matrix):
         mean=np.mean(matrix)
         std=np.mean(matrix)
         
