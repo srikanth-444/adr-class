@@ -92,6 +92,7 @@ def main(args=None):
 
     except:
         drive.get_logger().error("lidar config wrong you idiot")
+        rclpy.shutdown()
     drive.get_logger().info('lidar has been configured')
     executor = MultiThreadedExecutor()
     rclpy.spin(drive,executor)
