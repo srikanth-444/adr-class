@@ -38,10 +38,11 @@ class Driver():
     
     def scan_for_turn(self,left_distances,right_distances)-> int:
         
+
         left=self.filter.signal_smoothing_filter(left_distances[5:15])
         right=self.filter.signal_smoothing_filter(right_distances[5:15])
         
-        print(left)
+        print(left,left_distances[5:15])
 
         left_max_distance=left[np.argmax(left)]
         right_max_distance=right[np.argmax(right)]
