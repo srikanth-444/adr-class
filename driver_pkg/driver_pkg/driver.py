@@ -1,7 +1,9 @@
 import numpy as np
+from driver_pkg.Filters import Filters
 
 class Driver():
     def __init__(self) -> None:
+        self.filter=Filters
         self.distance_matrix=np.array([])
         self.throttle=0.0
         self.angle=0.0
@@ -36,8 +38,8 @@ class Driver():
     
     def scan_for_turn(self,left_distances,right_distances)-> int:
         
-        left=left_distances[5:15]
-        right=right_distances[5:15]
+        left=self.filter.signal_smoothing_filter(left_distances[5:15])
+        right=self.filter.signal_smoothing_filter(right_distances[5:15])
         
         print(left)
 
