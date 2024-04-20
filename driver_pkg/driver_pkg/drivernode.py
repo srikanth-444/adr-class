@@ -99,8 +99,14 @@ def main(args=None):
         executor = MultiThreadedExecutor()
         rclpy.spin(drive,executor)
     except KeyboardInterrupt:
+        msg = ServoCtrlMsg()   
         drive.angle=0.0
-        drive.throttle=0.0
+        drive.throttle=0.0                                      
+        msg.angle= drive.angle 
+        msg.throttle= drive.throttle
+        drive.steering_publisher.publish(msg)
+        drive.get_logger().info("message published steering : %f throttle: %f" %(msg.angle,msg.throttle))
+
         drive.destroy_node()
         rclpy.shutdown()
     
