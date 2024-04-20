@@ -36,8 +36,8 @@ class Driver():
     
     def scan_for_turn(self,left_distances,right_distances)-> int:
         
-        left=left_distances
-        right=right_distances
+        left=left_distances[5:15]
+        right=right_distances[5:15]
         
         #print(left,right)
 
