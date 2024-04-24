@@ -23,6 +23,19 @@ class Driver():
 
     def get_controls(self,distance_matrix):
         self.distance_matrix=distance_matrix
+
+        
+
+        least_distance=distance_matrix[np.argmin(distance_matrix)]
+       
+        
+        if least_distance<1.0:
+        
+            self.throttle=0.0
+        else:
+            
+            self.throttle=0.5
+    
         
         left_distances=self.distance_matrix[0:self.distance_matrix.size//2]
         right_distances=self.distance_matrix[self.distance_matrix.size//2+1 :]
@@ -64,7 +77,7 @@ class Driver():
             return 0
         
     def steer_between_walls(self,left_distances,right_distances):
-        #print('steer between walls')
+        print('steer between walls')
         left = self.filter.signal_smoothing_filter(left_distances[12:18])
         right = self.filter.signal_smoothing_filter(right_distances[12:18])
 
@@ -72,7 +85,7 @@ class Driver():
         avg_right_distance = np.mean(right)
 
         scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)
-        steering_gain = 1/90
+        steering_gain = 1/180
         steering_angle = steering_gain*scaled_error
 
         return steering_angle
