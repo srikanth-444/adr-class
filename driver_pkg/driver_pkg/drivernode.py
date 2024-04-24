@@ -71,7 +71,7 @@ class Drive(Node):
         msg.angle= self.angle 
         msg.throttle= self.throttle
         self.steering_publisher.publish(msg)
-        self.get_logger().info("message published steering : %f throttle: %f" %(msg.angle,msg.throttle))
+        #self.get_logger().info("message published steering : %f throttle: %f" %(msg.angle,msg.throttle))
      
         
        
