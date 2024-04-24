@@ -5,7 +5,7 @@ class Driver():
     def __init__(self) -> None:
         self.filter=Filters()
         self.distance_matrix=np.array([])
-        self.throttle=0.5
+        self.throttle=0.3
         self.angle=0.0
 
     def get_throttle(self):
@@ -24,17 +24,7 @@ class Driver():
     def get_controls(self,distance_matrix):
         self.distance_matrix=distance_matrix
 
-        
-
-        least_distance=distance_matrix[np.argmin(distance_matrix)]
-       
-        
-        if least_distance<1.0:
-        
-            self.throttle=0.0
-        else:
-            
-            self.throttle=0.5
+    
     
         
         left_distances=self.distance_matrix[0:self.distance_matrix.size//2]
