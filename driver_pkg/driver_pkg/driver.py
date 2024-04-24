@@ -23,9 +23,6 @@ class Driver():
 
     def get_controls(self,distance_matrix):
         self.distance_matrix=distance_matrix
-
-    
-    
         
         left_distances=self.distance_matrix[0:self.distance_matrix.size//2]
         right_distances=self.distance_matrix[self.distance_matrix.size//2+1 :]
@@ -55,11 +52,11 @@ class Driver():
         right_max_distance=right[np.argmax(right)]
 
         #print(left_max_distance,right_max_distance)
-        if (left_max_distance>=right_max_distance and left_max_distance>=1):
+        if (left_max_distance>=right_max_distance and left_max_distance>=1.5):
                 e=30+np.argmax(left)*6
                 #print(e)
                 return e
-        elif(right_max_distance>left_max_distance and right_max_distance>=1):
+        elif(right_max_distance>left_max_distance and right_max_distance>=1.5):
                 e=30+np.argmax(right)*6
                 #print(-e)
                 return -e
