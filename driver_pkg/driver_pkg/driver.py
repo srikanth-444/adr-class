@@ -26,6 +26,8 @@ class Driver():
         
         left_distances=self.distance_matrix[0:self.distance_matrix.size//2]
         right_distances=self.distance_matrix[self.distance_matrix.size//2+1 :]
+
+        print(right_distances)
         right_distances=right_distances[::-1]
         
         # logic start here 
@@ -43,7 +45,7 @@ class Driver():
         left=self.filter.signal_smoothing_filter(left_distances[5:15])
         right=self.filter.signal_smoothing_filter(right_distances[5:15])
         
-        print(right,right_distances[5:15])
+        #print(right,right_distances[5:15])
 
         left_max_distance=left[np.argmax(left)]
         right_max_distance=right[np.argmax(right)]
@@ -61,7 +63,7 @@ class Driver():
             return 0
         
     def steer_between_walls(self,left_distances,right_distances):
-        print('steer between walls')
+        #print('steer between walls')
         left = self.filter.signal_smoothing_filter(left_distances[10:15])
         right = self.filter.signal_smoothing_filter(right_distances[5:15])
 
