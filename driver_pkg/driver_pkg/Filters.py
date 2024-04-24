@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 class Filters:
     def __init__(self) -> None:
         pass
-    def signal_smoothing_filter(matrix):
+    def signal_smoothing_filter(self,matrix):
         mean=np.mean(matrix)
         std=np.mean(matrix)
         
