@@ -32,7 +32,7 @@ class Driver():
         if abs(e)>0:
             self.angle=float(e/90)
         else:
-            self.angle=0.0
+            self.angle= self.steer_between_walls(left_distances,right_distances)
         
 
     
@@ -58,3 +58,17 @@ class Driver():
                 return -e
         else:
             return 0
+        
+    def steer_between_walls(self,left_distances,right_distances):
+        
+        left = self.filter.signal_smoothing_filter(left_distances[10:15])
+        right = self.filter.signal_smoothing_filter(right_distances[5:15])
+
+        avg_left_distance = np.mean(left)
+        avg_right_distance = np.mean(right)
+
+        scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)
+        steering_gain = 1/90
+        steering_angle = steering_gain*scaled_error
+
+        return steering_angle
