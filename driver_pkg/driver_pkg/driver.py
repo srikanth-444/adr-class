@@ -64,7 +64,7 @@ class Driver():
             return 0
         
     def steer_between_walls(self,left_distances,right_distances):
-        print('steer between walls')
+        #print('steer between walls')
         left = self.filter.signal_smoothing_filter(left_distances[12:18])
         right = self.filter.signal_smoothing_filter(right_distances[12:18])
 
