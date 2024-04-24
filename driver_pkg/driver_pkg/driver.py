@@ -27,8 +27,9 @@ class Driver():
         left_distances=self.distance_matrix[0:self.distance_matrix.size//2]
         right_distances=self.distance_matrix[self.distance_matrix.size//2+1 :]
 
-        print(right_distances)
+        
         right_distances=right_distances[::-1]
+        print(right_distances)
         
         # logic start here 
         e=self.scan_for_turn(left_distances,right_distances)
