@@ -42,12 +42,12 @@ class Driver():
         left=self.filter.signal_smoothing_filter(left_distances[5:15])
         right=self.filter.signal_smoothing_filter(right_distances[5:15])
         
-        print(left,left_distances[5:15])
+        #print(left,left_distances[5:15])
 
         left_max_distance=left[np.argmax(left)]
         right_max_distance=right[np.argmax(right)]
 
-        print(left_max_distance,right_max_distance)
+        #print(left_max_distance,right_max_distance)
         if (left_max_distance>=right_max_distance and left_max_distance>=0.5):
                 e=30+np.argmax(left)
                 #print(e)

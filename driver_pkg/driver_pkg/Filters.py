@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 class Filters:
     def __init__(self) -> None:
         pass
-    def signal_smoothing_filter(self,matrix):
+    def signal_smoothing_filter(matrix):
         mean=np.mean(matrix)
         std=np.mean(matrix)
         
@@ -35,6 +35,6 @@ if __name__== '__main__':
   
 
     plt.figure(figsize=(1,1))
-    plt.plot([5.29325226,5.24669921,0.21393563,5.0,5.17035209,5.15641116,0.15,5.15,5.15,5.15])
-    plt.plot(Filters.gaussian_filter([5.29325226,5.24669921,0.21393563,5.0,5.17035209,5.15641116,0.15,5.15,5.15,5.15]))
+    plt.plot([0.29325226,0.24669921,0.21393563,5.0,0.17035209,0.15641116,0.15,0.15,0.15,0.15])
+    plt.plot(Filters.signal_smoothing_filter([0.29325226,0.24669921,0.21393563,5.0,0.17035209,0.15641116,0.15,0.15,0.15,0.15]))
     plt.show()
