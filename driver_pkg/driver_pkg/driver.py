@@ -72,8 +72,8 @@ class Driver():
         avg_right_distance = np.mean(right)
 
         #scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)
-        scaled_error = 0.3-avg_right_distance
-        steering_gain = 1/240
+        scaled_error = avg_right_distance - 0.3
+        steering_gain = 1/300
         steering_angle = steering_gain*scaled_error
 
         return steering_angle
