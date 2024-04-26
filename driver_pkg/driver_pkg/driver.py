@@ -43,7 +43,7 @@ class Driver():
     
     def scan_for_turn(self,left_distances,right_distances)-> int:
         
-
+        self.throttle=0.4
         left=self.filter.signal_smoothing_filter(left_distances[0:15])
         right=self.filter.signal_smoothing_filter(right_distances[0:15])
         
@@ -88,5 +88,6 @@ class Driver():
         scaled_error = 0.3-avg_right_distance
         steering_gain = 1/5
         steering_angle = steering_gain*scaled_error
+        self.throttle=0.7
 
         return steering_angle
