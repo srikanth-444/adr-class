@@ -1,5 +1,6 @@
 import numpy as np
 from driver_pkg.Filters import Filters
+import math
 
 class Driver():
     def __init__(self) -> None:
@@ -64,9 +65,14 @@ class Driver():
         print('steer between walls')
         left = self.filter.signal_smoothing_filter(left_distances[12:18])
         right = self.filter.signal_smoothing_filter(right_distances[10:20])
+        angle_matrix=range(10*6, 21*6,6)
+
+        distance=right*np.sin(angle_matrix)
+
+        print(distance)
 
         avg_left_distance = np.mean(left)
-        avg_right_distance = np.mean(right)
+        avg_right_distance = np.mean(distance)
 
         #scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)
         scaled_error = 0.4-avg_right_distance
