@@ -69,18 +69,19 @@ class Driver():
         print('steer between walls')
         left = self.filter.signal_smoothing_filter(left_distances[12:18])
         right = self.filter.signal_smoothing_filter(right_distances[12:18])
-        #angle_matrix=np.array(range(10*6, 20*6,6))
+        angle_matrix=np.array(range(10*6, 20*6,6))
 
-        #distance=right*np.sin(np.deg2rad(angle_matrix))
+        distance=right*np.sin(np.deg2rad(angle_matrix))
 
         #print(distance)
         #print(angle_matrix)
 
         avg_left_distance = np.mean(left)
-        avg_right_distance = np.mean(right)
+        #avg_right_distance = np.mean(right)
+        avg_right_distance = np.mean(distance)
 
-        scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)
-        #scaled_error = 0.3-avg_right_distance
+        #scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)
+        scaled_error = 0.3-avg_right_distance
         steering_gain = 1/180
         steering_angle = steering_gain*scaled_error
 
