@@ -67,7 +67,7 @@ class Driver():
         right = self.filter.signal_smoothing_filter(right_distances[10:20])
         angle_matrix=range(10*6, 20*6,6)
 
-        distance=right*np.sin(angle_matrix)
+        distance=right*np.sind(angle_matrix)
 
         print(distance)
 
