@@ -37,7 +37,7 @@ class Driver():
         if abs(e)>0:
             self.angle=float(e/90)
         else:
-            self.angle= 0.0 #self.steer_between_walls(left_distances,right_distances)
+            self.angle= self.steer_between_walls(left_distances,right_distances)
         
 
     
