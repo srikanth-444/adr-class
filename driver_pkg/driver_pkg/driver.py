@@ -44,8 +44,8 @@ class Driver():
     def scan_for_turn(self,left_distances,right_distances)-> int:
         
 
-        left=self.filter.signal_smoothing_filter(left_distances[5:15])
-        right=self.filter.signal_smoothing_filter(right_distances[5:15])
+        left=self.filter.signal_smoothing_filter(left_distances[0:15])
+        right=self.filter.signal_smoothing_filter(right_distances[0:15])
         
         #print(right,left)
 
@@ -73,7 +73,7 @@ class Driver():
 
         distance=right*np.sin(np.deg2rad(angle_matrix))
 
-        #print(distance)
+        print(distance)
         #print(angle_matrix)
 
         avg_left_distance = np.mean(left)
