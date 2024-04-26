@@ -37,15 +37,15 @@ class Driver():
         if abs(e)>0:
             self.angle=float(e/90)
         else:
-            self.angle= self.steer_between_walls(left_distances,right_distances)
+            self.angle= 0 #self.steer_between_walls(left_distances,right_distances)
         
 
     
     def scan_for_turn(self,left_distances,right_distances)-> int:
         
 
-        left=self.filter.signal_smoothing_filter(left_distances[3:15])
-        right=self.filter.signal_smoothing_filter(right_distances[3:15])
+        left=self.filter.signal_smoothing_filter(left_distances[0:15])
+        right=self.filter.signal_smoothing_filter(right_distances[0:15])
         
         #print(right,left)
 
@@ -53,15 +53,16 @@ class Driver():
         right_max_distance=right[np.argmax(right)]
 
         #print(left_max_distance,right_max_distance)
-        if( left_max_distance>right_max_distance and left_max_distance>=4.5):
-                e=30+np.argmax(right)*6
-                #print(-e)
-                return e
-      
         if( right_max_distance>=left_max_distance and right_max_distance>=4.5):
                 e=30+np.argmax(right)*6
                 #print(-e)
                 return -e
+        elif( left_max_distance>right_max_distance and left_max_distance>=4.5):
+                e=30+np.argmax(right)*6
+                #print(-e)
+                return e
+      
+        
         else:
             return 0
         
