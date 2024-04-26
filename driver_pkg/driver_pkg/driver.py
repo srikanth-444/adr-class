@@ -33,11 +33,11 @@ class Driver():
         #print(right_distances)
         
         # logic start here 
-        e=self.scan_for_turn(left_distances,right_distances)
+        e=0 #self.scan_for_turn(left_distances,right_distances)
         if abs(e)>0:
             self.angle=float(e/90)
         else:
-            self.angle= 0.0 #self.steer_between_walls(left_distances,right_distances)
+            self.angle= self.steer_between_walls(left_distances,right_distances)
         
 
     
