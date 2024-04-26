@@ -33,7 +33,7 @@ class Driver():
         #print(right_distances)
         
         # logic start here 
-        e=0 #self.scan_for_turn(left_distances,right_distances)
+        e=self.scan_for_turn(left_distances,right_distances)
         if abs(e)>0:
             self.angle=float(e/90)
         else:
@@ -44,8 +44,8 @@ class Driver():
     def scan_for_turn(self,left_distances,right_distances)-> int:
         
 
-        left=self.filter.signal_smoothing_filter(left_distances[0:15])
-        right=self.filter.signal_smoothing_filter(right_distances[0:15])
+        left=self.filter.signal_smoothing_filter(left_distances[5:15])
+        right=self.filter.signal_smoothing_filter(right_distances[5:15])
         
         #print(right,left)
 
