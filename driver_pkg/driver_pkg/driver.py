@@ -63,7 +63,7 @@ class Driver():
     def steer_between_walls(self,left_distances,right_distances):
         print('steer between walls')
         left = self.filter.signal_smoothing_filter(left_distances[12:18])
-        right = self.filter.signal_smoothing_filter(right_distances[12:18])
+        right = self.filter.signal_smoothing_filter(right_distances[10:20])
 
         avg_left_distance = np.mean(left)
         avg_right_distance = np.mean(right)
