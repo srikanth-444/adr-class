@@ -46,17 +46,14 @@ class Driver():
         left=self.filter.signal_smoothing_filter(left_distances[5:15])
         right=self.filter.signal_smoothing_filter(right_distances[5:15])
         
-        print(right,left)
+        #print(right,left)
 
         left_max_distance=left[np.argmax(left)]
         right_max_distance=right[np.argmax(right)]
 
-        print(left_max_distance,right_max_distance)
-        if (left_max_distance>right_max_distance and left_max_distance>=1.5):
-                e=30+np.argmax(left)*6
-                #print(e)
-                return e
-        elif(right_max_distance>=left_max_distance and right_max_distance>=1.5):
+        #print(left_max_distance,right_max_distance)
+      
+        if( right_max_distance>=1.5):
                 e=30+np.argmax(right)*6
                 #print(-e)
                 return -e
@@ -64,7 +61,7 @@ class Driver():
             return 0
         
     def steer_between_walls(self,left_distances,right_distances):
-        print('steer between walls')
+        #print('steer between walls')
         left = self.filter.signal_smoothing_filter(left_distances[12:18])
         right = self.filter.signal_smoothing_filter(right_distances[12:18])
 
@@ -73,7 +70,7 @@ class Driver():
 
         #scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)
         scaled_error = 0.3-avg_right_distance
-        steering_gain = 1/180
+        steering_gain = 1/360
         steering_angle = steering_gain*scaled_error
 
         return steering_angle
