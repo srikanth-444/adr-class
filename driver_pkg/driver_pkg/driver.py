@@ -84,8 +84,8 @@ class Driver():
         #avg_right_distance = np.min(distance)
         print(avg_right_distance)
 
-        #scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)
-        scaled_error = 0.3-avg_right_distance
+        scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)
+        #scaled_error = 0.3-avg_right_distance
         steering_gain = 1/2
         steering_angle = steering_gain*scaled_error
         self.throttle=0.6
