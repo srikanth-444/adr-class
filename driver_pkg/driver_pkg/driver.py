@@ -88,8 +88,8 @@ class Driver():
         #print(distance)
         #print(angle_matrix)
 
-        avg_left_distance = np.min([2.5,np.mean(left_distance)])
-        avg_right_distance = np.min([2.5,np.mean(right_distance)])
+        avg_left_distance = np.min([2,np.mean(left_distance)])
+        avg_right_distance = np.min([2,np.mean(right_distance)])
         #avg_right_distance = np.mean(distance)
         #avg_right_distance = np.min(distance)
         #print(avg_right_distance)
@@ -97,7 +97,7 @@ class Driver():
 
         scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)
         #scaled_error = 0.3-avg_right_distance
-        steering_gain = 0.25
+        steering_gain = 0.35
         steering_angle = steering_gain*scaled_error
         self.throttle=0.55
 
