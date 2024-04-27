@@ -43,7 +43,7 @@ class Driver():
     
     def scan_for_turn(self,left_distances,right_distances)-> int:
         
-        self.throttle=0.6
+        self.throttle=0.55
         left=self.filter.signal_smoothing_filter(left_distances[0:15])
         right=self.filter.signal_smoothing_filter(right_distances[0:15])
         
@@ -53,12 +53,12 @@ class Driver():
         right_max_distance=right[np.argmax(right)]
 
         #print(left_max_distance,right_max_distance)
-        if( right_max_distance>=left_max_distance and right_max_distance>=4):
+        if( right_max_distance>=left_max_distance and right_max_distance>=7):
                 e=np.argmax(right)*6
                 #print(-e)
                 return -e
     
-        elif( left_max_distance>right_max_distance and left_max_distance>=4):
+        elif( left_max_distance>right_max_distance and left_max_distance>=7):
                  e=np.argmax(right)*6
                  #print(-e)
                  return e
@@ -78,8 +78,8 @@ class Driver():
         #print(distance)
         #print(angle_matrix)
 
-        avg_left_distance = np.min([2.5,np.mean(left)])
-        avg_right_distance = np.min([2.5,np.mean(right)])
+        avg_left_distance = np.min([1,np.mean(left)])
+        avg_right_distance = np.min([1,np.mean(right)])
         #avg_right_distance = np.mean(distance)
         #avg_right_distance = np.min(distance)
         print(avg_right_distance)
@@ -88,6 +88,6 @@ class Driver():
         #scaled_error = 0.3-avg_right_distance
         steering_gain = 1/2
         steering_angle = steering_gain*scaled_error
-        self.throttle=0.5
+        self.throttle=0.55
 
         return steering_angle
