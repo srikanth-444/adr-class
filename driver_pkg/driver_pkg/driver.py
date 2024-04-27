@@ -8,6 +8,14 @@ class Driver():
         self.distance_matrix=np.array([])
         self.throttle=0.6
         self.angle=0.0
+        self.flag=0
+
+    def get_flag(self):
+        return self.flag
+
+    def set_flag(self, value):
+        self.flag = value
+
 
     def get_throttle(self):
         return self.throttle
@@ -36,8 +44,10 @@ class Driver():
         e=self.scan_for_turn(left_distances,right_distances)
         if abs(e)>0:
             self.angle=float(e/90)
+            self.flag=1
         else:
             self.angle= self.steer_between_walls(left_distances,right_distances)
+            self.flag=0
         
 
     
@@ -53,12 +63,12 @@ class Driver():
         right_max_distance=right[np.argmax(right)]
 
         #print(left_max_distance,right_max_distance)
-        if( right_max_distance>=left_max_distance and right_max_distance>=5.5):
+        if( right_max_distance>=left_max_distance and right_max_distance>=5):
                 e=np.argmax(right)*6
                 #print(-e)
                 return -e
     
-        elif( left_max_distance>right_max_distance and left_max_distance>=5.5):
+        elif( left_max_distance>right_max_distance and left_max_distance>=5):
                  e=np.argmax(right)*6
                  #print(-e)
                  return e
@@ -82,8 +92,8 @@ class Driver():
         avg_right_distance = np.min([2,np.mean(right_distance)])
         #avg_right_distance = np.mean(distance)
         #avg_right_distance = np.min(distance)
-        print(avg_right_distance)
-        print(avg_left_distance)
+        #print(avg_right_distance)
+        #print(avg_left_distance)
 
         scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)
         #scaled_error = 0.3-avg_right_distance

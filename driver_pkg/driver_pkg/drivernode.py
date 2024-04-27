@@ -63,6 +63,7 @@ class Drive(Node):
         self.driver.get_controls(self.distance_matrix)
         self.angle=self.driver.get_angle()
         self.throttle=self.driver.get_throttle()
+        self.flag=self.driver.get_flag()
     
 
     def drive_timer_callback(self):
@@ -71,7 +72,7 @@ class Drive(Node):
         msg.angle= self.angle 
         msg.throttle= self.throttle
         self.steering_publisher.publish(msg)
-        self.get_logger().info("message published steering : %f throttle: %f" %(msg.angle,msg.throttle))
+        self.get_logger().info("message published steering : %f throttle: %f flag: %f"%(msg.angle,msg.throttle,float(self.flag)))
      
         
        
