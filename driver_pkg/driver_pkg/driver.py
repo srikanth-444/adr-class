@@ -53,13 +53,13 @@ class Driver():
         right_max_distance=right[np.argmax(right)]
 
         #print(left_max_distance,right_max_distance)
-        if( right_max_distance>=left_max_distance and right_max_distance>=4.5):
-                e=np.argsort(right)[-1]*6
+        if( right_max_distance>=left_max_distance and right_max_distance>=5):
+                e=np.argmax(right)[-1]*6
                 #print(-e)
                 return -e
     
-        elif( left_max_distance>right_max_distance and left_max_distance>=4.5):
-                 e=np.argsort(right)[-1]*6
+        elif( left_max_distance>right_max_distance and left_max_distance>=5):
+                 e=np.argmax(right)[-1]*6
                  #print(-e)
                  return e
                
