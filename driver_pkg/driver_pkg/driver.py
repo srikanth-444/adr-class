@@ -99,6 +99,6 @@ class Driver():
         #scaled_error = 0.3-avg_right_distance
         steering_gain = 0.4
         steering_angle = steering_gain*scaled_error
-        self.throttle=0.55
+        self.throttle=1.0
 
         return steering_angle
