@@ -56,6 +56,10 @@ class Driver():
         self.throttle=0.5
         left=self.filter.signal_smoothing_filter(left_distances[0:15])
         right=self.filter.signal_smoothing_filter(right_distances[0:15])
+
+        for i in range(5):
+            left[i] = min([5,left[i]])
+            right[i] = min([5,right[i]])
         
         #print(right,left)
 
