@@ -53,12 +53,12 @@ class Driver():
         right_max_distance=right[np.argmax(right)]
 
         #print(left_max_distance,right_max_distance)
-        if( right_max_distance>=left_max_distance and right_max_distance>=7):
+        if( right_max_distance>=left_max_distance and right_max_distance>=5):
                 e=np.argmax(right)*6
                 #print(-e)
                 return -e
     
-        elif( left_max_distance>right_max_distance and left_max_distance>=7):
+        elif( left_max_distance>right_max_distance and left_max_distance>=5):
                  e=np.argmax(right)*6
                  #print(-e)
                  return e
@@ -78,8 +78,8 @@ class Driver():
         #print(distance)
         #print(angle_matrix)
 
-        avg_left_distance = np.min([1,np.mean(left)])
-        avg_right_distance = np.min([1,np.mean(right)])
+        avg_left_distance = np.min([1.5,np.mean(left)])
+        avg_right_distance = np.min([1.5,np.mean(right)])
         #avg_right_distance = np.mean(distance)
         #avg_right_distance = np.min(distance)
         print(avg_right_distance)
