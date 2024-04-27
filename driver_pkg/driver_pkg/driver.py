@@ -54,12 +54,12 @@ class Driver():
 
         #print(left_max_distance,right_max_distance)
         if( right_max_distance>=left_max_distance and right_max_distance>=4.5):
-                e=np.argmax(right)*6
+                e=np.argsort(right)[-1]*6
                 #print(-e)
                 return -e
     
         elif( left_max_distance>right_max_distance and left_max_distance>=4.5):
-                 e=30+np.argmax(right)*6
+                 e=np.argsort(right)[-1]*6
                  #print(-e)
                  return e
                
@@ -73,15 +73,15 @@ class Driver():
         right = self.filter.signal_smoothing_filter(right_distances[12:18])
         angle_matrix=np.array(range(12*6, 18*6,6))
 
-        distance=right*np.sin(np.deg2rad(angle_matrix))
+        #distance=right*np.sin(np.deg2rad(angle_matrix))
 
-        print(distance)
+        #print(distance)
         #print(angle_matrix)
 
         avg_left_distance = np.mean(left)
-        #avg_right_distance = np.mean(right)
+        avg_right_distance = np.mean(right)
         #avg_right_distance = np.mean(distance)
-        avg_right_distance = np.min(distance)
+        #avg_right_distance = np.min(distance)
         print(avg_right_distance)
 
         #scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)
