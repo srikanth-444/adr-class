@@ -73,16 +73,17 @@ class Driver():
         right = self.filter.signal_smoothing_filter(right_distances[12:18])
         angle_matrix=np.array(range(12*6, 18*6,6))
 
-        #distance=right*np.sin(np.deg2rad(angle_matrix))
-
+        right_distance=right*np.sin(np.deg2rad(angle_matrix))
+        left_distance = left*np.sin(np.deg2rad(angle_matrix))
         #print(distance)
         #print(angle_matrix)
 
-        avg_left_distance = np.min([2,np.mean(left)])
-        avg_right_distance = np.min([2,np.mean(right)])
+        avg_left_distance = np.min([2,np.mean(left_distance)])
+        avg_right_distance = np.min([2,np.mean(right_distance)])
         #avg_right_distance = np.mean(distance)
         #avg_right_distance = np.min(distance)
         print(avg_right_distance)
+        print(avg_left_distance)
 
         scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)
         #scaled_error = 0.3-avg_right_distance
