@@ -6,7 +6,7 @@ class Driver():
     def __init__(self) -> None:
         self.filter=Filters()
         self.distance_matrix=np.array([])
-        self.throttle=0.6
+        self.throttle=0.55
         self.angle=0.0
         self.flag=0
 
