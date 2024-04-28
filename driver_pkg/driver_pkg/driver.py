@@ -38,7 +38,7 @@ class Driver():
 
         
         right_distances=right_distances[::-1]
-        #print(right_distances
+        #print(right_distances)
         
         # logic start here 
         e=self.scan_for_turn(left_distances,right_distances)
@@ -54,8 +54,8 @@ class Driver():
     def scan_for_turn(self,left_distances,right_distances)-> int:
         
         
-        left=left_distances[0:90]
-        right=right_distances[0:90]
+        left=self.filter.signal_smoothing_filter(left_distances[5:15])
+        right=self.filter.signal_smoothing_filter(right_distances[5:15])
         front_right=self.filter.signal_smoothing_filter(right_distances[0:5])
         front_left=self.filter.signal_smoothing_filter(left_distances[0:5])
 
@@ -72,17 +72,17 @@ class Driver():
         front_left_max_distance=max(front_left)
 
 
-        print(np.argmax(left),np.argmax(right))
-        if( right_max_distance>=left_max_distance and right_max_distance>=11.5):
-                e=np.argmax(right)
+        print(left_max_distance,right_max_distance,front_right_max_distance)
+        if( right_max_distance>=left_max_distance and right_max_distance>=4.5):
+                e=30+np.argmax(right)*6
                 #print(-e)
                 return -e
         # elif( front_right_max_distance>=front_left_max_distance and front_right_max_distance>=4):
         #           e=np.argmax(front_right)*6
         #          #print(-e)
         #           return -e
-        elif( left_max_distance>=right_max_distance and left_max_distance>=11.5):
-                 e=10+np.argmax(left)
+        elif( left_max_distance>right_max_distance and left_max_distance>=4.5):
+                 e=30+np.argmax(left)*6
                  #print(-e)
                  return e
         else:
@@ -90,9 +90,9 @@ class Driver():
         
     def steer_between_walls(self,left_distances,right_distances):
         #print('steer between walls')
-        left = self.filter.signal_smoothing_filter(left_distances[60:120])
-        right =self.filter.signal_smoothing_filter(right_distances[60:120])
-        angle_matrix=np.array(range(60,120,1))
+        left = left_distances[12:18]
+        right =right_distances[12:18]
+        angle_matrix=np.array(range(12*6, 18*6,6))
 
         right_distance= right *np.sin(np.deg2rad(angle_matrix))
         left_distance = left *np.sin(np.deg2rad(angle_matrix))

@@ -44,13 +44,13 @@ class Drive(Node):
         self.req.min_angle= -179.0
         self.req.max_angle= 179.0
         # sets the number of points in array 
-        self.req.num_values=359 
+        self.req.num_values=61 
         # doesn't scan the objects less than this distance(m)
         self.req.min_distance=0.10
         # doesn't scan the objects greater than this distance(m)
-        self.req.max_distance=12.0
+        self.req.max_distance=5.0
         # clips the distance greater than self.clipping_distance to self.clipping_distance
-        self.req.clipping_distance=12.0
+        self.req.clipping_distance=5.0
         self.req.num_sectors=60
         self.req.preprocess_type=0
         self.future = self.lidar_client.call_async(self.req)
