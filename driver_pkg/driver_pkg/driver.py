@@ -82,7 +82,7 @@ class Driver():
         #          #print(-e)
         #           return -e
         elif( left_max_distance>=right_max_distance and left_max_distance>=11.5):
-                 e=np.argmax(left)
+                 e=10+np.argmax(left)
                  #print(-e)
                  return e
         else:
