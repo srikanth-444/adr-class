@@ -62,9 +62,9 @@ class Driver():
         
         #print(right,left)
 
-        for i in range(3):
-              right[i] = min([5,right[i]])
-              left[i] = min([5,left[i]])
+        # for i in range(3):
+        #       right[i] = min([5,right[i]])
+        #       left[i] = min([5,left[i]])
 
         left_max_distance=left[np.argmax(left)]
         right_max_distance=right[np.argmax(right)]
