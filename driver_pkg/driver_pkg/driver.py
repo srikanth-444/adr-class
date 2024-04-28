@@ -62,7 +62,7 @@ class Driver():
         
         #print(right,left)
 
-        for i in range(5):
+        for i in range(3):
               right[i] = min([6,right[i]])
               left[i] = min([6,left[i]])
 
