@@ -90,8 +90,8 @@ class Driver():
         
     def steer_between_walls(self,left_distances,right_distances):
         #print('steer between walls')
-        left = left_distances[60:120]
-        right =right_distances[60:120]
+        left = self.filter.signal_smoothing_filter(left_distances[60:120])
+        right =self.filter.signal_smoothing_filter(right_distances[60:120])
         angle_matrix=np.array(range(60,120,1))
 
         right_distance= right *np.sin(np.deg2rad(angle_matrix))
