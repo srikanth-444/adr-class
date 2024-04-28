@@ -60,7 +60,7 @@ class Driver():
         front_left=self.filter.signal_smoothing_filter(left_distances[0:5])
 
         
-        print(right,left)
+        #print(right,left)
 
         # for i in range(3):
         #      right[i] = min([5,right[i]])
