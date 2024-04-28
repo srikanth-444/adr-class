@@ -54,17 +54,17 @@ class Driver():
     def scan_for_turn(self,left_distances,right_distances)-> int:
         
         self.throttle=0.5
-        left=self.filter.signal_smoothing_filter(left_distances[3:15])
-        right=self.filter.signal_smoothing_filter(right_distances[3:15])
+        left=self.filter.signal_smoothing_filter(left_distances[5:15])
+        right=self.filter.signal_smoothing_filter(right_distances[5:15])
         front_right=self.filter.signal_smoothing_filter(right_distances[0:5])
         front_left=self.filter.signal_smoothing_filter(left_distances[0:5])
 
         
         #print(right,left)
 
-        # for i in range(3):
-        #      right[i] = min([5,right[i]])
-        #      left[i] = min([5,left[i]])
+        for i in range(5):
+              right[i] = min([5,right[i]])
+              left[i] = min([5,left[i]])
 
         left_max_distance=left[np.argmax(left)]
         right_max_distance=right[np.argmax(right)]
@@ -73,15 +73,15 @@ class Driver():
 
 
         #print(left_max_distance,right_max_distance)
-        if( right_max_distance>=left_max_distance and right_max_distance>=5):
-                e= np.argmax(right)*6
+        if( right_max_distance>=left_max_distance and right_max_distance>=4.5 and right_max_distance>=front_right_max_distance):
+                e=30+ np.argmax(right)*6
                 #print(-e)
                 return -e
-        # elif( front_right_max_distance>=front_left_max_distance and front_right_max_distance>=4):
-        #          e=np.argmax(front_right)*6
-        #         #print(-e)
-        #          return -e
-        elif( left_max_distance>right_max_distance and left_max_distance>=5):
+        elif( front_right_max_distance>=front_left_max_distance and front_right_max_distance>=4):
+                  e=np.argmax(front_right)*6
+                 #print(-e)
+                  return -e
+        elif( left_max_distance>right_max_distance and left_max_distance>=4.5):
                  e=30+np.argmax(left)*6
                  #print(-e)
                  return e
