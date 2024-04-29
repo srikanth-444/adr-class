@@ -16,7 +16,7 @@ class Visuals:
 
 
     def get_visuals(self):
-        self.angle_matrix=np.array(range(len(self.distance)))*6
+        self.angle_matrix=np.array(range(len(self.distance)))
 
         x= self.distance *np.sin(np.deg2rad(self.angle_matrix))
         y=self.distance* np.cos(np.deg2rad(self.angle_matrix))
