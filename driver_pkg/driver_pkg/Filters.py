@@ -17,7 +17,7 @@ class Filters:
                 elif i==len(matrix)-1:
                     matrix[i]=matrix[i-1]
                     
-                elif matrix[i]>=mean+2*std:
+                elif matrix[i]>=mean+1*std:
                     matrix[i]=(matrix[i-1]+matrix[i+1])/2
                 
             if(mean-np.mean(matrix))<0.01:
