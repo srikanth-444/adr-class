@@ -1,6 +1,6 @@
 import numpy as np
 from driver_pkg.Filters import Filters
-import math
+from driver_pkg.Visuals import Visuals
 
 class Driver():
     def __init__(self) -> None:
@@ -9,6 +9,7 @@ class Driver():
         self.throttle=0.5
         self.angle=0.0
         self.flag=0
+        self.viz=Visuals()
 
     def get_flag(self):
         return self.flag
@@ -59,6 +60,8 @@ class Driver():
         front_right=self.filter.signal_smoothing_filter(right_distances[0:5])
         front_left=self.filter.signal_smoothing_filter(left_distances[0:5])
 
+        self.viz.set_distance(right)
+        self.viz.get_visuals()
         
         #print(right,left)
 
