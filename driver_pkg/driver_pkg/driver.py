@@ -55,8 +55,8 @@ class Driver():
     def scan_for_turn(self,left_distances,right_distances)-> int:
         
         
-        left=self.filter.signal_smoothing_filter(left_distances[0:15])
-        right=self.filter.signal_smoothing_filter(right_distances[0:15])
+        left=left_distances[0:15]
+        right=right_distances[0:15]
         front_right=self.filter.signal_smoothing_filter(right_distances[0:5])
         front_left=self.filter.signal_smoothing_filter(left_distances[0:5])
 
