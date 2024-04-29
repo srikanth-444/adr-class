@@ -55,7 +55,7 @@ class Driver():
         
         
         left=self.filter.signal_smoothing_filter(left_distances[5:15])
-        right=self.filter.signal_smoothing_filter(right_distances[7:15])
+        right=self.filter.signal_smoothing_filter(right_distances[5:15])
         front_right=self.filter.signal_smoothing_filter(right_distances[0:5])
         front_left=self.filter.signal_smoothing_filter(left_distances[0:5])
 
