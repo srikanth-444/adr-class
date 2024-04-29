@@ -63,7 +63,7 @@ class Drive(Node):
     def lidar_listen(self, msg):
         self.distance_matrix=np.array(msg.lidar_data)
         
-        self.driver.get_controls(self.distance_matrix)
+        #self.driver.get_controls(self.distance_matrix)
         
         self.viz.set_distance(self.distance_matrix)
         self.viz.get_visuals()
