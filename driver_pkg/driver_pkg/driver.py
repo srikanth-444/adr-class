@@ -98,6 +98,8 @@ class Driver():
         else:
             return 0.0
         
+    
+        
     def steer_between_walls(self,left_distances,right_distances):
         #print('steer between walls')
         left = left_distances[60:120]
@@ -109,8 +111,8 @@ class Driver():
         #print(distance)
         #print(angle_matrix)
 
-        avg_left_distance = np.min([2,np.mean(left_distance)])
-        avg_right_distance = np.min([2,np.mean(right_distance)])
+        avg_left_distance = np.min([1.5,np.mean(left_distance)])
+        avg_right_distance = np.min([1.5,np.mean(right_distance)])
         #avg_right_distance = np.mean(distance)
         #avg_right_distance = np.min(distance)
         #print(avg_right_distance)
