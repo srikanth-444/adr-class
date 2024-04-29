@@ -101,7 +101,7 @@ class Driver():
         #print('steer between walls')
         left = left_distances[60:120]
         right =right_distances[60:120]
-        angle_matrix=np.array(range(55, 125,1))
+        angle_matrix=np.array(range(55, 115,1))
 
         right_distance= right *np.sin(np.deg2rad(angle_matrix))
         left_distance = left *np.sin(np.deg2rad(angle_matrix))
