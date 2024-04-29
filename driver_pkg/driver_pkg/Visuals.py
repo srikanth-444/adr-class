@@ -23,7 +23,7 @@ class Visuals:
 
         plt.clf()
         plt.scatter(x, y)
-        plt.pause(0.01)
+        plt.pause(0.001)
         plt.show()
 
 if __name__== '__main__':

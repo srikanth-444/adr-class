@@ -15,7 +15,7 @@ class Drive(Node):
 
     def __init__(self):
         super().__init__('Drive')
-        #self.lidar_message_sub_cb_grp = ReentrantCallbackGroup()
+        self.lidar_message_sub_cb_grp = ReentrantCallbackGroup()
         #client for configuring lidar
         self.lidar_client=self.create_client(LidarConfigSrv,"/sensor_fusion_pkg/configure_lidar")
         while not self.lidar_client.wait_for_service(timeout_sec=1.0):
@@ -24,14 +24,14 @@ class Drive(Node):
 
 
         #lidar data subscriber
-        self.lidar_subcriber= self.create_subscription(EvoSensorMsg, '/sensor_fusion_pkg/sensor_msg',self.lidar_listen,10)#callback_group=self.lidar_message_sub_cb_grp
+        self.lidar_subcriber= self.create_subscription(EvoSensorMsg, '/sensor_fusion_pkg/sensor_msg',self.lidar_listen,10,callback_group=self.lidar_message_sub_cb_grp)
         
         # steering publisher
-        # self.steering_publisher= self.create_publisher(ServoCtrlMsg,'/ctrl_pkg/servo_msg',1)
+        self.steering_publisher= self.create_publisher(ServoCtrlMsg,'/ctrl_pkg/servo_msg',1)
 
-        # timer_period = 0.1
+        timer_period = 0.1
 
-        # self.timer = self.create_timer(timer_period, self.drive_timer_callback)
+        self.timer = self.create_timer(timer_period, self.drive_timer_callback)
 
         #initial values of steering and throttle
         self.angle=0.0
@@ -71,13 +71,13 @@ class Drive(Node):
         self.flag=self.driver.get_flag()
     
 
-    # def drive_timer_callback(self):
-    #     msg = ServoCtrlMsg()   
+    def drive_timer_callback(self):
+        msg = ServoCtrlMsg()   
                                                     
-    #     msg.angle= self.angle 
-    #     msg.throttle= self.throttle
-    #     self.steering_publisher.publish(msg)
-    #     self.get_logger().info("message published steering : %f throttle: %f flag: %f"%(msg.angle,msg.throttle,float(self.flag)))
+        msg.angle= self.angle 
+        msg.throttle= self.throttle
+        self.steering_publisher.publish(msg)
+        self.get_logger().info("message published steering : %f throttle: %f flag: %f"%(msg.angle,msg.throttle,float(self.flag)))
      
         
        
