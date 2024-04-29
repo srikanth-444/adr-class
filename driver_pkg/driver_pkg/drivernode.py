@@ -39,6 +39,7 @@ class Drive(Node):
         self.driver=Driver()
         self.viz=Visuals()
         self.distance_matrix=np.array([])
+        self.flag=0.0
 
     def set_lidar_configuration(self,):
         self.req.use_lidar=False
@@ -63,7 +64,7 @@ class Drive(Node):
         self.distance_matrix=np.array(msg.lidar_data)
         
         self.driver.get_controls(self.distance_matrix)
-        self.driver.viz
+        
         self.viz.set_distance(self.distance_matrix)
         self.viz.get_visuals()
         self.angle=self.driver.get_angle()
