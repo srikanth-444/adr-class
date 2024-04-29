@@ -24,7 +24,7 @@ class Visuals:
         plt.clf()
         plt.scatter(x, y)
         plt.show(block=False)
-        plt.pause(3)
+        plt.pause(0.1)
         plt.close()
 
 if __name__== '__main__':

@@ -4,7 +4,7 @@ import numpy as np
 from driver_pkg.driver import Driver
 from rclpy.executors import MultiThreadedExecutor
 from rclpy.callback_groups import ReentrantCallbackGroup
-from driver_pkg.Visuals import Visuals
+
     
 from deepracer_interfaces_pkg.msg import EvoSensorMsg
 from deepracer_interfaces_pkg.srv import LidarConfigSrv
@@ -37,7 +37,7 @@ class Drive(Node):
         self.angle=0.0
         self.throttle=0.0
         self.driver=Driver()
-        self.viz=Visuals()
+        
         self.distance_matrix=np.array([])
         self.flag=0.0
 
@@ -63,10 +63,9 @@ class Drive(Node):
     def lidar_listen(self, msg):
         self.distance_matrix=np.array(msg.lidar_data)
         
-        #self.driver.get_controls(self.distance_matrix)
+        self.driver.get_controls(self.distance_matrix)
         
-        self.viz.set_distance(self.distance_matrix)
-        self.viz.get_visuals()
+        
         self.angle=self.driver.get_angle()
         self.throttle=self.driver.get_throttle()
         self.flag=self.driver.get_flag()
