@@ -24,7 +24,7 @@ class Visuals:
         plt.clf()
         plt.plot(x, y)
         plt.pause(0.1)
-    plt.show()
+        plt.show()
 
 if __name__== '__main__':
 
