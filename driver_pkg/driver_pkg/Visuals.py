@@ -22,9 +22,10 @@ class Visuals:
         y=self.distance* np.cos(np.deg2rad(self.angle_matrix))
 
         plt.clf()
-        plt.plot(x, y)
-        plt.pause(0.1)
-        plt.show()
+        plt.scatter(x, y)
+        plt.show(block=False)
+        plt.pause(3)
+        plt.close()
 
 if __name__== '__main__':
 
