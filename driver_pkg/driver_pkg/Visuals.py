@@ -22,7 +22,7 @@ class Visuals:
         y=self.distance* np.cos(np.deg2rad(self.angle_matrix))
 
         plt.clf()
-        plt.scatter(x, y)
+        plt.plot(x, y)
         plt.pause(0.001)
         plt.show()
 
