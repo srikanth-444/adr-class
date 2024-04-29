@@ -54,7 +54,7 @@ class Driver():
     def scan_for_turn(self,left_distances,right_distances)-> int:
         
         
-        left=self.filter.signal_smoothing_filter(left_distances[7:15])
+        left=self.filter.signal_smoothing_filter(left_distances[5:15])
         right=self.filter.signal_smoothing_filter(right_distances[7:15])
         front_right=self.filter.signal_smoothing_filter(right_distances[0:5])
         front_left=self.filter.signal_smoothing_filter(left_distances[0:5])
@@ -74,7 +74,7 @@ class Driver():
 
         print(left_max_distance,right_max_distance,front_right_max_distance)
         if( right_max_distance>=left_max_distance and right_max_distance>=4.5):
-                e=30+np.argmax(right)*6
+                e=42+np.argmax(right)*6
                 #print(-e)
                 return -e
         # elif( front_right_max_distance>=front_left_max_distance and front_right_max_distance>=4):
