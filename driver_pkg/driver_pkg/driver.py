@@ -57,13 +57,14 @@ class Driver():
     def scan_for_turn(self,left_distances,right_distances)-> int:
         
         
-        left=left_distances[30:90]
+        #left=left_distances[30:90]
         right=self.filter.signal_smoothing_filter(right_distances[60:90])
-        front_right=self.filter.signal_smoothing_filter(right_distances[0:5])
-        front_left=self.filter.signal_smoothing_filter(left_distances[0:5])
+        angle_matrix=np.array(range(55,85,1))
+        #front_right=self.filter.signal_smoothing_filter(right_distances[0:5])
+        #front_left=self.filter.signal_smoothing_filter(left_distances[0:5])
 
-        self.viz.set_distance(right)
-        self.viz.get_visuals()
+        #self.viz.set_distance(right)
+        #self.viz.get_visuals()
         
         #print(right,left)
 
@@ -71,33 +72,36 @@ class Driver():
         #       right[i] = min([5,right[i]])
         #       left[i] = min([5,left[i]])
 
-        left_max_distance=left[np.argmax(left)]
-        right_max_distance=right[np.argmax(right)]
-        front_right_max_distance=max(front_right)
-        front_left_max_distance=max(front_left)
+        #left_max_distance=left[np.argmax(left)]
+        #right_max_distance=right[np.argmax(right)]
+        #front_right_max_distance=max(front_right)
+        #front_left_max_distance=max(front_left)
 
-
-        print(left_max_distance,right_max_distance,front_right_max_distance)
-        if( right_max_distance>=left_max_distance and right_max_distance>=4.5):
-                e=np.argmax(right)*6
-                #print(-e)
-                return -e
-        # elif( front_right_max_distance>=front_left_max_distance and front_right_max_distance>=4):
-        #           e=np.argmax(front_right)*6
+        x= right *np.sin(np.deg2rad(angle_matrix))
+        #print(left_max_distance,right_max_distance,front_right_max_distance)
+        # if( right_max_distance>=left_max_distance and right_max_distance>=4.5):
+        #         e=np.argmax(right)*6
+        #         #print(-e)
+        #         return -e
+        # # elif( front_right_max_distance>=front_left_max_distance and front_right_max_distance>=4):
+        # #           e=np.argmax(front_right)*6
+        # #          #print(-e)
+        # #           return -e
+        # elif( left_max_distance>right_max_distance and left_max_distance>=4.5):
+        #          e=30+np.argmax(left)*6
         #          #print(-e)
-        #           return -e
-        elif( left_max_distance>right_max_distance and left_max_distance>=4.5):
-                 e=30+np.argmax(left)*6
-                 #print(-e)
-                 return e
+        #          return e
+        r_avg=np.mean(x)
+        if r_avg>4.5:
+            return -0.8
         else:
-                return 0
+            return 0
         
     def steer_between_walls(self,left_distances,right_distances):
         #print('steer between walls')
-        left = left_distances[12:18]
-        right =right_distances[12:18]
-        angle_matrix=np.array(range(12*6, 18*6,6))
+        left = left_distances[60:120]
+        right =right_distances[60:120]
+        angle_matrix=np.array(range(55, 125,1))
 
         right_distance= right *np.sin(np.deg2rad(angle_matrix))
         left_distance = left *np.sin(np.deg2rad(angle_matrix))
