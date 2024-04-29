@@ -62,8 +62,8 @@ class Driver():
         front_right=self.filter.signal_smoothing_filter(right_distances[0:5])
         front_left=self.filter.signal_smoothing_filter(left_distances[0:5])
 
-        #self.viz.set_distance(right)
-        #self.viz.get_visuals()
+        self.viz.set_distance(right)
+        self.viz.get_visuals()
         
         #print(right,left)
 
