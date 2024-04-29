@@ -111,8 +111,8 @@ class Driver():
         #print(distance)
         #print(angle_matrix)
 
-        avg_left_distance = np.min([1,np.mean(left_distance)])
-        avg_right_distance = np.min([1,np.mean(right_distance)])
+        avg_left_distance = np.min([2.5,np.mean(left_distance)])
+        avg_right_distance = np.min([2.5,np.mean(right_distance)])
         #avg_right_distance = np.mean(distance)
         #avg_right_distance = np.min(distance)
         #print(avg_right_distance)
