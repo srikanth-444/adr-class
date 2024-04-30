@@ -25,7 +25,7 @@ class Drive(Node):
         # Run the Flask webserver as a background thread.
         self.get_logger().info("Running webserver")
         HOST_DEFAULT = "0.0.0.0"
-        PORT_DEFAULT = "6000"
+        PORT_DEFAULT = "12000"
         self.get_logger().info(f"Running the flask server on {HOST_DEFAULT}:{PORT_DEFAULT}")
         self.server_thread = threading.Thread(target=app.run,
                                               daemon=True,
