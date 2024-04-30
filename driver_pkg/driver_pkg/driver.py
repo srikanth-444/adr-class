@@ -2,7 +2,8 @@ import numpy as np
 from driver_pkg.Filters import Filters
 from driver_pkg.Visuals import Visuals
 
-from driver_pkg.webVisuals.app import lidar_data
+from driver_pkg.webVisuals.app import x_data
+from driver_pkg.webVisuals.app import y_data
 
 
 class Driver():
@@ -110,8 +111,12 @@ class Driver():
         front_right=self.filter.signal_smoothing_filter(right_distances[0:30])
         front_left=self.filter.signal_smoothing_filter(left_distances[0:30])
         angle_matrix=np.array(range(0,30,1))
+        left_x=front_left* np.sin(np.deg2rad(angle_matrix))
+        right_x=front_right* np.sin(np.deg2rad(angle_matrix))
         left_y=front_left* np.cos(np.deg2rad(angle_matrix))
         right_y=front_right* np.cos(np.deg2rad(angle_matrix))
+        x_data=right_x
+        y_data=right_y
         front_right_max_distance=np.mean(left_y)
         front_left_max_distance=np.mean(right_y)
         if( front_right_max_distance>front_left_max_distance and front_right_max_distance>=4.5):
