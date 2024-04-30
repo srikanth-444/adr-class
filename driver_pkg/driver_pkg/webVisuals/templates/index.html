@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+ <head>
+    <meta http-equiv="refresh" content="1" >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script>
+
+</head>
+<body>
+    <p>
+        Hello!! Testing if it works on web! :p
+    </p>
+    <div class="ct-chart ct-perfect-fourth"></div>
+    <script>
+        class Mychart{
+            constructor( Xdata, Ydata)
+            {
+                this.Xdata=Xdata;
+                this.Ydata=Ydata;
+            }
+            createGraph()
+            {
+                var data = {
+                // A labels array that can contain any sort of values
+                labels: this.Xdata,
+                // Our series array that contains series objects or in this case series data arrays
+                series: [
+                    this.Ydata
+                ]
+                };
+
+                // Create a new line chart object where as first parameter we pass in a selector
+                // that is resolving to our chart container element. The Second parameter
+                // is the actual data object.
+                new Chartist.Line('.ct-chart', data);
+            }
+        }
+        var Xdata=['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+        var Ydata=[5, 2, 4, 2, 0];
+        var data = $.get('/lidar');
+        var tm = data.done(function (resp) {
+            console.log("JSON DATA", resp.x);
+            var obj = new Mychart(resp.x,resp.y);
+        obj.createGraph();
+        })
+
+        
+    </script>
+</body>
+</html>

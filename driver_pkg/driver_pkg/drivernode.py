@@ -4,6 +4,10 @@ import numpy as np
 from driver_pkg.driver import Driver
 from rclpy.executors import MultiThreadedExecutor
 from rclpy.callback_groups import ReentrantCallbackGroup
+import threading
+
+from driver_pkg.webVisuals.app import app
+
 
     
 from deepracer_interfaces_pkg.msg import EvoSensorMsg
@@ -15,6 +19,15 @@ class Drive(Node):
 
     def __init__(self):
         super().__init__('Drive')
+
+        self.get_logger().info("webserver_publisher_node started")
+    
+        # Run the Flask webserver as a background thread.
+        self.get_logger().info("Running webserver")
+        self.server_thread = threading.Thread(target=app.run(debug=True, host='0.0.0.0', port=5000))
+        self.server_thread.start()
+
+
         self.lidar_message_sub_cb_grp = ReentrantCallbackGroup()
         #client for configuring lidar
         self.lidar_client=self.create_client(LidarConfigSrv,"/sensor_fusion_pkg/configure_lidar")

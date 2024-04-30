@@ -2,6 +2,8 @@ import numpy as np
 from driver_pkg.Filters import Filters
 from driver_pkg.Visuals import Visuals
 
+from driver_pkg.webVisuals.app import lidar_data
+
 
 class Driver():
     def __init__(self) -> None:
