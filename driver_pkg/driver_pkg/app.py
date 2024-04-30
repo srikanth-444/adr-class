@@ -6,7 +6,7 @@ import os
 x_data=[]
 y_data=[]
 
-template_dir = os.path.abspath('home/deepracer/adr-class/driver_pkg/driver_pkg/templates')
+template_dir = os.path.abspath('/home/deepracer/adr-class/driver_pkg/driver_pkg/templates')
 app = Flask(__name__,template_dir)
 
 @app.route('/')
