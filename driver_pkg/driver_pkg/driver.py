@@ -2,8 +2,8 @@ import numpy as np
 from driver_pkg.Filters import Filters
 from driver_pkg.Visuals import Visuals
 
-from driver_pkg.webVisuals.app import x_data
-from driver_pkg.webVisuals.app import y_data
+from driver_pkg.app import x_data
+from driver_pkg.app import y_data
 
 
 class Driver():

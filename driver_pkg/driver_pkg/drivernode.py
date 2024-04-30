@@ -6,7 +6,7 @@ from rclpy.executors import MultiThreadedExecutor
 from rclpy.callback_groups import ReentrantCallbackGroup
 import threading
 
-from driver_pkg.webVisuals.app import app
+from driver_pkg.app import app
 
 
     
