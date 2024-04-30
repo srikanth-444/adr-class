@@ -1,13 +1,13 @@
 from flask import Flask, render_template
 import random
 import os
-from flask_cors import CORS
+
 
 x_data=[]
 y_data=[]
 
-template_dir = os.path.abspath('~/adr-class/driver_pkg/driver_pkg/webVisuals/templates')
-app = Flask(__name__)
+template_dir = os.path.abspath('home/deepracer/adr-class/driver_pkg/driver_pkg/templates')
+app = Flask(__name__,template_dir)
 
 @app.route('/')
 def home():
