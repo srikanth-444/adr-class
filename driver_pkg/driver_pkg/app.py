@@ -7,7 +7,7 @@ x_data=[]
 y_data=[]
 
 template_dir = os.path.abspath('~/adr-class/driver_pkg/driver_pkg/webVisuals/templates')
-app = Flask(__name__,template_folder=template_dir)
+app = Flask(__name__)
 
 @app.route('/')
 def home():
