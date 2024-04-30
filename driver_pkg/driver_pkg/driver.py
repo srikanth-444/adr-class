@@ -117,6 +117,7 @@ class Driver():
         right_y=front_right* np.cos(np.deg2rad(angle_matrix))
         x_data=right_x
         y_data=right_y
+        print(x_data)
         front_right_max_distance=np.mean(left_y)
         front_left_max_distance=np.mean(right_y)
         if( front_right_max_distance>front_left_max_distance and front_right_max_distance>=4.5):
