@@ -2,12 +2,11 @@ import numpy as np
 from driver_pkg.Filters import Filters
 from driver_pkg.Visuals import Visuals
 
-from driver_pkg.app import x_data
-from driver_pkg.app import y_data
+
 
 
 class Driver():
-    def __init__(self) -> None:
+    def __init__(self,webVisuals) -> None:
         self.filter=Filters()
         self.distance_matrix=np.array([])
         self.throttle=0.5
@@ -15,6 +14,7 @@ class Driver():
         self.flag=0
         self.viz=Visuals()
         self.in_wall=2
+        self.webVisuals=webVisuals
         
 
     def get_flag(self):
@@ -115,9 +115,9 @@ class Driver():
         right_x=front_right* np.sin(np.deg2rad(angle_matrix))
         left_y=front_left* np.cos(np.deg2rad(angle_matrix))
         right_y=front_right* np.cos(np.deg2rad(angle_matrix))
-        x_data=right_x
-        y_data=right_y
-        print(x_data)
+        self.webVisuals.x_data=right_x
+        self.webVisuals.y_data=right_y
+        
         front_right_max_distance=np.mean(left_y)
         front_left_max_distance=np.mean(right_y)
         if( front_right_max_distance>front_left_max_distance and front_right_max_distance>=4.5):
