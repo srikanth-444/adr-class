@@ -1,9 +1,11 @@
 from flask import Flask, render_template
 import random
+import os
 
 x_data=[]
 y_data=[]
 
+template_dir = os.path.abspath('~/adr-class/driver_pkg/driver_pkg/webVisuals/templates')
 app = Flask(__name__)
 @app.route('/')
 def home():
