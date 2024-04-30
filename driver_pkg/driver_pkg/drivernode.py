@@ -6,7 +6,7 @@ from rclpy.executors import MultiThreadedExecutor
 from rclpy.callback_groups import ReentrantCallbackGroup
 import threading
 
-from driver_pkg.app import Webvisual
+from driver_pkg.app import app
 
 
     
@@ -24,11 +24,10 @@ class Drive(Node):
     
         # Run the Flask webserver as a background thread.
         self.get_logger().info("Running webserver")
-        self.webvisual = Webvisual();
         HOST_DEFAULT = "0.0.0.0"
         PORT_DEFAULT = "12000"
         self.get_logger().info(f"Running the flask server on {HOST_DEFAULT}:{PORT_DEFAULT}")
-        self.server_thread = threading.Thread(target=self.webvisual.app.run,
+        self.server_thread = threading.Thread(target=app.run,
                                               daemon=True,
                                               kwargs={
                                                   "host": HOST_DEFAULT,
@@ -60,8 +59,7 @@ class Drive(Node):
         #initial values of steering and throttle
         self.angle=0.0
         self.throttle=0.0
-        
-        self.driver=Driver(self.webvisual)
+        self.driver=Driver()
         
         self.distance_matrix=np.array([])
         self.flag=0.0

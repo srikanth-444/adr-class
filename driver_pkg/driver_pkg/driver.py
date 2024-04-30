@@ -2,11 +2,13 @@ import numpy as np
 from driver_pkg.Filters import Filters
 from driver_pkg.Visuals import Visuals
 
+from driver_pkg.app import Webvisual
+
 
 
 
 class Driver():
-    def __init__(self,webVisuals) -> None:
+    def __init__(self) -> None:
         self.filter=Filters()
         self.distance_matrix=np.array([])
         self.throttle=0.5
@@ -14,7 +16,7 @@ class Driver():
         self.flag=0
         self.viz=Visuals()
         self.in_wall=2
-        self.webVisuals=webVisuals
+        self.webVisuals=Webvisual()
         
 
     def get_flag(self):
