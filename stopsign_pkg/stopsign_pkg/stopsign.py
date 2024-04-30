@@ -5,7 +5,6 @@ from skimage.color import rgb2gray
 
 class StopSign():
     def __init__(self) -> None:
-        self.filter=Filters()
         self.throttle=0.0
         self.angle=0.0
         self.previosuly_stopped = False
