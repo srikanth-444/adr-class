@@ -11,6 +11,7 @@ class Driver():
         self.angle=0.0
         self.flag=0
         self.viz=Visuals()
+        self.in_wall=2
         
 
     def get_flag(self):
@@ -44,17 +45,21 @@ class Driver():
         #print(right_distances)
         
         # logic start here 
-        e=self.scan_for_turn(left_distances,right_distances)
-        if abs(e)>0:
-            self.angle=e
+        a=self.scan_for_turn(left_distances,right_distances)
+        e=self.steering_narrow()
+        if abs(a)>0:
+            self.angle=a
             self.flag=1
+        elif(abs(e)>0):
+            self.angle=float(e/90)
+            self.flag=2
         else:
             self.angle= self.steer_between_walls(left_distances,right_distances)
             self.flag=0
         
 
     
-    def scan_for_turn(self,left_distances,right_distances)-> int:
+    def scan_for_turn(self,left_distances,right_distances):
         
         
         #left=left_distances[30:90]
@@ -92,13 +97,30 @@ class Driver():
         #          #print(-e)
         #          return e
         r_avg=np.mean(x)
+        
         print(r_avg)
         if r_avg>3:
             return -1.0
         else:
             return 0.0
         
-    
+    def steering_narrow(self,left_distances,right_distances):
+        front_right=self.filter.signal_smoothing_filter(right_distances[0:30])
+        front_left=self.filter.signal_smoothing_filter(left_distances[0:30])
+        angle_matrix=np.array(range(0,30,1))
+        left_y=front_left* np.cos(np.deg2rad(angle_matrix))
+        right_y=front_right* np.cos(np.deg2rad(angle_matrix))
+        front_right_max_distance=np.mean(left_y)
+        front_left_max_distance=np.mean(right_y)
+        if( front_right_max_distance>front_left_max_distance and front_right_max_distance>=4.5):
+                e=5
+                return -e
+        elif( front_left_max_distance>front_right_max_distance and front_left_max_distance>=4.5):
+                e=5
+                return e
+        else:
+            return 0
+
         
     def steer_between_walls(self,left_distances,right_distances):
         #print('steer between walls')
@@ -110,9 +132,9 @@ class Driver():
         left_distance = left *np.sin(np.deg2rad(angle_matrix))
         #print(distance)
         #print(angle_matrix)
-
-        avg_left_distance = np.min([2,np.mean(left_distance)])
-        avg_right_distance = np.min([2,np.mean(right_distance)])
+        
+        avg_left_distance = np.min([self.in_wall,np.mean(left_distance)])
+        avg_right_distance = np.min([self.in_wall,np.mean(right_distance)])
         #avg_right_distance = np.mean(distance)
         #avg_right_distance = np.min(distance)
         #print(avg_right_distance)
@@ -120,7 +142,7 @@ class Driver():
 
         scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)
         #scaled_error = 0.3-avg_right_distance
-        steering_gain = 0.5
+        steering_gain = 0.4
         steering_angle = steering_gain*scaled_error
         
 
