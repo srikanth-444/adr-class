@@ -49,7 +49,7 @@ class Driver():
         
         # logic start here 
         a=self.scan_for_turn(left_distances,right_distances)
-        e=self.steering_narrow()
+        e=self.steering_narrow(left_distances,right_distances)
         if abs(a)>0:
             self.angle=a
             self.flag=1
