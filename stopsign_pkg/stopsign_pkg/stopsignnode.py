@@ -19,14 +19,8 @@ class StopSign(Node):
 
         ###?????
         self.camera_message_sub_cb_grp = ReentrantCallbackGroup()
-        #client for configuring lidar
-        self.lidar_client=self.create_client(LidarConfigSrv,"/sensor_fusion_pkg/configure_lidar")
-        while not self.lidar_client.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info('service not available, waiting again...')
-        self.req = LidarConfigSrv.Request()
 
-
-        #lidar data subscriber
+        #camera image subscriber
         self.image_subcriber= self.create_subscription(Image, '/camera_pkg/display_mjpeg',self.camera_listen,10,callback_group=self.camera_message_sub_cb_grp)
         
         # steering publisher
