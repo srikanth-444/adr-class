@@ -2,7 +2,6 @@ import numpy as np
 from skimage.feature import blob_doh
 import skimage.io
 from skimage.color import rgb2gray
-from driver_pkg.Filters import Filters
 
 class StopSign():
     def __init__(self) -> None:
