@@ -8,7 +8,7 @@ y_data=[]
 
 template_dir = os.path.abspath('~/adr-class/driver_pkg/driver_pkg/webVisuals/templates')
 app = Flask(__name__)
-CORS(app)
+
 @app.route('/')
 def home():
     return render_template('index.html')
