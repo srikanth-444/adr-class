@@ -53,8 +53,9 @@ def W_error():
     return data
 @Lidar_BLUEPRINT.route('/receive_data', methods=['POST'])
 def receive_data():
-    stop = request.json.get('data')  # Get the 'data' field from the JSON payload
+    data = request.json.get('data')  # Get the 'data' field from the JSON payload
     # Process the received data
+    stop=data
     print("Received data from JS:", stop)
     # Return a response
     return jsonify({'message': 'Data received successfully'})
