@@ -2,9 +2,17 @@ import numpy as np
 from driver_pkg.Filters import Filters
 from driver_pkg.Visuals import Visuals
 
-from driver_pkg.app import Webvisual
+
 
 from flask import Blueprint
+
+
+
+class Webvisual():
+    def __init__(self) -> None:
+        
+        self.x_data=[]
+        self.y_data=[]
 
 
 Lidar_BLUEPRINT = Blueprint("lidar", __name__)
@@ -132,7 +140,6 @@ class Driver():
         right_y=front_right* np.cos(np.deg2rad(angle_matrix))
         webVisuals.x_data=right_x
         webVisuals.y_data=right_y
-        
         front_right_max_distance=np.mean(left_y)
         front_left_max_distance=np.mean(right_y)
         if( front_right_max_distance>front_left_max_distance and front_right_max_distance>=4.5):

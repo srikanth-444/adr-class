@@ -3,11 +3,6 @@ import random
 import os
 from driver_pkg.driver import Lidar_BLUEPRINT
 
-class Webvisual():
-    def __init__(self) -> None:
-        
-        self.x_data=[]
-        self.y_data=[]
 
 template_dir = os.path.abspath('/home/deepracer/adr-class/driver_pkg/driver_pkg/templates')
 app = Flask(__name__, template_folder=template_dir)
