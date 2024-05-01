@@ -19,7 +19,7 @@ Lidar_BLUEPRINT = Blueprint("lidar", __name__)
 webVisuals=Webvisual()
 
 @Lidar_BLUEPRINT.route('/lidar', methods=["GET", "POST"])
-def lidar(self):
+def lidar():
     data ={
         "x":webVisuals.x_data,
         "y":webVisuals.y_data
