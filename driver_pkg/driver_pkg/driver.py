@@ -61,7 +61,7 @@ class Driver():
         self.angle=0.0
         self.flag=0
         self.viz=Visuals()
-        self.in_wall=0.5
+        self.in_wall=1
         self.start_time=time()
         self.e_matrix=[]
         self.time_m=[]
@@ -200,8 +200,8 @@ class Driver():
         right =right_distances[60:120]
         angle_matrix=np.array(range(60, 120,1))
 
-        right_x= np.clip(right *np.sin(np.deg2rad(angle_matrix)),0.1,1)
-        left_x = np.clip(left *np.sin(np.deg2rad(angle_matrix)),0.1,1)
+        right_x= np.clip(right *np.sin(np.deg2rad(angle_matrix)),0.1,self.in_wall)
+        left_x = np.clip(left *np.sin(np.deg2rad(angle_matrix)),0.1,self.in_wall)
         left_y=left* np.cos(np.deg2rad(angle_matrix))
         right_y=right* np.cos(np.deg2rad(angle_matrix))
 
