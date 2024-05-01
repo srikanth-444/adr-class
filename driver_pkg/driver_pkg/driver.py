@@ -5,7 +5,7 @@ from time import time
 
 
 
-from flask import Blueprint
+from flask import Blueprint,request, jsonify
 
 
 
@@ -15,6 +15,7 @@ class Webvisual():
         self.x_data=[]
         self.y_data=[]
 
+stop=0
 
 Lidar_BLUEPRINT = Blueprint("Lidar", __name__)
 narrow_webVisuals=Webvisual()
@@ -45,11 +46,18 @@ def betweenlidar():
     return data
 @Lidar_BLUEPRINT.route('/error', methods=["GET", "POST"])
 def W_error():
-    data ={
+    stop ={
         "x":w_error.x_data[-10:],
         "y":w_error.y_data[-10:]
     }
     return data
+@Lidar_BLUEPRINT.route('/receive_data', methods=['POST'])
+def receive_data():
+    data = request.json.get('data')  # Get the 'data' field from the JSON payload
+    # Process the received data
+    print("Received data from JS:", data)
+    # Return a response
+    return jsonify({'message': 'Data received successfully'})
 
 
 
@@ -89,6 +97,10 @@ class Driver():
 
 
     def get_controls(self,distance_matrix):
+
+
+        if stop==1:
+            raise KeyboardInterrupt
         self.distance_matrix=distance_matrix
         
         left_distances=self.distance_matrix[0:self.distance_matrix.size//2]
