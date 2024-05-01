@@ -99,7 +99,7 @@ class Driver():
     def get_controls(self,distance_matrix):
 
 
-        if int(stop)==1:
+        if stop=='1':
             print(stop)
             raise KeyboardInterrupt
         self.distance_matrix=distance_matrix
