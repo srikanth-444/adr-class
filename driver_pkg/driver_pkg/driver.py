@@ -185,6 +185,7 @@ class Driver():
         right_y=right* np.cos(np.deg2rad(angle_matrix))
 
         steer_btween_walls.x_data=np.concatenate((np.negative(left_x[::-1]),right_x)).tolist()
+        steer_btween_walls.y_data=np.concatenate((left_y[::-1],right_y)).tolist()
         #print(distance)
         #print(angle_matrix)
         
