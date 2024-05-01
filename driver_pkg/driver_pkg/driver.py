@@ -197,8 +197,9 @@ class Driver():
         #print(avg_left_distance)
 
         scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)
+
         #scaled_error = 0.3-avg_right_distance
-        steering_gain = 0.4
+        steering_gain = 1/180
         steering_angle = steering_gain*scaled_error
         
 
