@@ -46,8 +46,8 @@ def betweenlidar():
 @Lidar_BLUEPRINT.route('/error', methods=["GET", "POST"])
 def W_error():
     data ={
-        "x":w_error.x_data,
-        "y":w_error.y_data
+        "x":w_error.x_data[-10:],
+        "y":w_error.y_data[-10:]
     }
     return data
 
