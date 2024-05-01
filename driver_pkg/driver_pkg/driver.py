@@ -109,6 +109,7 @@ class Driver():
         #front_left_max_distance=max(front_left)
 
         x= right *np.sin(np.deg2rad(angle_matrix))
+        y= right *np.cos(np.deg2rad(angle_matrix))
         #print(left_max_distance,right_max_distance,front_right_max_distance)
         # if( right_max_distance>=left_max_distance and right_max_distance>=4.5):
         #         e=np.argmax(right)*6
