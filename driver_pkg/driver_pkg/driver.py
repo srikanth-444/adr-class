@@ -21,21 +21,21 @@ right_steer_webVsiuals=Webvisual()
 steer_btween_walls=Webvisual()
 
 @Lidar_BLUEPRINT.route('/rightTurnLidar', methods=["GET", "POST"])
-def lidar():
+def rightlidar():
     data ={
         "x":right_steer_webVsiuals.x_data,
         "y":right_steer_webVsiuals.y_data
     }
     return data
 @Lidar_BLUEPRINT.route('/narrowLidar', methods=["GET", "POST"])
-def lidar():
+def narrowlidar():
     data ={
         "x":narrow_webVisuals.x_data,
         "y":narrow_webVisuals.y_data
     }
     return data
 @Lidar_BLUEPRINT.route('/betweenWallsLidar', methods=["GET", "POST"])
-def lidar():
+def betweenlidar():
     data ={
         "x":steer_btween_walls.x_data,
         "y":steer_btween_walls.y_data
