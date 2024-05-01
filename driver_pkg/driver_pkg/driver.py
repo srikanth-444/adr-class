@@ -18,7 +18,7 @@ class Webvisual():
 Lidar_BLUEPRINT = Blueprint("lidar", __name__)
 webVisuals=Webvisual()
 
-@Lidar_BLUEPRINT.route('/lidar', methods=["GET", "POST"])
+@Lidar_BLUEPRINT.route('/rightlidar', methods=["GET", "POST"])
 def lidar():
     data ={
         "x":webVisuals.x_data,
@@ -132,7 +132,7 @@ class Driver():
             return 0.0
         
     def steering_narrow(self,left_distances,right_distances):
-        front_right=self.filter.signal_smoothing_filter(right_distances[10:30])
+        front_right=right_distances[10:30]
         front_left=self.filter.signal_smoothing_filter(left_distances[10:30])
         angle_matrix=np.array(range(10,30,1))
         left_x=front_left* np.sin(np.deg2rad(angle_matrix))
@@ -159,8 +159,8 @@ class Driver():
         right =right_distances[60:120]
         angle_matrix=np.array(range(60, 120,1))
 
-        right_distance= np.clip(right *np.sin(np.deg2rad(angle_matrix)),0.1,1)
-        left_distance = np.clip(left *np.sin(np.deg2rad(angle_matrix)),0.1,1)
+        right_distance= np.clip(right *np.sin(np.deg2rad(angle_matrix)),0.1,0.3)
+        left_distance = np.clip(left *np.sin(np.deg2rad(angle_matrix)),0.1,0.3)
         #print(distance)
         #print(angle_matrix)
         

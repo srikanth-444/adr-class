@@ -10,47 +10,54 @@
     <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
     <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
     <script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 </head>
 <body>
     <p>
         Hello!! Testing if it works on web! :p
     </p>
-    <div class="ct-chart ct-perfect-fourth"></div>
+    <div class="ct-chart ct-perfect-fourth" id="plot"></div>
     <script>
         class Mychart{
-            constructor( Xdata, Ydata)
+            constructor( Xdata, Ydata, tittle)
             {
                 this.Xdata=Xdata;
                 this.Ydata=Ydata;
+                this.tittle=tittle
             }
             createGraph()
             {
-                var data = {
-                // A labels array that can contain any sort of values
-                labels: this.Xdata,
-                // Our series array that contains series objects or in this case series data arrays
-                series: [
-                    this.Ydata
-                ]
+                
+
+                // Define the trace
+                var trace = {
+                    x: this.Xdata,
+                    y: this.Ydata,
+                    type: 'scatter'
                 };
 
-                // Create a new line chart object where as first parameter we pass in a selector
-                // that is resolving to our chart container element. The Second parameter
-                // is the actual data object.
-                new Chartist.Line('.ct-chart', data);
+                // Define the layout
+                var layout = {
+                    title: this.tittle
+                };
+
+                // Define the data
+                var data = [trace];
+
+                Plotly.newPlot('plot', data, layout);
             }
         }
-        var Xdata=['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
-        var Ydata=[5, 2, 4, 2, 0];
-        var data = $.get('/lidar');
+
+        var data = $.get('/rightlidar');
         var tm = data.done(function (resp) {
             console.log("JSON DATA", resp.x);
-            var obj = new Mychart(resp.x,resp.y);
+            var obj = new Mychart(resp.x,resp.y,"right lidar data");
         obj.createGraph();
         })
 
         
     </script>
+    
 </body>
 </html>
