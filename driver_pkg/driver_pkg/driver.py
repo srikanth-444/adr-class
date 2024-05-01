@@ -149,7 +149,7 @@ class Driver():
         y= right *np.cos(np.deg2rad(angle_matrix))
 
         right_steer_webVsiuals.x_data=x.tolist()
-        right_steer_webVsiuals.y_data=x.tolist()
+        right_steer_webVsiuals.y_data=y.tolist()
         #print(left_max_distance,right_max_distance,front_right_max_distance)
         # if( right_max_distance>=left_max_distance and right_max_distance>=4.5):
         #         e=np.argmax(right)*6
