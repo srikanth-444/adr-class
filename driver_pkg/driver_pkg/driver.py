@@ -200,8 +200,8 @@ class Driver():
         right =right_distances[60:120]
         angle_matrix=np.array(range(60, 120,1))
 
-        right_x= np.clip(right *np.sin(np.deg2rad(angle_matrix)),0.1,0.3)
-        left_x = np.clip(left *np.sin(np.deg2rad(angle_matrix)),0.1,0.3)
+        right_x= np.clip(right *np.sin(np.deg2rad(angle_matrix)),0.1,1)
+        left_x = np.clip(left *np.sin(np.deg2rad(angle_matrix)),0.1,1)
         left_y=left* np.cos(np.deg2rad(angle_matrix))
         right_y=right* np.cos(np.deg2rad(angle_matrix))
 
@@ -213,7 +213,7 @@ class Driver():
         #avg_left_distance = np.min([self.in_wall,np.mean(left_distance)])
         #avg_right_distance = np.min([self.in_wall,np.mean(right_distance)])
         avg_right_distance = np.mean(right_x)
-        avg_left_distance = np.min(left_y)
+        avg_left_distance = np.min(left_x)
         #print(avg_right_distance)
         #print(avg_left_distance)
 
