@@ -68,6 +68,29 @@
     </table>
     <button id="sendDataBtn">Send Data</button>
     <script>
+
+        document.getElementById('sendDataBtn').addEventListener('click', function() {
+            
+            sendDataToFlask(1); // Call function to send data
+        });
+
+        function sendDataToFlask(data) {
+            // Send data to Flask backend using AJAX
+            fetch('/receive_data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ data: data }) // Send data as JSON object
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message); // Log the response from the backend
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
         class Mychart{
             constructor( Xdata, Ydata, tittle,div)
             {
@@ -126,28 +149,7 @@
 
 
 
-        document.getElementById('sendDataBtn').addEventListener('click', function() {
-            
-            sendDataToFlask(1); // Call function to send data
-        });
-
-        function sendDataToFlask(data) {
-            // Send data to Flask backend using AJAX
-            fetch('/receive_data', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ data: data }) // Send data as JSON object
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.message); // Log the response from the backend
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        }
+        
         
     </script>
      
