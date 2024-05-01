@@ -100,6 +100,7 @@ class Driver():
 
 
         if stop==1:
+            print(stop)
             raise KeyboardInterrupt
         self.distance_matrix=distance_matrix
         
