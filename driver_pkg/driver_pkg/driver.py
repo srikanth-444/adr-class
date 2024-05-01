@@ -127,7 +127,7 @@ class Driver():
         
         #left=left_distances[30:90]
         right=self.filter.signal_smoothing_filter(right_distances[60:90])
-        angle_matrix=np.array(range(55,85,1))
+        angle_matrix=np.array(range(60,90,1))
         #front_right=self.filter.signal_smoothing_filter(right_distances[0:5])
         #front_left=self.filter.signal_smoothing_filter(left_distances[0:5])
 
