@@ -15,24 +15,32 @@
     <style>
         /* CSS styles to adjust the size of the div */
         #plot1 {
-          width: 400px; /* Set the width */
-          height: 400px; /* Set the height */
+          width: 700px; /* Set the width */
+          height: 700px; /* Set the height */
           background-color: lightblue; /* Just for visibility */
         }
       </style>
      <style>
         /* CSS styles to adjust the size of the div */
         #plot2 {
-          width: 400px; /* Set the width */
-          height: 400px; /* Set the height */
+          width: 700px; /* Set the width */
+          height: 700px; /* Set the height */
           background-color: lightblue; /* Just for visibility */
         }
       </style>
      <style>
         /* CSS styles to adjust the size of the div */
         #plot3 {
-          width: 400px; /* Set the width */
-          height: 400px; /* Set the height */
+          width: 700px; /* Set the width */
+          height: 700px; /* Set the height */
+          background-color: lightblue; /* Just for visibility */
+        }
+      </style>
+       <style>
+        /* CSS styles to adjust the size of the div */
+        #plot4 {
+          width: 700px; /* Set the width */
+          height: 700px; /* Set the height */
           background-color: lightblue; /* Just for visibility */
         }
       </style>
@@ -93,6 +101,12 @@
         var tm = data.done(function (resp) {
             console.log("JSON DATA", resp.x);
             var obj = new Mychart(resp.x,resp.y,"between walls lidar data",'plot3');
+        obj.createGraph();
+        })
+        var data = $.get('/error');
+        var tm = data.done(function (resp) {
+            console.log("JSON DATA", resp.x);
+            var obj = new Mychart(resp.x,resp.y,"error",'plot4');
         obj.createGraph();
         })
 

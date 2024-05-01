@@ -1,6 +1,7 @@
 import numpy as np
 from driver_pkg.Filters import Filters
 from driver_pkg.Visuals import Visuals
+from time import time
 
 
 
@@ -19,6 +20,7 @@ Lidar_BLUEPRINT = Blueprint("Lidar", __name__)
 narrow_webVisuals=Webvisual()
 right_steer_webVsiuals=Webvisual()
 steer_btween_walls=Webvisual()
+w_error = Webvisual()
 
 @Lidar_BLUEPRINT.route('/rightTurnLidar', methods=["GET", "POST"])
 def rightlidar():
@@ -41,6 +43,13 @@ def betweenlidar():
         "y":steer_btween_walls.y_data
     }
     return data
+@Lidar_BLUEPRINT.route('/error', methods=["GET", "POST"])
+def W_error():
+    data ={
+        "x":w_error.x_data,
+        "y":w_error.y_data
+    }
+    return data
 
 
 
@@ -53,6 +62,9 @@ class Driver():
         self.flag=0
         self.viz=Visuals()
         self.in_wall=0.5
+        self.start_time=time()
+        self.e_matrix=[]
+        self.time_m=[]
         
         
 
@@ -89,6 +101,15 @@ class Driver():
         # logic start here 
         a=self.scan_for_turn(left_distances,right_distances)
         e=self.steering_narrow(left_distances,right_distances)
+        s_e=self.steer_between_walls(left_distances,right_distances)
+
+
+        self.e_matrix.append(s_e)
+        self.time_m.append(time())
+
+        w_error.y_data=self.e_matrix
+        w_error.x_data=self.time_m
+
         if abs(a)>0:
             self.angle=a
             self.flag=1
@@ -96,7 +117,7 @@ class Driver():
             self.angle=float(e/90)
             self.flag=2
         else:
-            self.angle= self.steer_between_walls(left_distances,right_distances)
+            self.angle= float(s_e/180)
             self.flag=0
         
 
@@ -197,12 +218,10 @@ class Driver():
         #print(avg_left_distance)
 
         scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)
-
-        #scaled_error = 0.3-avg_right_distance
-        steering_gain = 1/180
-        steering_angle = steering_gain*scaled_error
         
+        
+        #scaled_error = 0.3-avg_right_distance
 
-        return steering_angle
+        return scaled_error
     
 
