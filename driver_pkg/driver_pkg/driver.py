@@ -15,7 +15,7 @@ class Webvisual():
         self.y_data=[]
 
 
-Lidar_BLUEPRINT = Blueprint("lidar", __name__)
+Lidar_BLUEPRINT = Blueprint("Lidar", __name__)
 narrow_webVisuals=Webvisual()
 right_steer_webVsiuals=Webvisual()
 steer_btween_walls=Webvisual()
