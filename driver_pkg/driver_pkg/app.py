@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 import random
 import os
+from driver_pkg.driver import Lidar_BLUEPRINT
 
 class Webvisual():
     def __init__(self) -> None:
@@ -10,19 +11,14 @@ class Webvisual():
 
 template_dir = os.path.abspath('/home/deepracer/adr-class/driver_pkg/driver_pkg/templates')
 app = Flask(__name__, template_folder=template_dir)
-webvisual=Webvisual()
+app.register_blueprint(Lidar_BLUEPRINT)
+
 
 @app.route('/')
 def home():
     return render_template('index.html')
 
-@app.route('/lidar', methods=["GET", "POST"])
-def lidar():
-    data ={
-            "x":webvisual.x_data,
-            "y":webvisual.y_data
-        }
-    return data
+
 app.config.update(
     DEBUG=True,
     SECRET_KEY='secret_',

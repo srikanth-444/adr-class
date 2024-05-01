@@ -4,6 +4,19 @@ from driver_pkg.Visuals import Visuals
 
 from driver_pkg.app import Webvisual
 
+from flask import Blueprint
+
+
+Lidar_BLUEPRINT = Blueprint("lidar", __name__)
+webVisuals=Webvisual()
+
+@Lidar_BLUEPRINT.route('/lidar', methods=["GET", "POST"])
+def lidar(self):
+    data ={
+        "x":webVisuals.x_data,
+        "y":webVisuals.y_data
+    }
+    return data
 
 
 
@@ -15,8 +28,8 @@ class Driver():
         self.angle=0.0
         self.flag=0
         self.viz=Visuals()
-        self.in_wall=2
-        self.webVisuals=Webvisual()
+        self.in_wall=0.5
+        
         
 
     def get_flag(self):
@@ -103,7 +116,7 @@ class Driver():
         #          return e
         r_avg=np.mean(x)
         
-        print(r_avg)
+        # print(r_avg)
         if r_avg>3:
             return -1.0
         else:
@@ -117,8 +130,8 @@ class Driver():
         right_x=front_right* np.sin(np.deg2rad(angle_matrix))
         left_y=front_left* np.cos(np.deg2rad(angle_matrix))
         right_y=front_right* np.cos(np.deg2rad(angle_matrix))
-        self.webVisuals.x_data=right_x
-        self.webVisuals.y_data=right_y
+        webVisuals.x_data=right_x
+        webVisuals.y_data=right_y
         
         front_right_max_distance=np.mean(left_y)
         front_left_max_distance=np.mean(right_y)
@@ -138,15 +151,15 @@ class Driver():
         right =right_distances[60:120]
         angle_matrix=np.array(range(60, 120,1))
 
-        right_distance= right *np.sin(np.deg2rad(angle_matrix))
-        left_distance = left *np.sin(np.deg2rad(angle_matrix))
+        right_distance= np.clip(right *np.sin(np.deg2rad(angle_matrix)),0.1,1)
+        left_distance = np.clip(left *np.sin(np.deg2rad(angle_matrix)),0.1,1)
         #print(distance)
         #print(angle_matrix)
         
-        avg_left_distance = np.min([self.in_wall,np.mean(left_distance)])
-        avg_right_distance = np.min([self.in_wall,np.mean(right_distance)])
-        #avg_right_distance = np.mean(distance)
-        #avg_right_distance = np.min(distance)
+        #avg_left_distance = np.min([self.in_wall,np.mean(left_distance)])
+        #avg_right_distance = np.min([self.in_wall,np.mean(right_distance)])
+        avg_right_distance = np.mean(right_distance)
+        avg_left_distance = np.min(left_distance)
         #print(avg_right_distance)
         #print(avg_left_distance)
 
@@ -157,3 +170,5 @@ class Driver():
         
 
         return steering_angle
+    
+
