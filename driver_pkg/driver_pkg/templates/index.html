@@ -14,7 +14,23 @@
 
     <style>
         /* CSS styles to adjust the size of the div */
-        #plot {
+        #plot1 {
+          width: 400px; /* Set the width */
+          height: 400px; /* Set the height */
+          background-color: lightblue; /* Just for visibility */
+        }
+      </style>
+     <style>
+        /* CSS styles to adjust the size of the div */
+        #plot2 {
+          width: 400px; /* Set the width */
+          height: 400px; /* Set the height */
+          background-color: lightblue; /* Just for visibility */
+        }
+      </style>
+     <style>
+        /* CSS styles to adjust the size of the div */
+        #plot3 {
           width: 400px; /* Set the width */
           height: 400px; /* Set the height */
           background-color: lightblue; /* Just for visibility */
@@ -29,11 +45,12 @@
     <div class="ct-chart ct-perfect-fourth" id="plot"></div>
     <script>
         class Mychart{
-            constructor( Xdata, Ydata, tittle)
+            constructor( Xdata, Ydata, tittle,div)
             {
                 this.Xdata=Xdata;
                 this.Ydata=Ydata;
                 this.tittle=tittle
+                this.div=div
             }
             createGraph()
             {
@@ -54,14 +71,26 @@
                 // Define the data
                 var data = [trace];
 
-                Plotly.newPlot('plot', data, layout);
+                Plotly.newPlot(div, data, layout);
             }
         }
 
-        var data = $.get('/rightlidar');
+        var data = $.get('/rightTurnLidar');
         var tm = data.done(function (resp) {
             console.log("JSON DATA", resp.x);
-            var obj = new Mychart(resp.x,resp.y,"right lidar data");
+            var obj = new Mychart(resp.x,resp.y,"right lidar data",'plot1');
+        obj.createGraph();
+        })
+        var data = $.get('/narrowLidar');
+        var tm = data.done(function (resp) {
+            console.log("JSON DATA", resp.x);
+            var obj = new Mychart(resp.x,resp.y,"front lidar data",'plot2');
+        obj.createGraph();
+        })
+        var data = $.get('/betweenWallsLidar');
+        var tm = data.done(function (resp) {
+            console.log("JSON DATA", resp.x);
+            var obj = new Mychart(resp.x,resp.y,"between walls lidar data",'plot3');
         obj.createGraph();
         })
 

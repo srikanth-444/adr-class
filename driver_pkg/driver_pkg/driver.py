@@ -16,13 +16,29 @@ class Webvisual():
 
 
 Lidar_BLUEPRINT = Blueprint("lidar", __name__)
-webVisuals=Webvisual()
+narrow_webVisuals=Webvisual()
+right_steer_webVsiuals=Webvisual()
+steer_btween_walls=Webvisual()
 
-@Lidar_BLUEPRINT.route('/rightlidar', methods=["GET", "POST"])
+@Lidar_BLUEPRINT.route('/rightTurnLidar', methods=["GET", "POST"])
 def lidar():
     data ={
-        "x":webVisuals.x_data,
-        "y":webVisuals.y_data
+        "x":right_steer_webVsiuals.x_data,
+        "y":right_steer_webVsiuals.y_data
+    }
+    return data
+@Lidar_BLUEPRINT.route('/narrowLidar', methods=["GET", "POST"])
+def lidar():
+    data ={
+        "x":narrow_webVisuals.x_data,
+        "y":narrow_webVisuals.y_data
+    }
+    return data
+@Lidar_BLUEPRINT.route('/betweenWallsLidar', methods=["GET", "POST"])
+def lidar():
+    data ={
+        "x":steer_btween_walls.x_data,
+        "y":steer_btween_walls.y_data
     }
     return data
 
@@ -110,6 +126,9 @@ class Driver():
 
         x= right *np.sin(np.deg2rad(angle_matrix))
         y= right *np.cos(np.deg2rad(angle_matrix))
+
+        right_steer_webVsiuals.x_data=x.tolist()
+        right_steer_webVsiuals.y_data=x.tolist()
         #print(left_max_distance,right_max_distance,front_right_max_distance)
         # if( right_max_distance>=left_max_distance and right_max_distance>=4.5):
         #         e=np.argmax(right)*6
@@ -140,14 +159,14 @@ class Driver():
         left_y=front_left* np.cos(np.deg2rad(angle_matrix))
         right_y=front_right* np.cos(np.deg2rad(angle_matrix))
     
-        webVisuals.x_data=np.concatenate((np.negative(left_x[::-1]),right_x)).tolist()
-        webVisuals.y_data=np.concatenate((left_y[::-1],right_y)).tolist()
+        narrow_webVisuals.x_data=np.concatenate((np.negative(left_x[::-1]),right_x)).tolist()
+        narrow_webVisuals.y_data=np.concatenate((left_y[::-1],right_y)).tolist()
         front_right_max_distance=np.mean(left_y)
         front_left_max_distance=np.mean(right_y)
-        if( front_right_max_distance>front_left_max_distance and front_right_max_distance>=4.5):
+        if( front_right_max_distance>front_left_max_distance and front_right_max_distance>=3):
                 e=10
                 return -e
-        elif( front_left_max_distance>front_right_max_distance and front_left_max_distance>=4.5):
+        elif( front_left_max_distance>front_right_max_distance and front_left_max_distance>=3):
                 e=10
                 return e
         else:
@@ -160,15 +179,19 @@ class Driver():
         right =right_distances[60:120]
         angle_matrix=np.array(range(60, 120,1))
 
-        right_distance= np.clip(right *np.sin(np.deg2rad(angle_matrix)),0.1,0.3)
-        left_distance = np.clip(left *np.sin(np.deg2rad(angle_matrix)),0.1,0.3)
+        right_x= np.clip(right *np.sin(np.deg2rad(angle_matrix)),0.1,0.3)
+        left_x = np.clip(left *np.sin(np.deg2rad(angle_matrix)),0.1,0.3)
+        left_y=left* np.cos(np.deg2rad(angle_matrix))
+        right_y=right* np.cos(np.deg2rad(angle_matrix))
+
+        steer_btween_walls.x_data=np.concatenate((np.negative(left_x[::-1]),right_x)).tolist()
         #print(distance)
         #print(angle_matrix)
         
         #avg_left_distance = np.min([self.in_wall,np.mean(left_distance)])
         #avg_right_distance = np.min([self.in_wall,np.mean(right_distance)])
-        avg_right_distance = np.mean(right_distance)
-        avg_left_distance = np.min(left_distance)
+        avg_right_distance = np.mean(right_x)
+        avg_left_distance = np.min(left_y)
         #print(avg_right_distance)
         #print(avg_left_distance)
 
