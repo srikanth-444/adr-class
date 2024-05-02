@@ -45,9 +45,9 @@ class StopSign(Node):
         except CvBridgeError as e:
             print(e)
 
-        self.driver.get_controls(image)
-        self.throttle=self.driver.get_throttle()
-        self.flag=self.driver.get_flag()
+        self.stopsign.get_controls(image)
+        self.throttle=self.stopsign.get_throttle()
+        self.flag=self.stopsign.get_flag()
     
 
     def drive_timer_callback(self):
