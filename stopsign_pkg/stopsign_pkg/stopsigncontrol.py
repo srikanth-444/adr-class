@@ -7,7 +7,7 @@ class StopSignControl():
     def __init__(self) -> None:
         self.throttle=0.0
         self.angle=0.0
-        self.previosuly_stopped = False
+        self.previously_stopped = False
 
     def get_throttle(self):
         return self.throttle
