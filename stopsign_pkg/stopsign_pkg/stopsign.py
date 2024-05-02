@@ -38,6 +38,8 @@ class StopSign():
             if(self.previously_stopped):
                 self.previously_stopped = False
 
+        self.throttle = 0
+
 
     def stop_sign_visible(self,image):
 
