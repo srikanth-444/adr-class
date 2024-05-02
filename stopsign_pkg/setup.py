@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'drive=stopsign_pkg.drivernode:main'
+            'stopsign=stopsign_pkg.stopsignnode:main'
         ],
     },
 )
