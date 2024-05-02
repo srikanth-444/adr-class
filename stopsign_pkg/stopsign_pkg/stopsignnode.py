@@ -33,7 +33,7 @@ class StopSign(Node):
         #initial values of steering and throttle
         self.angle=0.0
         self.throttle=0.0
-        self.stopsign = StopSign()
+        self.stopsign = StopSignControl()
         self.bridge = CvBridge()
         self.flag=0.0
 
