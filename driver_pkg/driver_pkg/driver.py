@@ -129,9 +129,9 @@ class Driver():
         if abs(a)>0:
             self.angle=a
             self.flag=1
-        elif(abs(e)>0):
-            self.angle=float(e/90)
-            self.flag=2
+        # elif(abs(e)>0):
+        #     self.angle=float(e/90)
+        #     self.flag=2
         else:
             self.angle= float(s_e*0.4)
             self.flag=0
