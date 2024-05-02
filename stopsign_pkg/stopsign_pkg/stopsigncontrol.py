@@ -3,7 +3,7 @@ from skimage.feature import blob_doh
 import skimage.io
 from skimage.color import rgb2gray
 
-class StopSign():
+class StopSignControl():
     def __init__(self) -> None:
         self.throttle=0.0
         self.angle=0.0
