@@ -1,7 +1,7 @@
 import numpy as np
-from skimage.feature import blob_doh
-import skimage.io
-from skimage.color import rgb2gray
+#from skimage.feature import blob_doh
+#import skimage.io
+#from skimage.color import rgb2gray
 
 class StopSignControl():
     def __init__(self) -> None:
@@ -43,19 +43,19 @@ class StopSignControl():
 
     def stop_sign_visible(self,image):
 
-        red_layer = image[:, :, 0]
-        red_threshold = 240
-        active = red_layer>red_threshold
-        red_layer[~active] = 0
-        image[:,:,1] = red_layer
-        image[:,:,2] = red_layer
-        gray_image = rgb2gray(image)
-        blobs1 = blob_doh(gray_image, max_sigma=100, threshold=0.01)
-        stop_size = 100
-        biggest_blobs = blobs1[:,2]>stop_size
+        # red_layer = image[:, :, 0]
+        # red_threshold = 240
+        # active = red_layer>red_threshold
+        # red_layer[~active] = 0
+        # image[:,:,1] = red_layer
+        # image[:,:,2] = red_layer
+        # gray_image = rgb2gray(image)
+        # blobs1 = blob_doh(gray_image, max_sigma=100, threshold=0.01)
+        # stop_size = 100
+        # biggest_blobs = blobs1[:,2]>stop_size
         
-        if(len(biggest_blobs > 0)):
-            return True
+        # if(len(biggest_blobs > 0)):
+        #     return True
         
         return False
         
