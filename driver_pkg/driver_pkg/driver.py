@@ -212,10 +212,10 @@ class Driver():
         narrow_webVisuals.y_data=np.concatenate((left_y[::-1],right_y)).tolist()
         front_right_max_distance=front_right[np.argmax(front_right)]
         front_left_max_distance=front_left[np.argmax(front_left)]
-        if( front_right_max_distance>front_left_max_distance and front_right_max_distance>=3):
+        if( front_right_max_distance>front_left_max_distance and front_right_max_distance>=0.5):
                 e=np.argmax(front_right)
                 return -e
-        elif( front_left_max_distance>front_right_max_distance and front_left_max_distance>=3):
+        elif( front_left_max_distance>front_right_max_distance and front_left_max_distance>=0.5):
                 e=np.argmax(front_left)
                 return e
         else:
