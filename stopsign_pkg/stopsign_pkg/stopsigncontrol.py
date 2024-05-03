@@ -52,9 +52,9 @@ class StopSignControl():
     def stop_sign_visible(self,image):
         print(np.shape(image))
         red_layer = image[:, :, 0]
-        red_threshold = 200
-        active = red_layer>red_threshold
-        red_layer[~active] = 0
+        # red_threshold = 200
+        # active = red_layer>red_threshold
+        # red_layer[~active] = 0
         image[:,:,1] = red_layer
         image[:,:,2] = red_layer
         
@@ -85,7 +85,6 @@ class StopSignControl():
         # Create a detector with the parameters
         # OLD: detector = cv2.SimpleBlobDetector(params)
         detector = cv2.SimpleBlobDetector_create(params)
-        cv2.imshow("name",image)
         
         # Detect blobs.
         keypoints = detector.detect(image)
