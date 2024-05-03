@@ -30,7 +30,7 @@ class StopSignControl():
 
     def get_controls(self, image):
         
-        sign_visisble = self.stop_sign_visible(image)
+        sign_visible = self.stop_sign_visible(image)
 
         self.stop_history[:-1] = self.stop_history[1:]
         self.stop_history[-1] = sign_visible
