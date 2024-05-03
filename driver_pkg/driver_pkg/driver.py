@@ -144,7 +144,7 @@ class Driver():
             #     self.angle=float(e/90)
             #     self.flag=2
             else:
-                self.angle= float(s_e*0.75)
+                self.angle= float(s_e*0.5)
                 self.flag=0
             
         
