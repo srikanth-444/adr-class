@@ -47,9 +47,6 @@ class StopSignControl():
             self.throttle = 0.5
             self.flag = 0
             self.go_count += 1
-            
-
-        self.throttle = 0.0
 
 
     def stop_sign_visible(self,image):
