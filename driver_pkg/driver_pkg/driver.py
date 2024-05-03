@@ -109,14 +109,15 @@ class Driver():
             raise KeyboardInterrupt
         self.distance_matrix=distance_matrix
         
-        if(self.flag == 1 and self.turn_counter < 10):
+        if(self.flag == 1 and self.turn_counter < 100):
+            self.flag = 1
             self.angle = -1.0
             self.turn_counter += 1
         else:
 
-            if(self.turn_counter == 10):
+            if(self.turn_counter >= 100):
                 self.turn_counter = 0
-                
+
             left_distances=self.distance_matrix[0:self.distance_matrix.size//2]
             right_distances=self.distance_matrix[self.distance_matrix.size//2+1 :]
 
