@@ -11,6 +11,7 @@ class StopSignControl():
         self.go_count = 0
         self.stop_count = 0
         self.flag = 0
+        self.stop_history = np.zeros([1,10])
 
     def get_throttle(self):
         return self.throttle
@@ -29,8 +30,12 @@ class StopSignControl():
 
     def get_controls(self, image):
         
-        stop = self.stop_sign_visible(image)
-            
+        sign_visisble = self.stop_sign_visible(image)
+
+        stop_history[:-1] = stop_history[1:]
+        self.stop_history[-1] = sign_visible
+
+        stop = np.sum(self.stop_history) > 5
 
         if(stop and self.stop_count < 75 and self.go_count > 75):
 
@@ -109,8 +114,8 @@ class StopSignControl():
          
         print(len(keypoints))
         if(len(keypoints) > 0):
-             return True
+             return 1
         else:
-             return False
+             return 0
         
         
