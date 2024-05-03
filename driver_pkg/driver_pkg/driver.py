@@ -66,7 +66,7 @@ class Driver():
     def __init__(self) -> None:
         self.filter=Filters()
         self.distance_matrix=np.array([])
-        self.throttle=0.6
+        self.throttle=0.55
         self.angle=0.0
         self.flag=0
         self.viz=Visuals()
@@ -194,7 +194,8 @@ class Driver():
         r_avg=np.mean(x)
         
         print(r_avg)
-        if r_avg>7.5:
+        if r_avg>6.5:
+            self.throttle=0.5
             return -1.0
         else:
             return 0.0
