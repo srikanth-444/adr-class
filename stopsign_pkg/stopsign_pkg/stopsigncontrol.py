@@ -58,11 +58,11 @@ class StopSignControl():
         green_layer = image[:, :, 1]
         blue_layer = image[:, :, 2]
         
-        # red_threshold = 150
-        # green_threshold = 150
-        # blue_threshold = 150
-        # active = (red_layer>red_threshold) * (green_layer < green_threshold) * (blue_layer < blue_threshold)
-        # red_layer[~active] = 0
+        red_threshold = 100
+        green_threshold = 150
+        blue_threshold = 150
+        active = (red_layer>red_threshold) * (green_layer < green_threshold) * (blue_layer < blue_threshold)
+        red_layer[~active] = 0
         image[:,:,0] = red_layer
         image[:,:,1] = red_layer
         image[:,:,2] = red_layer
