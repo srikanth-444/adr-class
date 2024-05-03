@@ -70,7 +70,7 @@ class Driver():
         self.angle=0.0
         self.flag=0
         self.viz=Visuals()
-        self.in_wall=1
+        self.in_wall=1.5
         self.start_time=time()
         self.e_matrix=[]
         self.time_m=[]
@@ -142,8 +142,8 @@ class Driver():
         
         
         #left=left_distances[30:90]
-        right=self.filter.signal_smoothing_filter(right_distances[60:90])
-        angle_matrix=np.array(range(60,90,1))
+        right=self.filter.signal_smoothing_filter(right_distances[45:90])
+        angle_matrix=np.array(range(45,90,1))
         #front_right=self.filter.signal_smoothing_filter(right_distances[0:5])
         #front_left=self.filter.signal_smoothing_filter(left_distances[0:5])
 
