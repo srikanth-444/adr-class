@@ -9,6 +9,7 @@ class StopSignControl():
         self.throttle=0.0
         self.angle=0.0
         self.go_count = 0
+        self.stop_count = 0
         self.flag = 0
 
     def get_throttle(self):
@@ -35,14 +36,16 @@ class StopSignControl():
             self.throttle = 0.0
             self.flag = 1
             self.go_count = 0
+            self.stop_count += 1
 
-        else:
+        else if(self.stop_count > 10):
             
             self.throttle = 0.5
             self.flag = 0
             self.go_count += 1
+            self.stop_count = 0
 
-        self.throttle = 0 = 0
+        self.throttle = 0
 
 
     def stop_sign_visible(self,image):
