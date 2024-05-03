@@ -95,6 +95,7 @@ class StopSignControl():
         # biggest_blobs = blobs1[:,2]>stop_size
         print(len(keypoints))
         if(len(keypoints) > 0):
+             print(keypoints)
              return True
         
         return False
