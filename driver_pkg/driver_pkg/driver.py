@@ -70,7 +70,7 @@ class Driver():
         self.angle=0.0
         self.flag=0
         self.viz=Visuals()
-        self.in_wall=1.3
+        self.in_wall=1.2
         self.start_time=time()
         self.e_matrix=[]
         self.time_m=[]
@@ -140,9 +140,9 @@ class Driver():
             if abs(a)>0:
                 self.angle=a
                 self.flag=1
-            # elif(abs(e)>0):
-            #     self.angle=float(e/90)
-            #     self.flag=2
+            elif(abs(e)>0):
+                 self.angle=float(e/90)
+                 self.flag=2
             else:
                 
                 self.angle= float(s_e*0.6)
@@ -202,9 +202,9 @@ class Driver():
             return 0.0
         
     def steering_narrow(self,left_distances,right_distances):
-        front_right=right_distances[15:30]
-        front_left=left_distances[15:30]
-        angle_matrix=np.array(range(15,30,1))
+        front_right=right_distances[0:30]
+        front_left=left_distances[0:30]
+        angle_matrix=np.array(range(0,30,1))
         left_x=front_left* np.sin(np.deg2rad(angle_matrix))
         right_x=front_right* np.sin(np.deg2rad(angle_matrix))
         left_y=front_left* np.cos(np.deg2rad(angle_matrix))
@@ -212,8 +212,8 @@ class Driver():
     
         narrow_webVisuals.x_data=np.concatenate((np.negative(left_x[::-1]),right_x)).tolist()
         narrow_webVisuals.y_data=np.concatenate((left_y[::-1],right_y)).tolist()
-        front_right_max_distance=np.mean(left_y)
-        front_left_max_distance=np.mean(right_y)
+        front_right_max_distance=np.argmax(front_right)
+        front_left_max_distance=np.argmax(front_left)
         if( front_right_max_distance>front_left_max_distance and front_right_max_distance>=3):
                 e=10
                 return -e
@@ -242,8 +242,7 @@ class Driver():
         
         #avg_left_distance = np.min([self.in_wall,np.mean(left_distance)])
         #avg_right_distance = np.min([self.in_wall,np.mean(right_distance)])
-        future_avg_right_distance = np.mean(right_x[30:60])
-        future_avg_left_distance = np.min(left_x[30:60])
+    
         avg_right_distance = np.mean(right_x[30:120])
         avg_left_distance = np.min(left_x[30:120])
         #print(avg_right_distance)
