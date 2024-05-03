@@ -74,7 +74,7 @@ class Driver():
         self.start_time=time()
         self.e_matrix=[]
         self.time_m=[]
-        self.saturation=0.2
+        self.saturation=0.25
         
         
 
