@@ -70,12 +70,14 @@ class Driver():
         self.angle=0.0
         self.flag=0
         self.viz=Visuals()
-        self.in_wall=1.2
+        self.in_wall=1.5
         self.start_time=time()
         self.e_matrix=[]
         self.time_m=[]
         self.saturation=0.15
         self.turn_counter = 0
+        self.start_time=time()
+        self.previous_error=0
         
         
 
@@ -101,7 +103,7 @@ class Driver():
 
     def get_controls(self,distance_matrix):
 
-
+        
         
 
     
@@ -138,13 +140,16 @@ class Driver():
             if abs(a)>0:
                 self.angle=a
                 self.flag=1
-            elif(abs(e)>0):
-                 self.angle=float(e/90)
-                 self.flag=2
+            # elif(abs(e)>0):
+            #      self.angle=float(e/90)
+            #      self.flag=2
             else:
-                
-                self.angle= float(s_e*0.6)
+                time_step=self.start_time-time()
+                v_e=(s_e-self.previous_error)/time_step
+                self.angle= float(s_e+v_e*0.1)
                 self.flag=0
+                self.start_time=time()
+                self.previous_error=s_e
             
         
 
@@ -225,10 +230,13 @@ class Driver():
 
         
     def steer_between_walls(self,left_distances,right_distances):
+
+        
+        
         #print('steer between walls')
-        left = left_distances[30:120]
-        right =right_distances[30:120]
-        angle_matrix=np.array(range(30, 120,1))
+        left = left_distances[30:90]
+        right =right_distances[30:90]
+        angle_matrix=np.array(range(30, 90,1))
 
         right_x= np.clip(right *np.sin(np.deg2rad(angle_matrix)),0.1,self.in_wall)
         left_x = np.clip(left *np.sin(np.deg2rad(angle_matrix)),0.1,self.in_wall)
@@ -257,7 +265,7 @@ class Driver():
             scaled_error=self.saturation
         elif scaled_error<-self.saturation:
             scaled_error=-self.saturation
-
+       
         return scaled_error
     
 
