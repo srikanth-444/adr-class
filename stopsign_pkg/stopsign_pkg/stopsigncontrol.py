@@ -52,9 +52,9 @@ class StopSignControl():
     def stop_sign_visible(self,image):
 
         red_layer = image[:, :, 0]
-        # red_threshold = 200
-        # active = red_layer>red_threshold
-        # red_layer[~active] = 0
+        red_threshold = 100
+        active = red_layer>red_threshold
+        red_layer[~active] = 0
         image[:,:,1] = red_layer
         image[:,:,2] = red_layer
         
