@@ -75,6 +75,7 @@ class Driver():
         self.e_matrix=[]
         self.time_m=[]
         self.saturation=0.15
+        self.turn_counter = 0
         
         
 
@@ -108,34 +109,43 @@ class Driver():
             raise KeyboardInterrupt
         self.distance_matrix=distance_matrix
         
-        left_distances=self.distance_matrix[0:self.distance_matrix.size//2]
-        right_distances=self.distance_matrix[self.distance_matrix.size//2+1 :]
-
-        
-        right_distances=right_distances[::-1]
-        #print(right_distances)
-        
-        # logic start here 
-        a=self.scan_for_turn(left_distances,right_distances)
-        e=self.steering_narrow(left_distances,right_distances)
-        s_e=self.steer_between_walls(left_distances,right_distances)
-
-
-        self.e_matrix.append(s_e)
-        self.time_m.append(time())
-
-        w_error.y_data=self.e_matrix
-        w_error.x_data=self.time_m
-
-        if abs(a)>0:
-            self.angle=a
-            self.flag=1
-        # elif(abs(e)>0):
-        #     self.angle=float(e/90)
-        #     self.flag=2
+        if(self.flag == 1 and self.turn_counter < 10):
+            self.angle = -1.0
+            self.turn_counter += 1
         else:
-            self.angle= float(s_e*0.75)
-            self.flag=0
+
+            if(self.turn_counter == 10):
+                self.turn_counter = 0
+                
+            left_distances=self.distance_matrix[0:self.distance_matrix.size//2]
+            right_distances=self.distance_matrix[self.distance_matrix.size//2+1 :]
+
+            
+            right_distances=right_distances[::-1]
+            #print(right_distances)
+            
+            # logic start here 
+            a=self.scan_for_turn(left_distances,right_distances)
+            e=self.steering_narrow(left_distances,right_distances)
+            s_e=self.steer_between_walls(left_distances,right_distances)
+
+
+            self.e_matrix.append(s_e)
+            self.time_m.append(time())
+
+            w_error.y_data=self.e_matrix
+            w_error.x_data=self.time_m
+
+            if abs(a)>0:
+                self.angle=a
+                self.flag=1
+            # elif(abs(e)>0):
+            #     self.angle=float(e/90)
+            #     self.flag=2
+            else:
+                self.angle= float(s_e*0.75)
+                self.flag=0
+            
         
 
     
@@ -183,7 +193,7 @@ class Driver():
         r_avg=np.mean(x)
         
         print(r_avg)
-        if r_avg>7:
+        if r_avg>7.5:
             return -1.0
         else:
             return 0.0
