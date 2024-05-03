@@ -51,10 +51,29 @@ class StopSignControl():
 
     def stop_sign_visible(self,image):
 
-        red_layer = image[:, :, 0]
-        red_threshold = 245
-        active = red_layer>red_threshold
+        red_layer = image[:, :, 2]
+        green_layer = image[:, :, 1]
+        blue_layer = image[:, :, 0]
+        
+        red_threshold = 150
+        green_threshold = 150
+        blue_threshold = 150
+        active = (red_layer>red_threshold) * (green_layer < green_threshold) * (blue_layer < blue_threshold)
         red_layer[~active] = 0
+        image[:,:,0] = red_layer
+        image[:,:,1] = red_layer
+        image[:,:,2] = red_layer
+        image = 255-image
+        for i in range(10):
+            image = cv2.GaussianBlur(image,(51,51),cv2.BORDER_DEFAULT)
+
+        red_layer = image[:, :, 2]
+        green_layer = image[:, :, 1]
+        blue_layer = image[:, :, 0]
+        
+        active = red_layer < 150
+        red_layer[active] = 0
+        image[:,:,0] = red_layer
         image[:,:,1] = red_layer
         image[:,:,2] = red_layer
         
@@ -68,8 +87,8 @@ class StopSignControl():
         
         # Filter by Area.
         params.filterByArea = True
-        params.minArea = 10
-        params.maxArea = 3000
+        params.minArea = 1000
+        #params.maxArea = 10000
         
         # # Filter by Circularity
         # params.filterByCircularity = True
@@ -83,16 +102,11 @@ class StopSignControl():
         # params.filterByInertia = True
         # params.minInertiaRatio = 0.01
         
-        # Create a detector with the parameters
-        # OLD: detector = cv2.SimpleBlobDetector(params)
         detector = cv2.SimpleBlobDetector_create(params)
         
         # Detect blobs.
         keypoints = detector.detect(image)
-        # gray_image = rgb2gray(image)
-        # blobs1 = blob_doh(gray_image, max_sigma=100, threshold=0.01)
-        # stop_size = 100
-        # biggest_blobs = blobs1[:,2]>stop_size
+         
         print(len(keypoints))
         if(len(keypoints) > 0):
              return True
