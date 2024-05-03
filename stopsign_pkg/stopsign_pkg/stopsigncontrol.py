@@ -65,7 +65,7 @@ class StopSignControl():
         image[:,:,2] = red_layer
         image = 255-image
         for i in range(10):
-            image = cv2.GaussianBlur(image,(51,51),cv2.BORDER_DEFAULT)
+            image = cv2.GaussianBlur(image,(15,15),cv2.BORDER_DEFAULT)
 
         red_layer = image[:, :, 0]
         
