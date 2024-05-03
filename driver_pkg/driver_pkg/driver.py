@@ -214,11 +214,11 @@ class Driver():
         front_left_max_distance=np.mean(front_left)
         print(front_right_max_distance,front_left_max_distance)
         if( front_right_max_distance>front_left_max_distance and front_right_max_distance>=0.5):
-                e=np.argmax(front_right)
+                e=15+np.argmax(front_right)
                 print(e)
                 return -e
         elif( front_left_max_distance>front_right_max_distance and front_left_max_distance>=0.5):
-                e=np.argmax(front_left)
+                e=15+np.argmax(front_left)
                 return e
         else:
             return 0
