@@ -50,12 +50,12 @@ class StopSignControl():
 
     def stop_sign_visible(self,image):
         print(type(image))
-        # red_layer = image[:, :, 0]
-        # red_threshold = 240
-        # active = red_layer>red_threshold
-        # red_layer[~active] = 0
-        # image[:,:,1] = red_layer
-        # image[:,:,2] = red_layer
+        red_layer = image[:, :, 0]
+        red_threshold = 240
+        active = red_layer>red_threshold
+        red_layer[~active] = 0
+        image[:,:,1] = red_layer
+        image[:,:,2] = red_layer
         # gray_image = rgb2gray(image)
         # blobs1 = blob_doh(gray_image, max_sigma=100, threshold=0.01)
         # stop_size = 100
