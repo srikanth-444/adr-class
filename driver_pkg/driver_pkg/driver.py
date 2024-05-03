@@ -70,7 +70,7 @@ class Driver():
         self.angle=0.0
         self.flag=0
         self.viz=Visuals()
-        self.in_wall=1
+        self.in_wall=1.3
         self.start_time=time()
         self.e_matrix=[]
         self.time_m=[]
