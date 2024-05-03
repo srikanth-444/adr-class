@@ -1,4 +1,4 @@
-import numpy as np
+fimport numpy as np
 import cv2
 #from skimage.feature import blob_doh
 #import skimage.io
@@ -6,7 +6,6 @@ import cv2
 
 class StopSignControl():
     def __init__(self) -> None:
-        np.set_printoptions(threshold=100000)
         self.throttle=0.0
         self.angle=0.0
         self.previously_stopped = False
@@ -51,8 +50,7 @@ class StopSignControl():
 
 
     def stop_sign_visible(self,image):
-        print(image)
-        print("next")
+
         red_layer = image[:, :, 0]
         # red_threshold = 200
         # active = red_layer>red_threshold
