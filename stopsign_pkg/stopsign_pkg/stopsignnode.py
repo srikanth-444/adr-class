@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 import numpy as np
-from driver_pkg.driver import Driver
+from stopsign_pkg.stopsigncontrol import StopSignControl
 from rclpy.executors import MultiThreadedExecutor
 from rclpy.callback_groups import ReentrantCallbackGroup
 
@@ -33,7 +33,7 @@ class StopSign(Node):
         #initial values of steering and throttle
         self.angle=0.0
         self.throttle=0.0
-        self.stopsign = StopSign()
+        self.stopsign = StopSignControl()
         self.bridge = CvBridge()
         self.flag=0.0
 
@@ -45,9 +45,9 @@ class StopSign(Node):
         except CvBridgeError as e:
             print(e)
 
-        self.driver.get_controls(image)
-        self.throttle=self.driver.get_throttle()
-        self.flag=self.driver.get_flag()
+        self.stopsign.get_controls(image)
+        self.throttle=self.stopsign.get_throttle()
+        self.flag=self.stopsign.get_flag()
     
 
     def drive_timer_callback(self):
