@@ -66,7 +66,7 @@ class Driver():
     def __init__(self) -> None:
         self.filter=Filters()
         self.distance_matrix=np.array([])
-        self.throttle=0.55
+        self.throttle=0.5
         self.angle=0.0
         self.flag=0
         self.viz=Visuals()
@@ -144,7 +144,8 @@ class Driver():
             #     self.angle=float(e/90)
             #     self.flag=2
             else:
-                self.angle= float(s_e*0.65)
+                
+                self.angle= float(s_e*0.6)
                 self.flag=0
             
         
@@ -194,8 +195,8 @@ class Driver():
         r_avg=np.mean(x)
         
         print(r_avg)
-        if r_avg>6.5:
-            self.throttle=0.5
+        if r_avg>7.5:
+            
             return -1.0
         else:
             return 0.0
@@ -243,8 +244,8 @@ class Driver():
         #avg_right_distance = np.min([self.in_wall,np.mean(right_distance)])
         future_avg_right_distance = np.mean(right_x[30:60])
         future_avg_left_distance = np.min(left_x[30:60])
-        avg_right_distance = np.mean(right_x[60:120])
-        avg_left_distance = np.min(left_x[60:120])
+        avg_right_distance = np.mean(right_x[30:120])
+        avg_left_distance = np.min(left_x[30:120])
         #print(avg_right_distance)
         #print(avg_left_distance)
 
