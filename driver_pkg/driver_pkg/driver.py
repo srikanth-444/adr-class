@@ -74,6 +74,7 @@ class Driver():
         self.start_time=time()
         self.e_matrix=[]
         self.time_m=[]
+        self.saturation=0.2
         
         
 
@@ -237,6 +238,11 @@ class Driver():
         
         
         #scaled_error = 0.3-avg_right_distance
+
+        if scaled_error>self.saturation:
+            scaled_error=self.saturation
+        elif scaled_error<-self.saturation:
+            scaled_error=-self.saturation
 
         return scaled_error
     
