@@ -37,6 +37,7 @@ class StopSignControl():
             self.throttle = 0.0
             self.flag = 1
             self.stop_count += 1
+            print(self.stop_count)
 
         else:
 
