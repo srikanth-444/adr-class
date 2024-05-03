@@ -6,6 +6,7 @@ import cv2
 
 class StopSignControl():
     def __init__(self) -> None:
+        np.set_printoptions(threshold=sys.maxsize)
         self.throttle=0.0
         self.angle=0.0
         self.previously_stopped = False
