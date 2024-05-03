@@ -85,7 +85,7 @@ class StopSignControl():
         # Create a detector with the parameters
         # OLD: detector = cv2.SimpleBlobDetector(params)
         detector = cv2.SimpleBlobDetector_create(params)
-        
+        cv2.imshow(image)
         
         # Detect blobs.
         keypoints = detector.detect(image)
