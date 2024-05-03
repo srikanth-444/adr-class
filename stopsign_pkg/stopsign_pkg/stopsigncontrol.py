@@ -52,7 +52,7 @@ class StopSignControl():
     def stop_sign_visible(self,image):
 
         red_layer = image[:, :, 0]
-        red_threshold = 100
+        red_threshold = 150
         active = red_layer>red_threshold
         red_layer[~active] = 0
         image[:,:,1] = red_layer
@@ -95,7 +95,6 @@ class StopSignControl():
         # biggest_blobs = blobs1[:,2]>stop_size
         print(len(keypoints))
         if(len(keypoints) > 0):
-             print(keypoints)
              return True
         
         return False
