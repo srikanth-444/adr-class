@@ -240,12 +240,15 @@ class Driver():
         
         #avg_left_distance = np.min([self.in_wall,np.mean(left_distance)])
         #avg_right_distance = np.min([self.in_wall,np.mean(right_distance)])
-        avg_right_distance = np.mean(right_x)
-        avg_left_distance = np.min(left_x)
+        future_avg_right_distance = np.mean(right_x[30:60])
+        future_avg_left_distance = np.min(left_x[30:60])
+        avg_right_distance = np.mean(right_x[60:30])
+        avg_left_distance = np.min(left_x[60:30])
         #print(avg_right_distance)
         #print(avg_left_distance)
 
-        scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)
+        scaled_error = 0.4*(avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance) + 0.6(future_avg_left_distance-future_avg_right_distance)/(future_avg_left_distance+avg_right_distance)
+        
         
         
         #scaled_error = 0.3-avg_right_distance
