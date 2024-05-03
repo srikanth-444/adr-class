@@ -242,8 +242,8 @@ class Driver():
         #avg_right_distance = np.min([self.in_wall,np.mean(right_distance)])
         future_avg_right_distance = np.mean(right_x[30:60])
         future_avg_left_distance = np.min(left_x[30:60])
-        avg_right_distance = np.mean(right_x[60:30])
-        avg_left_distance = np.min(left_x[60:30])
+        avg_right_distance = np.mean(right_x[60:120])
+        avg_left_distance = np.min(left_x[60:120])
         #print(avg_right_distance)
         #print(avg_left_distance)
 
