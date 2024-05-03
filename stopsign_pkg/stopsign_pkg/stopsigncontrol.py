@@ -93,7 +93,7 @@ class StopSignControl():
         # blobs1 = blob_doh(gray_image, max_sigma=100, threshold=0.01)
         # stop_size = 100
         # biggest_blobs = blobs1[:,2]>stop_size
-        
+        print(len(keypoints))
         if(len(keypoints > 0)):
              return True
         
