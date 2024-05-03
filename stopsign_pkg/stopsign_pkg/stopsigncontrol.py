@@ -68,7 +68,7 @@ class StopSignControl():
         
         # Filter by Area.
         params.filterByArea = True
-        params.minArea = 1250
+        params.minArea = 10
         params.maxArea = 3000
         
         # # Filter by Circularity
