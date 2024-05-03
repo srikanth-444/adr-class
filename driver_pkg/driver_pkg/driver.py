@@ -194,7 +194,7 @@ class Driver():
         r_avg=np.mean(x)
         
         print(r_avg)
-        if r_avg>7.6:
+        if r_avg>7.5:
             return -1.0
         else:
             return 0.0
