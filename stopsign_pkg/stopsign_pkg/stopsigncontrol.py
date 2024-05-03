@@ -59,7 +59,7 @@ class StopSignControl():
         green_threshold = 150
         blue_threshold = 150
         active = (red_layer>red_threshold) * (green_layer < green_threshold) * (blue_layer < blue_threshold)
-        print(np.mean(red_layer))
+        print(np.max(red_layer))
         print(np.mean(green_layer))
         print(np.mean(blue_layer))
         red_layer[~active] = 0
