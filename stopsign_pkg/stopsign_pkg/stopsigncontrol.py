@@ -32,7 +32,7 @@ class StopSignControl():
         
         sign_visisble = self.stop_sign_visible(image)
 
-        stop_history[:-1] = stop_history[1:]
+        self.stop_history[:-1] = self.stop_history[1:]
         self.stop_history[-1] = sign_visible
 
         stop = np.sum(self.stop_history) > 5
