@@ -38,7 +38,7 @@ class StopSignControl():
             self.go_count = 0
             self.stop_count += 1
 
-        else if(self.stop_count > 10):
+        elif(self.stop_count > 10):
             
             self.throttle = 0.5
             self.flag = 0
