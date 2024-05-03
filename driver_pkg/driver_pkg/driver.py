@@ -215,6 +215,7 @@ class Driver():
         print(front_right_max_distance,front_left_max_distance)
         if( front_right_max_distance>front_left_max_distance and front_right_max_distance>=0.5):
                 e=np.argmax(front_right)
+                print(e)
                 return -e
         elif( front_left_max_distance>front_right_max_distance and front_left_max_distance>=0.5):
                 e=np.argmax(front_left)
