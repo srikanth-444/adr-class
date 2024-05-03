@@ -50,7 +50,7 @@ class StopSignControl():
 
 
     def stop_sign_visible(self,image):
-        print(np.shape(image))
+        print(image)
         red_layer = image[:, :, 0]
         # red_threshold = 200
         # active = red_layer>red_threshold
@@ -66,17 +66,18 @@ class StopSignControl():
         # params.maxThreshold = 200
         
         
-        # # Filter by Area.
-        # params.filterByArea = True
-        # params.minArea = 1500
+        # Filter by Area.
+        params.filterByArea = True
+        params.minArea = 1250
+        params.maxArea = 3000
         
         # # Filter by Circularity
         # params.filterByCircularity = True
         # params.minCircularity = 0.1
         
-        # # Filter by Convexity
+        # Filter by Convexity
         # params.filterByConvexity = True
-        # params.minConvexity = 0.87
+        # params.minConvexity = 0.8
         
         # # Filter by Inertia
         # params.filterByInertia = True
