@@ -51,9 +51,9 @@ class StopSignControl():
 
     def stop_sign_visible(self,image):
 
-        red_layer = image[:, :, 2]
+        red_layer = image[:, :, 0]
         green_layer = image[:, :, 1]
-        blue_layer = image[:, :, 0]
+        blue_layer = image[:, :, 2]
         
         red_threshold = 150
         green_threshold = 150
@@ -67,9 +67,7 @@ class StopSignControl():
         for i in range(10):
             image = cv2.GaussianBlur(image,(51,51),cv2.BORDER_DEFAULT)
 
-        red_layer = image[:, :, 2]
-        green_layer = image[:, :, 1]
-        blue_layer = image[:, :, 0]
+        red_layer = image[:, :, 0]
         
         active = red_layer < 150
         red_layer[active] = 0
