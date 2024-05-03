@@ -79,7 +79,7 @@ class StopSignControl():
         image[:,:,1] = red_layer
         image[:,:,2] = red_layer
 
-        print(mean(red_layer))
+        print(np.mean(red_layer))
         
         # Setup SimpleBlobDetector parameters.
         params = cv2.SimpleBlobDetector_Params()
