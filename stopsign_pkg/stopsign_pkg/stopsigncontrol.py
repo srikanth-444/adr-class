@@ -38,7 +38,7 @@ class StopSignControl():
             self.go_count = 0
             self.stop_count += 1
 
-        elif(self.stop_count > 10):
+        elif(not stop or self.stop_count > 10):
             
             self.throttle = 0.5
             self.flag = 0
@@ -107,7 +107,7 @@ class StopSignControl():
         print(len(keypoints))
         if(len(keypoints) > 0):
              return True
-        
-        return False
+        else:
+             return False
         
         
