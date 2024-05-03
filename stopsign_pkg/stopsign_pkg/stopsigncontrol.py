@@ -59,7 +59,7 @@ class StopSignControl():
         green_layer = image[:, :, 1]
         blue_layer = image[:, :, 2]
         
-        red_threshold = 100
+        red_threshold = 50
         green_threshold = 100
         blue_threshold = 100
         active = (red_layer>red_threshold) * (green_layer < green_threshold) * (blue_layer < blue_threshold)
@@ -88,7 +88,7 @@ class StopSignControl():
         
         
         # Filter by Area.
-        params.filterByArea = True
+        #params.filterByArea = True
         #params.minArea = 1000
         #params.maxArea = 10000
         
