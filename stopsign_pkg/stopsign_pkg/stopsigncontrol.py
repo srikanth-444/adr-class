@@ -1,4 +1,5 @@
 import numpy as np
+import cv2
 #from skimage.feature import blob_doh
 #import skimage.io
 #from skimage.color import rgb2gray
@@ -56,13 +57,45 @@ class StopSignControl():
         red_layer[~active] = 0
         image[:,:,1] = red_layer
         image[:,:,2] = red_layer
+        
+        # Setup SimpleBlobDetector parameters.
+        params = cv2.SimpleBlobDetector_Params()
+        
+        # # Change thresholds
+        # params.minThreshold = 10
+        # params.maxThreshold = 200
+        
+        
+        # # Filter by Area.
+        # params.filterByArea = True
+        # params.minArea = 1500
+        
+        # # Filter by Circularity
+        # params.filterByCircularity = True
+        # params.minCircularity = 0.1
+        
+        # # Filter by Convexity
+        # params.filterByConvexity = True
+        # params.minConvexity = 0.87
+        
+        # # Filter by Inertia
+        # params.filterByInertia = True
+        # params.minInertiaRatio = 0.01
+        
+        # Create a detector with the parameters
+        # OLD: detector = cv2.SimpleBlobDetector(params)
+        detector = cv2.SimpleBlobDetector_create(params)
+        
+        
+        # Detect blobs.
+        keypoints = detector.detect(image)
         # gray_image = rgb2gray(image)
         # blobs1 = blob_doh(gray_image, max_sigma=100, threshold=0.01)
         # stop_size = 100
         # biggest_blobs = blobs1[:,2]>stop_size
         
-        # if(len(biggest_blobs > 0)):
-        #     return True
+        if(len(keypoints > 0)):
+             return True
         
         return False
         
