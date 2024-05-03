@@ -32,7 +32,7 @@ class StopSignControl():
         stop = self.stop_sign_visible(image)
             
 
-        if(stop and self.stop_count < 20 and self.go_count > 75):
+        if(stop and self.stop_count < 75 and self.go_count > 75):
 
             self.throttle = 0.0
             self.flag = 1
