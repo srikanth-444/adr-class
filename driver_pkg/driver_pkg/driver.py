@@ -133,7 +133,7 @@ class Driver():
         #     self.angle=float(e/90)
         #     self.flag=2
         else:
-            self.angle= float(s_e*0.4)
+            self.angle= float(s_e*0.5)
             self.flag=0
         
 
@@ -212,8 +212,8 @@ class Driver():
         
     def steer_between_walls(self,left_distances,right_distances):
         #print('steer between walls')
-        left = left_distances[60:120]
-        right =right_distances[60:120]
+        left = left_distances[30:150]
+        right =right_distances[30:150]
         angle_matrix=np.array(range(60, 120,1))
 
         right_x= np.clip(right *np.sin(np.deg2rad(angle_matrix)),0.1,self.in_wall)
