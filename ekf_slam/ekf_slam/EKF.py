@@ -56,7 +56,7 @@ class EKF():
 
         #find kalman gain
         Kt = np.matmul(Sigma1_bar,np.matmul(Ht.T,np.linalg.inv(np.matmul(Ht,np.matmul(Sigma1_bar,Ht.T))+Qt)))
-
+        print(Kt)
         #determine the state estimate based on observations
         z1 = self.observation(point_cloud)
 
