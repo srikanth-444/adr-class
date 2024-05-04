@@ -14,6 +14,7 @@ class EKF():
         self.speed_scale = 2 ##NEED TO CHANGE BASED ON MEASUREMENTS
         self.state_history = []
         self.cov_history = []
+        np.set_printoptions(threshold=np.inf)
         
     def bicycle_model(self,u1,dt):
 
@@ -74,7 +75,8 @@ class EKF():
             self.prev_point_cloud = point_cloud
             self.prev_point_cloud[ np.abs(self.prev_point_cloud) < 0.1] = 0.1
 
-        print(np.min(self.prev_point_cloud))
+        print(self.prev_point_cloud)
+        print(np.min(np.abs(self.prev_point_cloud)))
         
         # Create point cloud objects
         pc_fix = PointCloud(self.prev_point_cloud, columns=["x", "y", "z"])
