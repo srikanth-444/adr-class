@@ -70,7 +70,7 @@ class Driver():
         self.angle=0.0
         self.flag=0
         self.viz=Visuals()
-        self.in_wall=1.2
+        self.in_wall=3
 
 
 
@@ -125,7 +125,6 @@ class Driver():
             left_distances=self.distance_matrix[0:self.distance_matrix.size//2]
             right_distances=self.distance_matrix[self.distance_matrix.size//2+1 :]
 
-            
             right_distances=right_distances[::-1]
             #print(right_distances)
             
@@ -254,6 +253,8 @@ class Driver():
         left_y=left* np.cos(np.deg2rad(angle_matrix))
         right_y=right* np.cos(np.deg2rad(angle_matrix))
 
+        print(right_x)
+        print(left_x)
         steer_btween_walls.x_data=np.concatenate((np.negative(left_x[::-1]),right_x)).tolist()
         steer_btween_walls.y_data=np.concatenate((left_y[::-1],right_y)).tolist()
         #print(distance)
