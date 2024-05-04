@@ -65,6 +65,8 @@ class EKF():
         self.state_history.append(self.mu)
         self.cov_history.append(self.Sigma)
 
+        print(self.mu[0],self.mu[1])
+
     def observation(self,mu,point_cloud):
 
         # Create point cloud objects
