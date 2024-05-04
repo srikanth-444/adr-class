@@ -62,6 +62,7 @@ class EKF():
         print("hello")
         #Perform correction step on the mean and covariance of the state
         self.mu = mu1_bar + Kt*(z1 - mu1_bar)
+        print(mu1_bar.shape, self.mu.shape, z1.shape)
         self.Sigma = (np.eye(3,3) - Kt*Ht)*Sigma1_bar
 
         self.state_history.append(self.mu)
