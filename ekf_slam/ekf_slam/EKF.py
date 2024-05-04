@@ -54,13 +54,14 @@ class EKF():
 
         #find kalman gain
         Kt = Sigma1_bar*Ht.T*np.linalg.inv(Ht*Sigma1_bar*Ht.T+Qt)
-        
+
+        print("hi")
         #determine the state estimate based on observations
         z1 = self.observation(point_cloud)
 
         #Perform correction step on the mean and covariance of the state
         self.mu = mu1_bar + Kt*(z1 - mu1_bar)
-        self.Sigma = (np.eye([3,3]) - Kt*Ht)*Sigma1_bar
+        self.Sigma = (np.eye(3) - Kt*Ht)*Sigma1_bar
 
         self.state_history.append(self.mu)
         self.cov_history.append(self.Sigma)
