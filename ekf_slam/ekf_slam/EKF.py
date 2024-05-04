@@ -73,7 +73,7 @@ class EKF():
 
     def observation(self,point_cloud):
 
-        if( (point_cloud == self.prev_point_cloud).all() ):
+        if( np.array_equal(point_cloud,self.prev_point_cloud) ):
             return self.mu
         else:
             if(self.prev_point_cloud.size == 0):
