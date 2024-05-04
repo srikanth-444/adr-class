@@ -70,7 +70,7 @@ class Driver():
         self.angle=0.0
         self.flag=0
         self.viz=Visuals()
-        self.in_wall=1.3
+        self.in_wall=1.2
 
 
 
@@ -167,8 +167,8 @@ class Driver():
         
         
         #left=left_distances[30:90]
-        right=self.filter.signal_smoothing_filter(right_distances[45:90])
-        angle_matrix=np.array(range(45,90,1))
+        right=self.filter.signal_smoothing_filter(right_distances[30:90])
+        angle_matrix=np.array(range(30,90,1))
         #front_right=self.filter.signal_smoothing_filter(right_distances[0:5])
         #front_left=self.filter.signal_smoothing_filter(left_distances[0:5])
 
@@ -243,9 +243,9 @@ class Driver():
         
         
         #print('steer between walls')
-        left = left_distances[30:120]
-        right =right_distances[30:120]
-        angle_matrix=np.array(range(30, 120,1))
+        left = left_distances[60:120]
+        right =right_distances[60:120]
+        angle_matrix=np.array(range(60, 120,1))
 
         right_x= np.clip(right *np.sin(np.deg2rad(angle_matrix)),0.1,self.in_wall)
         left_x = np.clip(left *np.sin(np.deg2rad(angle_matrix)),0.1,self.in_wall)
@@ -260,8 +260,8 @@ class Driver():
         #avg_left_distance = np.min([self.in_wall,np.mean(left_distance)])
         #avg_right_distance = np.min([self.in_wall,np.mean(right_distance)])
     
-        avg_right_distance = np.mean(right_x[30:120])
-        avg_left_distance = np.mean(left_x[30:120])
+        avg_right_distance = np.mean(right_x[60:120])
+        avg_left_distance = np.mean(left_x[60:120])
         #print(avg_right_distance)
         #print(avg_left_distance)
 
