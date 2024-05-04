@@ -43,7 +43,6 @@ class EKF_node(Node):
         for x, y in zip(xvals,yvals):
             self.point_cloud.append(np.array([x,y,0]))
         self.point_cloud = np.array(self.point_cloud)
-        print(self.point_cloud)
 
     def control_listen(self,msg):
 
