@@ -249,8 +249,10 @@ class Driver():
         right =right_distances[30:120]
         angle_matrix=np.array(range(30, 120,1))
 
-        right_x= np.clip(right *np.sin(np.deg2rad(angle_matrix)),0.1,self.in_wall)
-        left_x = np.clip(left *np.sin(np.deg2rad(angle_matrix)),0.1,self.in_wall)
+        #right_x= np.clip(right *np.sin(np.deg2rad(angle_matrix)),0.1,self.in_wall)
+        #left_x = np.clip(left *np.sin(np.deg2rad(angle_matrix)),0.1,self.in_wall)
+        right_x = right *np.sin(np.deg2rad(angle_matrix))
+        left_x = left *np.sin(np.deg2rad(angle_matrix))
         left_y=left* np.cos(np.deg2rad(angle_matrix))
         right_y=right* np.cos(np.deg2rad(angle_matrix))
 
