@@ -48,7 +48,7 @@ class EKF_node(Node):
 
         start_time = time()
         u = np.array([msg.throttle,msg.angle])
-        self.EKF.EKF_step(u,self.point_cloud,self.dt)
+        self.EKF.EKF_step(u,self.point_cloud.T,self.dt)
         self.dt = time()-start_time
 
     
