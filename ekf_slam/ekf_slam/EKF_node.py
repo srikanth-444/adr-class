@@ -73,10 +73,10 @@ class EKF_node(Node):
 
     def control_listen(self,msg):
 
-        start_time = time.time()
+        start_time = time()
         u = np.array([msg.throttle,msg.angle])
         self.EKF.EKF_step(u,self.point_cloud,self.dt)
-        self.dt = time.time()-start_time
+        self.dt = time()-start_time
 
     
 
