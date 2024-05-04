@@ -50,7 +50,7 @@ class EKF():
         Sigma1_bar = Gt*self.Sigma*Gt.T + Rt
 
         #Sensor model is identity, Jacbian is identity
-        Ht = np.eye([3,3])
+        Ht = np.eye(3)
 
         #find kalman gain
         Kt = Sigma1_bar*Ht.T*np.linalg.inv(Ht*Sigma1_bar*Ht.T+Qt)
