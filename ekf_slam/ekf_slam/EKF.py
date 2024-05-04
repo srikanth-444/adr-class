@@ -47,7 +47,8 @@ class EKF():
         Gt = np.eye(3,3)
         Gt[0,2] = -v*np.sin(theta)*dt
         Gt[1,2] = v*np.cos(theta)*dt
-        
+
+        #find prediction step covariance
         Sigma1_bar = np.matmul(Gt,np.matmul(self.Sigma,Gt.T)) + Rt
 
         #Sensor model is identity, Jacbian is identity
@@ -60,9 +61,7 @@ class EKF():
         z1 = self.observation(point_cloud)
 
         #Perform correction step on the mean and covariance of the state
-        print(mu1_bar.shape, self.mu.shape, z1.shape, Kt.shape)
         self.mu = mu1_bar + np.matmul(Kt,(z1 - mu1_bar))
-        print(mu1_bar.shape, self.mu.shape, z1.shape)
         self.Sigma = np.matmul((np.eye(3,3) - np.matmul(Kt,Ht)),Sigma1_bar)
 
         self.state_history.append(self.mu)
