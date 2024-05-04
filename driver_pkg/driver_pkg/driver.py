@@ -151,6 +151,7 @@ class Driver():
                 time_step=self.start_time-time()
                 print(time_step)
                 v_e=(s_e-self.previous_error)/time_step
+                print(v_e)
                 scaled_error=float(s_e+v_e*0.2)
                 if scaled_error>self.saturation:
                     scaled_error=self.saturation
