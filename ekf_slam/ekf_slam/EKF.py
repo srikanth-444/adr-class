@@ -77,7 +77,7 @@ class EKF():
             return self.mu
         else:
             if(self.prev_point_cloud.size == 0):
-                self.prev_point_cloud = point_cloud + np.random.random(point_cloud.shape)
+                self.prev_point_cloud = point_cloud + np.random.random(point_cloud.shape)/100
             
             # Create point cloud objects
             pc_fix = PointCloud(self.prev_point_cloud, columns=["x", "y", "z"])
