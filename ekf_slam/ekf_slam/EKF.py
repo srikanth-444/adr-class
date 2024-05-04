@@ -43,6 +43,8 @@ class EKF():
         #use bicycle model for predication step over one time step
         mu1_bar = self.bicycle_model(u1,dt)
 
+        print("mu1_bar = ", mu1)
+
         #calculate jacobian of bicycle model function
         Gt = np.eye(3,3)
         Gt[0,2] = -v*np.sin(theta)*dt
@@ -56,9 +58,11 @@ class EKF():
 
         #find kalman gain
         Kt = np.matmul(Sigma1_bar,np.matmul(Ht.T,np.linalg.inv(np.matmul(Ht,np.matmul(Sigma1_bar,Ht.T))+Qt)))
-        print(Kt)
+
         #determine the state estimate based on observations
         z1 = self.observation(point_cloud)
+
+         print("z1 = ", z1)
 
         #Perform correction step on the mean and covariance of the state
         self.mu = mu1_bar + np.matmul(Kt,(z1 - mu1_bar))
