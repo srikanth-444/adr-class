@@ -21,8 +21,8 @@ class EKF():
         v = u1[0]*self.speed_scale
         
         dmu_dt = np.zeros([3,1])
-        dmu_dt[0] = v*np.cos(mu1[0])
-        dmu_dt[1] = v*np.sin(mu1[0])
+        dmu_dt[0] = v*np.cos(self.mu[2])
+        dmu_dt[1] = v*np.sin(self.mu[2])
         dmu_dt[2] = v*np.tan(u1[1])/L
 
         mu1 = self.mu + dmu_dt*dt
