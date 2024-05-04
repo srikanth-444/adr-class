@@ -70,7 +70,7 @@ class EKF():
     def observation(self,point_cloud):
 
         if(self.prev_point_cloud.size == 0):
-            self.prev_point_cloud = point_cloud+np.ones([self.prev_point_cloud.shape])
+            self.prev_point_cloud = point_cloud+np.ones([point_cloud.shape])
 
         # Create point cloud objects
         pc_fix = PointCloud(self.prev_point_cloud, columns=["x", "y", "z"])
