@@ -20,13 +20,6 @@ class EKF_node(Node):
         self.lidar_message_sub_cb_grp = ReentrantCallbackGroup()
         self.control_message_sub_cb_grp = ReentrantCallbackGroup()
 
-        #client for configuring lidar
-        self.lidar_client=self.create_client(LidarConfigSrv,"/sensor_fusion_pkg/configure_lidar")
-        while not self.lidar_client.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info('service not available, waiting again...')
-        self.req = LidarConfigSrv.Request()
-
-
         #lidar data subscriber
         self.lidar_subcriber= self.create_subscription(EvoSensorMsg, '/sensor_fusion_pkg/sensor_msg',self.lidar_listen,10,callback_group=self.lidar_message_sub_cb_grp)
         
@@ -39,26 +32,6 @@ class EKF_node(Node):
         self.point_cloud = np.array([])
 
         self.dt = 0.1
-
-
-    def set_lidar_configuration(self,):
-        self.req.use_lidar=False
-        #setting up the area of scan       
-        self.req.min_angle= -179.0
-        self.req.max_angle= 179.0
-        # sets the number of points in array 
-        self.req.num_values=359 
-        # doesn't scan the objects less than this distance(m)
-        self.req.min_distance=0.10
-        # doesn't scan the objects greater than this distance(m)
-        self.req.max_distance=12.0
-        # clips the distance greater than self.clipping_distance to self.clipping_distance
-        self.req.clipping_distance=12.0
-        self.req.num_sectors=60
-        self.req.preprocess_type=0
-        self.future = self.lidar_client.call_async(self.req)
-        rclpy.spin_until_future_complete(self, self.future)
-        return self.future.result()                      
 
     def lidar_listen(self, msg):
 
