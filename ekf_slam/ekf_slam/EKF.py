@@ -43,9 +43,9 @@ class EKF():
         mu1_bar = self.bicycle_model(u1,dt)
 
         #calculate jacobian of bicycle model function
-        Gt = np.array([ np.array([1, 0, -v*np.sin(theta)*dt]),
-                        np.array([0, 1, v*np.cos(theta)*dt]),
-                        np.array([0, 0, 1])])
+        Gt = np.eye(3)
+        Gt[0,2] = -v*np.sin(theta)*dt
+        Gt[1,2] = v*np.cos(theta)*dt
         
         Sigma1_bar = Gt*self.Sigma*Gt.T + Rt
 
