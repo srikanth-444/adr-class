@@ -150,7 +150,7 @@ class Driver():
             else:
                 time_step=self.start_time-time()
                 v_e=(s_e-self.previous_error)/time_step
-                scaled_error=float(s_e+v_e*0.5)
+                scaled_error=float(s_e+v_e*0.2)
                 if scaled_error>self.saturation:
                     scaled_error=self.saturation
                 elif scaled_error<-self.saturation:
