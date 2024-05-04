@@ -75,8 +75,7 @@ class EKF():
             self.prev_point_cloud = point_cloud
             self.prev_point_cloud[ np.abs(self.prev_point_cloud) < 0.1] = 0.1
 
-        print(self.prev_point_cloud)
-        print(np.min(np.abs(self.prev_point_cloud)))
+        print(point_cloud.shape)
         
         # Create point cloud objects
         pc_fix = PointCloud(self.prev_point_cloud, columns=["x", "y", "z"])
