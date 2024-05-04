@@ -30,15 +30,15 @@ def ekf_prediction(x_old, P_old, v, delta, L, dt):
     # Update state
     x_new = x_old + np.array([delta_x, delta_y, delta_theta])
 
-    # Jacobian of the motion model with respect to state (A)
-    A = np.array([[1, 0, -v * np.sin(theta) * dt],
+    # Jacobian of the motion model with respect to state (H)
+    G = np.array([[1, 0, -v * np.sin(theta) * dt],
                   [0, 1, v * np.cos(theta) * dt],
                   [0, 0, 1]])
 
     # Process noise covariance matrix (Q)
-    Q = np.zeros((3, 3))  # Assuming no process noise
+    Q = np.zeros((3, 3))  # no process noise
 
     # Predicted covariance matrix
-    P_new = np.dot(A, np.dot(P_old, A.T)) + np.dot(B, np.dot(Q, B.T))
+    P_new = np.dot(G, np.dot(P_old, G.T)) + np.dot(B, np.dot(Q, B.T))
 
     return x_new, P_new
