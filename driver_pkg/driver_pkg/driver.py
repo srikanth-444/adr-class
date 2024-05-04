@@ -3,6 +3,7 @@ from driver_pkg.Filters import Filters
 from driver_pkg.Visuals import Visuals
 from time import time
 from scipy.stats import linregress
+import math
 
 
 
@@ -152,7 +153,7 @@ class Driver():
                 print(time_step)
                 v_e=(s_e-self.previous_error)/time_step
                 print(v_e)
-                scaled_error=float(s_e*1+v_e*0.9)
+                scaled_error=float(s_e*1+v_e*0.1+0.5*e)
                 # if scaled_error>self.saturation:
                 #     scaled_error=self.saturation
                 # elif scaled_error<-self.saturation:
@@ -226,24 +227,42 @@ class Driver():
         right_x=front_right* np.sin(np.deg2rad(angle_matrix))
         left_y=front_left* np.cos(np.deg2rad(angle_matrix))
         right_y=front_right* np.cos(np.deg2rad(angle_matrix))
-        r_slope, r_intercept, r_value, p_value, std_err = linregress(right_x, right_y)
-        r_regression_line = r_slope * right_x + r_intercept
-        l_slope, l_intercept, r_value, p_value, std_err = linregress(left_x, left_y)
+        r_indices=np.argwhere(right_x<1.5)
+        l_indices=np.argwhere(left_x<1.5)
+        r_x=[]
+        r_y=[]
+        l_x=[]
+        l_y=[]
+        for i in r_indices:
+            r_x.append(right_x[i])
+            r_y.append(right_y[i])
+        for i in l_indices:
+            l_x.append(left_x[i])
+            l_y.append(left_y[i])
+        if not r_x:
+            r_slope=0
+            r_intercept=1.5
+        else:
+            r_slope, r_intercept, r_value, p_value, std_err = linregress(r_x, r_y)
+        r_regression_line = r_slope * right_x + r_intercept    
+        if not l_x:
+            l_slope=0
+            l_intercept=1.5
+        else:
+            l_slope, l_intercept, r_value, p_value, std_err = linregress(l_x, l_y)
         l_regression_line = l_slope * left_x + l_intercept
         narrow_webVisuals.x_data=np.concatenate((np.negative(left_x[::-1]),right_x)).tolist()
         narrow_webVisuals.y_data=np.concatenate((l_regression_line[::-1],r_regression_line)).tolist()
-        front_right_max_distance=np.mean(front_right)
-        front_left_max_distance=np.mean(front_left)
-        print(front_right_max_distance,front_left_max_distance)
-        if( front_right_max_distance>front_left_max_distance and front_right_max_distance>=0.5):
-                e=15+np.argmax(front_right)
-                print(e)
-                return -e
-        elif( front_left_max_distance>front_right_max_distance and front_left_max_distance>=0.5):
-                e=15+np.argmax(front_left)
-                return e
-        else:
-            return 0
+        #front_right_max_distance=np.mean(front_right)
+        #front_left_max_distance=np.mean(front_left)
+        #print(front_right_max_distance,front_left_max_distance)
+
+        r_angle_with_y=math.degrees(r_slope)-90
+        l_angle_with_y=math.degrees(l_slope)-90
+
+        e=r_angle_with_y+l_angle_with_y
+
+        return e
 
         
     def steer_between_walls(self,left_distances,right_distances):
@@ -251,16 +270,16 @@ class Driver():
         
         
         #print('steer between walls')
-        left = left_distances[30:120]
-        right =right_distances[30:120]
+        left = np.clip(left_distances,0.1,1.5)
+        right =np.clip(right_distances,0.1,1.5)
 
         
 
 
-        angle_matrix=np.array(range(30, 120,1))
+        angle_matrix=np.array(range(0, 180,1))
 
-        right_x= np.clip(right *np.sin(np.deg2rad(angle_matrix)),0.1,self.in_wall)
-        left_x = np.clip(left *np.sin(np.deg2rad(angle_matrix)),0.1,self.in_wall)
+        right_x= right *np.sin(np.deg2rad(angle_matrix))
+        left_x = left *np.sin(np.deg2rad(angle_matrix))
         left_y=left* np.cos(np.deg2rad(angle_matrix))
         right_y=right* np.cos(np.deg2rad(angle_matrix))
 
@@ -272,9 +291,10 @@ class Driver():
         
         #avg_left_distance = np.min([self.in_wall,np.mean(left_distance)])
         #avg_right_distance = np.min([self.in_wall,np.mean(right_distance)])
-    
-        avg_right_distance = np.mean(right_x[30:120])
-        avg_left_distance = np.mean(left_x[30:120])
+        r_indices=np.where(right_x<1.5)
+        l_indices=np.where(left_x<1.5)
+        avg_right_distance = np.mean(r_indices)
+        avg_left_distance = np.mean(l_indices)
         #print(avg_right_distance)
         #print(avg_left_distance)
 
