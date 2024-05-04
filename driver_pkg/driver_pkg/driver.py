@@ -150,7 +150,7 @@ class Driver():
             else:
                 time_step=self.start_time-time()
                 v_e=(s_e-self.previous_error)/time_step
-                self.angle= float(s_e+v_e*0.1)
+                self.angle= float(s_e+v_e*0.5)
                 self.flag=0
                 self.start_time=time()
                 self.previous_error=s_e
