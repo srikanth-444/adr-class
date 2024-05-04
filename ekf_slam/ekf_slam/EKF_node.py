@@ -5,7 +5,7 @@ from ekf_slam.EKF import EKF
 from rclpy.executors import MultiThreadedExecutor
 from rclpy.callback_groups import ReentrantCallbackGroup
 import threading
-import time
+from time import time
     
 from deepracer_interfaces_pkg.msg import EvoSensorMsg
 from deepracer_interfaces_pkg.srv import LidarConfigSrv
