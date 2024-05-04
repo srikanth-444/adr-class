@@ -7,8 +7,8 @@ class EKF():
 
     def __init__(self) -> None:
         self.prev_point_cloud = np.array([])
-        self.mu = np.array([])
-        self.sigma = np.array([])
+        self.mu = np.zeros([3,1])
+        self.sigma = np.zeros([3,3])
         self.prev_time = 0
         self.dt = 0
         self.speed_scale = 2 ##NEED TO CHANGE BASED ON MEASUREMENTS
@@ -20,7 +20,11 @@ class EKF():
         L = 0.2 ##NEED TO CHANGE BASED ON MEASUREMENTS
         v = u1[0]*self.speed_scale
         
-        dmu_dt = np.array([v*np.cos(mu1[0]),v*np.sin(mu1[0]), v*np.tan(u1[1])/L])
+        dmu_dt = np.zeros([3,1])
+        dmu_dt[0] = v*np.cos(mu1[0])
+        dmu_dt[1] = v*np.sin(mu1[0])
+        dmu_dt[2] = v*np.tan(u1[1])/L
+
         mu1 = self.mu + dmu_dt*dt
         
         return mu1
@@ -72,13 +76,13 @@ class EKF():
         icp.add_point_clouds(pc_fix, pc_mov)
         H, X_mov_transformed, rigid_body_transformation_params, distance_residuals = icp.run(max_overlap_distance=1)
 
-        dtheta = rigid_body_transformation_params[2]
-        dx = rigid_body_transformation_params[3]
-        dy = rigid_body_transformation_params[4]
+        dstate = np.zeros([3,1])
+        dstate[2] = rigid_body_transformation_params[2]
+        dstate[0] = rigid_body_transformation_params[3]
+        dstate[1] = rigid_body_transformation_params[4]
 
         self.prev_point_cloud = point_cloud
-
-        return mu + np.array([dx,dy,dtheta])
-
+        
+        return mu + dstate
 
 
