@@ -152,7 +152,7 @@ class Driver():
                 print(time_step)
                 v_e=(s_e-self.previous_error)/time_step
                 print(v_e)
-                scaled_error=float(s_e+v_e*0.2)
+                scaled_error=float(s_e)
                 if scaled_error>self.saturation:
                     scaled_error=self.saturation
                 elif scaled_error<-self.saturation:
@@ -245,9 +245,9 @@ class Driver():
         
         
         #print('steer between walls')
-        left = left_distances[60:120]
-        right =right_distances[60:120]
-        angle_matrix=np.array(range(60, 120,1))
+        left = left_distances[30:60]
+        right =right_distances[30:60]
+        angle_matrix=np.array(range(30, 60,1))
 
         right_x= np.clip(right *np.sin(np.deg2rad(angle_matrix)),0.1,self.in_wall)
         left_x = np.clip(left *np.sin(np.deg2rad(angle_matrix)),0.1,self.in_wall)
@@ -262,12 +262,12 @@ class Driver():
         #avg_left_distance = np.min([self.in_wall,np.mean(left_distance)])
         #avg_right_distance = np.min([self.in_wall,np.mean(right_distance)])
     
-        avg_right_distance = np.mean(right_x[60:120])
-        avg_left_distance = np.mean(left_x[60:120])
+        avg_right_distance = np.mean(right_x[30:60])
+        avg_left_distance = np.mean(left_x[30:60])
         #print(avg_right_distance)
         #print(avg_left_distance)
 
-        scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)+0.01
+        scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)
         
         
         #scaled_error = 0.3-avg_right_distance
