@@ -43,7 +43,7 @@ class EKF():
         #use bicycle model for predication step over one time step
         mu1_bar = self.bicycle_model(u1,dt)
 
-        print("mu1_bar = ", mu1)
+        print("mu1_bar = ", mu1_bar)
 
         #calculate jacobian of bicycle model function
         Gt = np.eye(3,3)
