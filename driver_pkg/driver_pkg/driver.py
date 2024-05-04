@@ -70,7 +70,7 @@ class Driver():
         self.angle=0.0
         self.flag=0
         self.viz=Visuals()
-        self.in_wall=1.2
+        self.in_wall=1.3
 
 
 
@@ -113,7 +113,7 @@ class Driver():
     
         self.distance_matrix=distance_matrix
         
-        if(self.flag == 1 and self.start_time-time() < 0.2  ):
+        if(self.flag == 1 and self.turn_counter< 15 ):
             self.flag = 1
             self.angle = -1.0
             self.turn_counter += 1
