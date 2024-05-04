@@ -56,10 +56,9 @@ class EKF():
         #find kalman gain
         Kt = np.matmul(Sigma1_bar,np.matmul(Ht.T,np.linalg.inv(np.matmul(Ht,np.matmul(Sigma1_bar,Ht.T))+Qt)))
 
-        print("hi")
         #determine the state estimate based on observations
         z1 = self.observation(point_cloud)
-        print("hello")
+
         #Perform correction step on the mean and covariance of the state
         print(mu1_bar.shape, self.mu.shape, z1.shape, Kt.shape)
         self.mu = mu1_bar + np.matmul(Kt,(z1 - mu1_bar))
@@ -86,9 +85,9 @@ class EKF():
         H, X_mov_transformed, rigid_body_transformation_params, distance_residuals = icp.run(max_overlap_distance=1)
 
         dstate = np.zeros([3,1])
-        dstate[0] = rigid_body_transformation_params.alpha3.estimated_value
-        dstate[1] = rigid_body_transformation_params.tx.estimated_value
-        dstate[2] = rigid_body_transformation_params.ty.estimated_value
+        dstate[0] = rigid_body_transformation_params.tx.estimated_value
+        dstate[1] = rigid_body_transformation_params.ty.estimated_value
+        dstate[2] = np.deg2rad(rigid_body_transformation_params.alpha3.estimated_value)
 
         self.prev_point_cloud = np.copy(point_cloud) + np.random.random(point_cloud.shape)/100
         
