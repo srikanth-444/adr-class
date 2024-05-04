@@ -113,7 +113,7 @@ class Driver():
     
         self.distance_matrix=distance_matrix
         
-        if(self.flag == 1 and self.start_time-time() < 1  ):
+        if(self.flag == 1 and self.start_time-time() < 0.5  ):
             self.flag = 1
             self.angle = -1.0
             self.turn_counter += 1
@@ -265,10 +265,10 @@ class Driver():
         
         #scaled_error = 0.3-avg_right_distance
 
-        if scaled_error>self.saturation:
-            scaled_error=self.saturation
-        elif scaled_error<-self.saturation:
-            scaled_error=-self.saturation
+        # if scaled_error>self.saturation:
+        #     scaled_error=self.saturation
+        # elif scaled_error<-self.saturation:
+        #     scaled_error=-self.saturation
        
         return scaled_error
     
