@@ -150,9 +150,9 @@ class Driver():
             #      self.flag=2
             else:
                 time_step=self.start_time-time()
-                print(time_step)
+                #print(time_step)
                 v_e=(s_e-self.previous_error)/time_step
-                print(v_e)
+                #print(v_e)
                 scaled_error=float(s_e*1+v_e*0.1+0.5*e)
                 # if scaled_error>self.saturation:
                 #     scaled_error=self.saturation
@@ -209,7 +209,7 @@ class Driver():
         #          return e
         r_avg=np.mean(x)
         
-        print(r_avg)
+        #print(r_avg)
         if r_avg>7.5:
             
             return -1.0
@@ -261,7 +261,7 @@ class Driver():
         l_angle_with_y=math.degrees(l_slope)-90
 
         e=r_angle_with_y+l_angle_with_y
-        #print(e)
+        print(e)
 
         return e
 
