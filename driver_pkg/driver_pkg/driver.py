@@ -2,6 +2,7 @@ import numpy as np
 from driver_pkg.Filters import Filters
 from driver_pkg.Visuals import Visuals
 from time import time
+from scipy.stats import linregress
 
 
 
@@ -215,16 +216,22 @@ class Driver():
             return 0.0
         
     def steering_narrow(self,left_distances,right_distances):
-        front_right=np.clip(right_distances[15:30],0.1,1)
-        front_left=np.clip(left_distances[15:30],0.1,1)
-        angle_matrix=np.array(range(15,30,1))
+        front_right=np.clip(right_distances[30:120],0.1,1)
+        front_left=np.clip(left_distances[30:120],0.1,1)
+
+        
+
+        angle_matrix=np.array(range(30,120,1))
         left_x=front_left* np.sin(np.deg2rad(angle_matrix))
         right_x=front_right* np.sin(np.deg2rad(angle_matrix))
         left_y=front_left* np.cos(np.deg2rad(angle_matrix))
         right_y=front_right* np.cos(np.deg2rad(angle_matrix))
-    
+        r_slope, r_intercept, r_value, p_value, std_err = linregress(right_x, right_y)
+        r_regression_line = r_slope * right_x + r_intercept
+        l_slope, l_intercept, r_value, p_value, std_err = linregress(left_x, left_y)
+        l_regression_line = l_slope * left_x + l_intercept
         narrow_webVisuals.x_data=np.concatenate((np.negative(left_x[::-1]),right_x)).tolist()
-        narrow_webVisuals.y_data=np.concatenate((left_y[::-1],right_y)).tolist()
+        narrow_webVisuals.y_data=np.concatenate((l_regression_line[::-1],r_regression_line)).tolist()
         front_right_max_distance=np.mean(front_right)
         front_left_max_distance=np.mean(front_left)
         print(front_right_max_distance,front_left_max_distance)
@@ -246,6 +253,10 @@ class Driver():
         #print('steer between walls')
         left = left_distances[30:120]
         right =right_distances[30:120]
+
+        
+
+
         angle_matrix=np.array(range(30, 120,1))
 
         right_x= np.clip(right *np.sin(np.deg2rad(angle_matrix)),0.1,self.in_wall)
@@ -253,8 +264,7 @@ class Driver():
         left_y=left* np.cos(np.deg2rad(angle_matrix))
         right_y=right* np.cos(np.deg2rad(angle_matrix))
 
-        print(right_x)
-        print(left_x)
+        
         steer_btween_walls.x_data=np.concatenate((np.negative(left_x[::-1]),right_x)).tolist()
         steer_btween_walls.y_data=np.concatenate((left_y[::-1],right_y)).tolist()
         #print(distance)
