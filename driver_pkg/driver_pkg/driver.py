@@ -261,7 +261,7 @@ class Driver():
         l_angle_with_y=math.degrees(l_slope)-90
 
         e=r_angle_with_y+l_angle_with_y
-        print(e)
+        #print(e)
 
         return e
 
@@ -293,7 +293,7 @@ class Driver():
         #avg_left_distance = np.min([self.in_wall,np.mean(left_distance)])
         #avg_right_distance = np.min([self.in_wall,np.mean(right_distance)])
         r_indices=np.where(right_x<1.5)
-        print(r_indices)
+        
         l_indices=np.where(left_x<1.5)
         avg_right_distance = np.mean(r_indices)
         avg_left_distance = np.mean(l_indices)
