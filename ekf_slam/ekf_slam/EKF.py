@@ -73,28 +73,25 @@ class EKF():
 
     def observation(self,point_cloud):
 
-        if( np.array_equal(point_cloud,self.prev_point_cloud) ):
-            return self.mu
-        else:
-            if(self.prev_point_cloud.size == 0):
-                self.prev_point_cloud = point_cloud + np.random.random(point_cloud.shape)/100
-            
-            # Create point cloud objects
-            pc_fix = PointCloud(self.prev_point_cloud, columns=["x", "y", "z"])
-            pc_mov = PointCloud(point_cloud, columns=["x", "y", "z"])
-    
-            # Create simpleICP object, add point clouds, and run algorithm!
-            icp = SimpleICP()
-            icp.add_point_clouds(pc_fix, pc_mov)
-            H, X_mov_transformed, rigid_body_transformation_params, distance_residuals = icp.run(max_overlap_distance=1)
-    
-            dstate = np.zeros([3,1])
-            dstate[0] = rigid_body_transformation_params.alpha3.estimated_value
-            dstate[1] = rigid_body_transformation_params.tx.estimated_value
-            dstate[2] = rigid_body_transformation_params.ty.estimated_value
-    
-            self.prev_point_cloud = np.copy(point_cloud) + np.random.random(point_cloud.shape)/100
-            
-            return self.mu + dstate
+        if(self.prev_point_cloud.size == 0):
+            self.prev_point_cloud = point_cloud + np.random.random(point_cloud.shape)/100
+        
+        # Create point cloud objects
+        pc_fix = PointCloud(self.prev_point_cloud, columns=["x", "y", "z"])
+        pc_mov = PointCloud(point_cloud, columns=["x", "y", "z"])
+
+        # Create simpleICP object, add point clouds, and run algorithm!
+        icp = SimpleICP()
+        icp.add_point_clouds(pc_fix, pc_mov)
+        H, X_mov_transformed, rigid_body_transformation_params, distance_residuals = icp.run(max_overlap_distance=1)
+
+        dstate = np.zeros([3,1])
+        dstate[0] = rigid_body_transformation_params.alpha3.estimated_value
+        dstate[1] = rigid_body_transformation_params.tx.estimated_value
+        dstate[2] = rigid_body_transformation_params.ty.estimated_value
+
+        self.prev_point_cloud = np.copy(point_cloud) + np.random.random(point_cloud.shape)/100
+        
+        return self.mu + dstate
 
 
