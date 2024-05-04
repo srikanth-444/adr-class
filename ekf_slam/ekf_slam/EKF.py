@@ -32,8 +32,8 @@ class EKF():
     def EKF_step(self, u1, point_cloud, dt):
 
         #Noise variables
-        Rt = np.zeros([3,3])
-        Qt = np.zeros([3,3])
+        Rt = np.random.random((3, 3))/100
+        Qt = np.random.random((3, 3))/100
 
         #extract state and control variables for readability
         theta = self.mu[2]
