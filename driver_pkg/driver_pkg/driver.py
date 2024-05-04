@@ -71,6 +71,10 @@ class Driver():
         self.flag=0
         self.viz=Visuals()
         self.in_wall=1.5
+
+
+
+
         self.start_time=time()
         self.e_matrix=[]
         self.time_m=[]
@@ -109,7 +113,7 @@ class Driver():
     
         self.distance_matrix=distance_matrix
         
-        if(self.flag == 1 and self.turn_counter < 15):
+        if(self.flag == 1 and self.start_time-time() < 3  ):
             self.flag = 1
             self.angle = -1.0
             self.turn_counter += 1
@@ -234,8 +238,8 @@ class Driver():
         
         
         #print('steer between walls')
-        left = left_distances[30:90]
-        right =right_distances[30:90]
+        left = left_distances[30:120]
+        right =right_distances[30:120]
         angle_matrix=np.array(range(30, 90,1))
 
         right_x= np.clip(right *np.sin(np.deg2rad(angle_matrix)),0.1,self.in_wall)
@@ -252,7 +256,7 @@ class Driver():
         #avg_right_distance = np.min([self.in_wall,np.mean(right_distance)])
     
         avg_right_distance = np.mean(right_x[30:120])
-        avg_left_distance = np.min(left_x[30:120])
+        avg_left_distance = np.mean(left_x[30:120])
         #print(avg_right_distance)
         #print(avg_left_distance)
 
