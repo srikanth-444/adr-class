@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'ekf_slam=EKF_node.node:main'
+            'ekf_slam=ekf_slam.EKF_node:main'
         ],
     },
 )
