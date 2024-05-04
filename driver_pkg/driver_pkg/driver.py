@@ -240,24 +240,24 @@ class Driver():
             l_x.append(left_x[i])
             l_y.append(left_y[i])
         if not r_x:
-            r_slope=0
+            r_slope=90
             r_intercept=1.5
         else:
             r_slope, r_intercept, r_value, p_value, std_err = linregress(r_x, r_y)
         r_regression_line = r_slope * right_x[::-1] + r_intercept    
         if not l_x:
-            l_slope=0
+            l_slope=90
             l_intercept=1.5
         else:
             l_slope, l_intercept, r_value, p_value, std_err = linregress(l_x, l_y)
         l_regression_line = l_slope * left_x + l_intercept
-        narrow_webVisuals.x_data=np.concatenate((np.negative(left_x[::-1]),right_x)).tolist()
+        narrow_webVisuals.x_data=np.concatenate((np.negative(left_x[::-1]),right_x[::-1])).tolist()
         narrow_webVisuals.y_data=np.concatenate((l_regression_line[::-1],r_regression_line)).tolist()
         #front_right_max_distance=np.mean(front_right)
         #front_left_max_distance=np.mean(front_left)
         #print(front_right_max_distance,front_left_max_distance)
 
-        r_angle_with_y=math.degrees(r_slope)-90
+        r_angle_with_y=math.degrees(np.arctan(r_slope))-90
         l_angle_with_y=math.degrees(l_slope)-90
 
         e=r_angle_with_y+l_angle_with_y
