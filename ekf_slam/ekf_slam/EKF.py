@@ -8,7 +8,7 @@ class EKF():
     def __init__(self) -> None:
         self.prev_point_cloud = np.array([])
         self.mu = np.zeros([3,1])
-        self.sigma = np.zeros([3,3])
+        self.Sigma = np.zeros([3,3])
         self.prev_time = 0
         self.dt = 0
         self.speed_scale = 2 ##NEED TO CHANGE BASED ON MEASUREMENTS
