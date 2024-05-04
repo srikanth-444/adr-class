@@ -58,18 +58,6 @@ def main(args=None):
 
     ekf_node = EKF_node()
     try:
-        try:
-            res=ekf_node.set_lidar_configuration()
-            if (res.error==1):
-                raise Exception
-            
-
-        except:
-            ekf_node.get_logger().error("lidar config wrong you idiot")
-            rclpy.shutdown()
-    
-
-        ekf_node.get_logger().info('lidar has been configured')
         executor = MultiThreadedExecutor()
         rclpy.spin(ekf_node,executor)
     except KeyboardInterrupt:
