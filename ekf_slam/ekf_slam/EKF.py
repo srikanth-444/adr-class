@@ -93,7 +93,7 @@ class EKF():
             dstate[1] = rigid_body_transformation_params.tx.estimated_value
             dstate[2] = rigid_body_transformation_params.ty.estimated_value
     
-            self.prev_point_cloud = np.copy(point_cloud)
+            self.prev_point_cloud = np.copy(point_cloud) + +np.ones(X_fix.shape)*0.001
             
             return self.mu + dstate
 
