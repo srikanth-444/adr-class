@@ -78,7 +78,7 @@ class Driver():
         self.start_time=time()
         self.e_matrix=[]
         self.time_m=[]
-        self.saturation=0.3
+        self.saturation=60/90
         self.turn_counter = 0
         self.start_time=time()
         self.previous_error=0
@@ -152,11 +152,11 @@ class Driver():
                 print(time_step)
                 v_e=(s_e-self.previous_error)/time_step
                 print(v_e)
-                scaled_error=float(s_e)
-                if scaled_error>self.saturation:
-                    scaled_error=self.saturation
-                elif scaled_error<-self.saturation:
-                    scaled_error=-self.saturation
+                scaled_error=float(s_e*10+v_e*10)
+                # if scaled_error>self.saturation:
+                #     scaled_error=self.saturation
+                # elif scaled_error<-self.saturation:
+                #     scaled_error=-self.saturation
                 self.angle= scaled_error
                 self.flag=0
                 self.start_time=time()
