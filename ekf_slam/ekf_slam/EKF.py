@@ -48,13 +48,13 @@ class EKF():
         Gt[0,2] = -v*np.sin(theta)*dt
         Gt[1,2] = v*np.cos(theta)*dt
         
-        Sigma1_bar = Gt*self.Sigma*Gt.T + Rt
+        Sigma1_bar = np.matmul(Gt,np.matmul(self.Sigma,Gt.T)) + Rt
 
         #Sensor model is identity, Jacbian is identity
         Ht = np.eye(3,3)
 
         #find kalman gain
-        Kt = Sigma1_bar*Ht.T*np.linalg.inv(Ht*Sigma1_bar*Ht.T+Qt)
+        Kt = np.matmul(Sigma1_bar,np.matmul(Ht.T,np.linalg.inv(np.matmul(Ht,np.matmul(Sigma1_bar,Ht.T))+Qt)))
 
         print("hi")
         #determine the state estimate based on observations
@@ -62,9 +62,9 @@ class EKF():
         print("hello")
         #Perform correction step on the mean and covariance of the state
         print(mu1_bar.shape, self.mu.shape, z1.shape, Kt.shape)
-        self.mu = mu1_bar + Kt*(z1 - mu1_bar)
+        self.mu = mu1_bar + np.matmul(Kt,(z1 - mu1_bar))
         print(mu1_bar.shape, self.mu.shape, z1.shape)
-        self.Sigma = (np.eye(3,3) - Kt*Ht)*Sigma1_bar
+        self.Sigma = np.matmul((np.eye(3,3) - np.matmul(Kt,Ht)),Sigma1_bar)
 
         self.state_history.append(self.mu)
         self.cov_history.append(self.Sigma)
