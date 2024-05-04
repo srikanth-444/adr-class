@@ -261,6 +261,7 @@ class Driver():
         l_angle_with_y=math.degrees(l_slope)-90
 
         e=r_angle_with_y+l_angle_with_y
+        print(e)
 
         return e
 
