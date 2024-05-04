@@ -67,7 +67,7 @@ class EKF():
 
         print(self.mu[0],self.mu[1])
 
-    def observation(self,mu,point_cloud):
+    def observation(self,point_cloud):
 
         # Create point cloud objects
         pc_fix = PointCloud(self.prev_point_cloud, columns=["x", "y", "z"])
@@ -85,6 +85,6 @@ class EKF():
 
         self.prev_point_cloud = point_cloud
         
-        return mu + dstate
+        return self.mu + dstate
 
 
