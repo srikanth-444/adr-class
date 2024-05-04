@@ -84,9 +84,9 @@ class EKF():
         H, X_mov_transformed, rigid_body_transformation_params, distance_residuals = icp.run(max_overlap_distance=1)
 
         dstate = np.zeros([3,1])
-        dstate[2] = rigid_body_transformation_params[2]
-        dstate[0] = rigid_body_transformation_params[3]
-        dstate[1] = rigid_body_transformation_params[4]
+        dstate[0] = rigid_body_transformation_params.alpha3.estimated_value
+        dstate[1] = rigid_body_transformation_params.tx.estimated_value
+        dstate[2] = rigid_body_transformation_params.ty.estimated_value
 
         self.prev_point_cloud = point_cloud
         
