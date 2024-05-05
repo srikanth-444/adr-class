@@ -237,8 +237,8 @@ class Driver():
         right_y=front_right* np.cos(np.deg2rad(angle_matrix))
 
         #print(left_x,right_x)
-        r_indices=np.argwhere(right_x<1).flatten()
-        l_indices=np.argwhere(left_x<1).flatten()
+        r_indices=np.argwhere(right_x<0.2).flatten()
+        l_indices=np.argwhere(left_x<0.2).flatten()
         r_x=[]
         r_y=[]
         l_x=[]
