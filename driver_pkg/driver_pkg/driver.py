@@ -259,8 +259,8 @@ class Driver():
 
         print(r_slope,l_slope)
 
-        r_angle_with_y=math.degrees(np.arctan2(r_slope,1))-90
-        l_angle_with_y=math.degrees(np.arctan2(l_slope,1))-90
+        r_angle_with_y=math.degrees(np.arctan2(r_slope,1))
+        l_angle_with_y=math.degrees(np.arctan2(l_slope,1))
 
         e=r_angle_with_y+l_angle_with_y
         print(e,r_angle_with_y,l_angle_with_y)
