@@ -219,7 +219,7 @@ class Driver():
         
     def steering_narrow(self,left_distances,right_distances):
         front_right=np.clip(right_distances[15:165],0.1,12)
-        front_left=np.clip(left_distances[15:165],0.1,1.12)
+        front_left=np.clip(left_distances[15:165],0.1,12)
 
         
 
@@ -228,24 +228,30 @@ class Driver():
         right_x=front_right* np.sin(np.deg2rad(angle_matrix))
         left_y=front_left* np.cos(np.deg2rad(angle_matrix))
         right_y=front_right* np.cos(np.deg2rad(angle_matrix))
+
+        print(left_x,right_x)
         r_indices=self.filter.np.argwhere(right_x<12).flatten()
         l_indices=self.filter.np.argwhere(left_x<12).flatten()
         r_x=[]
         r_y=[]
         l_x=[]
         l_y=[]
+
         for i in r_indices:
             r_x.append(right_x[i])
             r_y.append(right_y[i])
+
         for i in l_indices:
             l_x.append(left_x[i])
             l_y.append(left_y[i])
+        
         if not r_x:
             r_slope=90
             r_intercept=1.5
         else:
             r_slope, r_intercept, r_value, p_value, std_err = linregress(r_x, r_y)
         r_regression_line = r_slope * right_x + r_intercept    
+        
         if not l_x:
             l_slope=90
             l_intercept=1.5
@@ -312,12 +318,15 @@ class Driver():
         r_y=[]
         l_x=[]
         l_y=[]
+
         for i in r_indices:
             r_x.append(right_x[i])
             r_y.append(right_y[i])
+
         for i in l_indices:
             l_x.append(left_x[i])
             l_y.append(left_y[i])
+
         avg_right_distance = np.mean(r_x)
         avg_left_distance = np.mean(l_x)
         #print(avg_right_distance)
