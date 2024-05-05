@@ -159,7 +159,7 @@ class Driver():
                 #print(time_step)
                 v_e=(s_e-self.previous_error)/time_step
                 #print(v_e)
-                scaled_error=float(s_e*2+v_e*1.2+e*0.2)
+                scaled_error=float(s_e*1.2+v_e*0.2+e*0.2)
                 # if scaled_error>self.saturation:
                 #     scaled_error=self.saturation
                 # elif scaled_error<-self.saturation:
@@ -237,8 +237,8 @@ class Driver():
         right_y=front_right* np.cos(np.deg2rad(angle_matrix))
 
         #print(left_x,right_x)
-        r_indices=np.argwhere(right_x<1.2).flatten()
-        l_indices=np.argwhere(left_x<1.2).flatten()
+        r_indices=np.argwhere(right_x<2).flatten()
+        l_indices=np.argwhere(left_x<2).flatten()
         r_x=[]
         r_y=[]
         l_x=[]
