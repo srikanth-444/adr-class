@@ -243,8 +243,8 @@ class Driver():
             r_slope=90
             r_intercept=1.5
         else:
-            r_slope, r_intercept, r_value, p_value, std_err = linregress(r_x, r_y)
-        r_regression_line = r_slope * right_x[::-1] + r_intercept    
+            r_slope, r_intercept, r_value, p_value, std_err = linregress(r_x[::-1], r_y[::-1])
+        r_regression_line = r_slope * right_x + r_intercept    
         if not l_x:
             l_slope=90
             l_intercept=1.5
