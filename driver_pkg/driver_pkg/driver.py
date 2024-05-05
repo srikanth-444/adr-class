@@ -262,7 +262,7 @@ class Driver():
         r_angle_with_y=math.degrees(np.arctan(-1/r_slope))
         l_angle_with_y=math.degrees(np.arctan(-1/l_slope))
 
-        e=r_angle_with_y+l_angle_with_y
+        e=r_angle_with_y-l_angle_with_y
         print(e,r_angle_with_y,l_angle_with_y)
 
         return math.radians(e)
