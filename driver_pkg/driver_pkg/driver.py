@@ -222,7 +222,7 @@ class Driver():
 
         
 
-        angle_matrix=np.array(range(60,120,1))
+        angle_matrix=np.array(range(15,165,1))
         left_x=front_left* np.sin(np.deg2rad(angle_matrix))
         right_x=front_right* np.sin(np.deg2rad(angle_matrix))
         left_y=front_left* np.cos(np.deg2rad(angle_matrix))
