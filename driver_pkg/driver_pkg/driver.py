@@ -231,9 +231,9 @@ class Driver():
         left_y=front_left* np.cos(np.deg2rad(angle_matrix))
         right_y=front_right* np.cos(np.deg2rad(angle_matrix))
 
-        print(left_x,right_x)
-        r_indices=self.filter.np.argwhere(right_x<12).flatten()
-        l_indices=self.filter.np.argwhere(left_x<12).flatten()
+        #print(left_x,right_x)
+        r_indices=np.argwhere(right_x<12).flatten()
+        l_indices=np.argwhere(left_x<12).flatten()
         r_x=[]
         r_y=[]
         l_x=[]
@@ -266,7 +266,7 @@ class Driver():
         #front_left_max_distance=np.mean(front_left)
         #print(front_right_max_distance,front_left_max_distance)
 
-        print(r_slope,l_slope)
+        #print(r_slope,l_slope)
 
         r_angle_with_y=math.degrees(np.arctan(-1/r_slope))
         l_angle_with_y=math.degrees(np.arctan(-1/l_slope))
@@ -292,7 +292,7 @@ class Driver():
 
         
         
-        print('steer between walls')
+        #print('steer between walls')
         left = np.clip(left_distances,0.1,5)
         right =np.clip(right_distances,0.1,5)
 
