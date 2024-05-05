@@ -110,7 +110,7 @@
         var data = $.get('/narrowLidar');
         var narrow = data.done(function (resp) {
             var obj = new Mychart(resp.x,resp.y);
-            return obj
+            resolve(obj)
             
         })
         createGraph("regression",'plot2',[narrow.trace]);
