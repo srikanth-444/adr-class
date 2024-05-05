@@ -264,15 +264,17 @@ class Driver():
 
         print(r_angle_with_y,l_angle_with_y)
 
-        avg_right = np.mean(right_x)
-        avg_left = np.mean(left_x)
+        # avg_right = np.mean(right_x)
+        # avg_left = np.mean(left_x)
         
-        if avg_right <= avg_left:
-            e=r_angle_with_y #-l_angle_with_y
-            print("right wall")
-        else:
-            print("lef wall")
-            e=-l_angle_with_y
+        # if avg_right <= avg_left:
+        #     e=r_angle_with_y #-l_angle_with_y
+        #     print("right wall")
+        # else:
+        #     print("lef wall")
+        #     e=-l_angle_with_y
+
+        e = (r_angle_with_y - l_angle_with_y)/2
 
         return math.radians(e)
 
