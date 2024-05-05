@@ -257,8 +257,10 @@ class Driver():
         #front_left_max_distance=np.mean(front_left)
         #print(front_right_max_distance,front_left_max_distance)
 
+        print()
+
         r_angle_with_y=math.degrees(np.arctan(r_slope))-90
-        l_angle_with_y=math.degrees(l_slope)-90
+        l_angle_with_y=math.degrees(np.arctan(l_slope))-90
 
         e=r_angle_with_y+l_angle_with_y
         print(e,r_angle_with_y,l_angle_with_y)
