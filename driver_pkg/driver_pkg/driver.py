@@ -265,7 +265,10 @@ class Driver():
             e=r_angle_with_y #-l_angle_with_y
         if (len(l_indices))>(len(r_indices)):
              e=l_angle_with_y
-        print(e,r_angle_with_y,l_angle_with_y)
+        #print(e,r_angle_with_y,l_angle_with_y)
+
+        else:
+            e=0
 
         return math.radians(e)
 
