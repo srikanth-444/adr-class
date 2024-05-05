@@ -110,20 +110,20 @@
         var data = $.get('/narrowLidar');
         var tm = data.done(function (resp) {
             console.log("JSON DATA", resp.x);
-            var obj = new Mychart(resp.x,resp.y,"front lidar data",'plot2');
-        obj.createGraph();
+            var obj = new Mychart(resp.x,resp.y,);
+            createGraph("regression",'plot2',[obj.trace]);
         })
         var data = $.get('/betweenWallsLidar');
         var tm = data.done(function (resp) {
             console.log("JSON DATA", resp.x);
-            var obj = new Mychart(resp.x,resp.y,"between walls lidar data",'plot3');
-        obj.createGraph();
+            var obj = new Mychart(resp.x,resp.y,);
+            createGraph("between walls lidar data",'plot3',[obj.trace]);
         })
         var data = $.get('/error');
         var tm = data.done(function (resp) {
             console.log("JSON DATA", resp.x);
             var obj = new Mychart(resp.x.slice(-10),resp.y.slice(-10),"error",'plot4');
-        obj.createGraph();
+            createGraph("error",'plot4',[obj.trace]);
         })
 
 
