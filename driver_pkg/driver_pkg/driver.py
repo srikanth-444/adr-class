@@ -268,8 +268,8 @@ class Driver():
         narrow_webVisuals.x_data=np.concatenate((np.negative(left_x[::-1]),right_x)).tolist()
         narrow_webVisuals.y_data=np.concatenate((l_regression_line[::-1],r_regression_line)).tolist()
 
-        points.x_data=np.concatenate((np.negative(left_x[::-1]),right_x)).tolist()
-        points.y_data=np.concatenate((left_y[::-1],right_y)).tolist()
+        points.x_data=np.concatenate((np.negative(l_x[::-1]),r_x)).tolist()
+        points.y_data=np.concatenate((l_y[::-1],r_y)).tolist()
         #front_right_max_distance=np.mean(front_right)
         #front_left_max_distance=np.mean(front_left)
         #print(front_right_max_distance,front_left_max_distance)
