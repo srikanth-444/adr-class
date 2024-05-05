@@ -217,8 +217,8 @@ class Driver():
             return 0.0
         
     def steering_narrow(self,left_distances,right_distances):
-        front_right=np.clip(right_distances[60:120],0.1,1.5)
-        front_left=np.clip(left_distances[60:120],0.1,1.5)
+        front_right=np.clip(right_distances[60:120],0.1,5)
+        front_left=np.clip(left_distances[60:120],0.1,5)
 
         
 
@@ -227,8 +227,8 @@ class Driver():
         right_x=front_right* np.sin(np.deg2rad(angle_matrix))
         left_y=front_left* np.cos(np.deg2rad(angle_matrix))
         right_y=front_right* np.cos(np.deg2rad(angle_matrix))
-        r_indices=np.argwhere(right_x<1.5).flatten()
-        l_indices=np.argwhere(left_x<1.5).flatten()
+        r_indices=np.argwhere(right_x<5).flatten()
+        l_indices=np.argwhere(left_x<5).flatten()
         r_x=[]
         r_y=[]
         l_x=[]
