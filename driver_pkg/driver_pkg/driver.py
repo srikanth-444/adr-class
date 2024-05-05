@@ -228,8 +228,8 @@ class Driver():
         right_x=front_right* np.sin(np.deg2rad(angle_matrix))
         left_y=front_left* np.cos(np.deg2rad(angle_matrix))
         right_y=front_right* np.cos(np.deg2rad(angle_matrix))
-        r_indices=self.filter.signal_smoothing_filter(np.argwhere(right_x<12).flatten())
-        l_indices=self.filter.signal_smoothing_filter(np.argwhere(left_x<12).flatten())
+        r_indices=self.filter.np.argwhere(right_x<12).flatten()
+        l_indices=self.filter.np.argwhere(left_x<12).flatten()
         r_x=[]
         r_y=[]
         l_x=[]
