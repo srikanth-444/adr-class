@@ -294,7 +294,7 @@ class Driver():
         #     print("lef wall")
         #     e=-l_angle_with_y
 
-        e = (r_angle_with_y + l_angle_with_y)/2
+        e = (r_angle_with_y - l_angle_with_y)/2
 
         return math.radians(e)
 
