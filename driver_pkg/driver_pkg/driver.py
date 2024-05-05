@@ -264,8 +264,8 @@ class Driver():
             l_intercept=1.5
         else:
             l_slope, l_intercept, r_value, p_value, std_err = linregress(l_x, l_y)
-        l_regression_line = l_slope * left_x + l_intercept
-        narrow_webVisuals.x_data=np.concatenate((np.negative(left_x[::-1]),right_x)).tolist()
+        l_regression_line = l_slope * l_x + l_intercept
+        narrow_webVisuals.x_data=np.concatenate((np.negative(l_x[::-1]),r_x)).tolist()
         narrow_webVisuals.y_data=np.concatenate((l_regression_line[::-1],r_regression_line)).tolist()
 
         points.x_data=np.concatenate((np.negative(l_x[::-1]),r_x)).tolist()
@@ -291,7 +291,7 @@ class Driver():
         #     print("lef wall")
         #     e=-l_angle_with_y
 
-        e = (r_angle_with_y - l_angle_with_y)/2
+        e = (r_angle_with_y + l_angle_with_y)/2
 
         return math.radians(e)
 
