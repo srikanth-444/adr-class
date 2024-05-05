@@ -73,37 +73,39 @@
             {
                 this.Xdata=Xdata;
                 this.Ydata=Ydata;
-                this.tittle=tittle
-                this.div=div
-            }
-            createGraph()
-            {
                 
-
-                // Define the trace
-                var trace = {
+                this.trace = {
                     x: this.Xdata,
                     y: this.Ydata,
                     type: 'scatter'
                 };
+            }
+            getdata(){
+                return this.trace
+            }
+        }
+        function createGraph(tittle,div,data)
+            {
+                
+
 
                 // Define the layout
                 var layout = {
-                    title: this.tittle
+                    title: tittle
                 };
 
                 // Define the data
                 var data = [trace];
 
-                Plotly.newPlot(this.div, data, layout);
+                Plotly.newPlot(div, data, layout);
             }
-        }
+        
 
         var data = $.get('/rightTurnLidar');
         var tm = data.done(function (resp) {
             console.log("JSON DATA", resp.x);
-            var obj = new Mychart(resp.x,resp.y,"right lidar data",'plot1');
-        obj.createGraph();
+            var obj = new Mychart(resp.x,resp.y,);
+        createGraph("right lidar data",'plot1',);
         })
         var data = $.get('/narrowLidar');
         var tm = data.done(function (resp) {
