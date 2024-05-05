@@ -294,8 +294,8 @@ class Driver():
         
         #avg_left_distance = np.min([self.in_wall,np.mean(left_distance)])
         #avg_right_distance = np.min([self.in_wall,np.mean(right_distance)])
-        r_indices=np.argwhere(right_x<1.5).flatten()
-        l_indices=np.argwhere(left_x<1.5).flatten()
+        r_indices=np.argwhere(right_x<1).flatten()
+        l_indices=np.argwhere(left_x<1).flatten()
         r_x=[]
         r_y=[]
         l_x=[]
