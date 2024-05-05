@@ -253,18 +253,21 @@ class Driver():
             l_y.append(left_y[i])
         
         if not r_x:
-            r_slope=90
-            r_intercept=1.5
+            
+            r_regression_line = np.linspace(-1,1,num=10)   
+            r_x=np.ones_like(r_regression_line)
+            r_slope=np.inf
         else:
             r_slope, r_intercept, r_value, p_value, std_err = linregress(r_x, r_y)
-        r_regression_line = r_slope * np.array(r_x) + r_intercept    
+            r_regression_line = r_slope * np.array(r_x) + r_intercept    
         
         if not l_x:
-            l_slope=90
-            l_intercept=1.5
+            l_regression_line = np.linspace(-1,1,num=10)   
+            l_x=np.ones_like(l_regression_line)
+            l_slope=np.inf
         else:
             l_slope, l_intercept, r_value, p_value, std_err = linregress(l_x, l_y)
-        l_regression_line = l_slope * np.array(l_x) + l_intercept
+            l_regression_line = l_slope * np.array(l_x) + l_intercept
         narrow_webVisuals.x_data=np.concatenate((np.negative(l_x[::-1]),r_x)).tolist()
         narrow_webVisuals.y_data=np.concatenate((l_regression_line[::-1],r_regression_line)).tolist()
 
