@@ -11,7 +11,7 @@ class Filters:
 
         indicies=[]
         for i in range(len(matrix)) :        
-            if matrix[i]<=mean+1*std:
+            if matrix[i]<=mean+0.5*std:
                 indicies.append(i)
 
                 
