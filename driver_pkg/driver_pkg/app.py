@@ -15,7 +15,7 @@ def home():
 
 
 app.config.update(
-    DEBUG=True,
+    DEBUG=False,
     SECRET_KEY='secret_',
     SESSION_COOKIE_SECURE=True,
     REMEMBER_COOKIE_SECURE=True)
