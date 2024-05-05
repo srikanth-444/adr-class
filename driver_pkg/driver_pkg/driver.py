@@ -38,7 +38,9 @@ def rightlidar():
 def narrowlidar():
     data ={
         "x":narrow_webVisuals.x_data,
-        "y":narrow_webVisuals.y_data
+        "y":narrow_webVisuals.y_data,
+        "x1":points.x_data,
+        "y1":points.y_data
     }
     return data
 @Lidar_BLUEPRINT.route('/betweenWallsLidar', methods=["GET", "POST"])
@@ -46,6 +48,7 @@ def betweenlidar():
     data ={
         "x":steer_btween_walls.x_data,
         "y":steer_btween_walls.y_data
+        
     }
     return data
 @Lidar_BLUEPRINT.route('/error', methods=["GET", "POST"])
@@ -55,13 +58,7 @@ def W_error():
         "y":w_error.y_data[-10:]
     }
     return data
-@Lidar_BLUEPRINT.route('/points', methods=["GET", "POST"])
-def regression_points():
-    data ={
-        "x":points.x_data,
-        "y":points.y_data
-    }
-    return data
+
 @Lidar_BLUEPRINT.route('/receive_data', methods=['POST'])
 def receive_data():
     data = request.json.get('data')  # Get the 'data' field from the JSON payload

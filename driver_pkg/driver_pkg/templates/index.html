@@ -2,7 +2,7 @@
 <html lang="en">
     
  <head>
-    
+    <meta http-equiv="refresh" content="1" >
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
     <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -73,16 +73,15 @@
             {
                 this.Xdata=Xdata;
                 this.Ydata=Ydata;
-                
+                this.tittle=tittle
+                this.div=div
                 this.trace = {
                     x: this.Xdata,
                     y: this.Ydata,
                     type: 'scatter'
                 };
             }
-            getdata(){
-                return this.trace
-            }
+            
         }
         function createGraph(tittle,div,data)
             {
@@ -95,7 +94,7 @@
                 };
 
                 // Define the data
-                var data = data;
+                var data = [trace];
 
                 Plotly.newPlot(div, data, layout);
             }
@@ -104,21 +103,20 @@
         var data = $.get('/rightTurnLidar');
         var tm = data.done(function (resp) {
             console.log("JSON DATA", resp.x);
-            var obj = new Mychart(resp.x,resp.y);
+            var obj = new Mychart(resp.x,resp.y,);
             createGraph("right lidar data",'plot1',[obj.trace]);
         })
         var data = $.get('/narrowLidar');
-        var narrow = data.done(function (resp) {
-            var obj = new Mychart(resp.x,resp.y);
-            return obj
-            
+        var tm = data.done(function (resp) {
+            console.log("JSON DATA", resp.x);
+            var obj = new Mychart(resp.x,resp.y,"front lidar data",'plot2');
+            var obj1= new Mychart(resp.x1,resp.y1,"front lidar data",'plot2');
+            createGraph("front lidar data",'plot2',[obj.trace,obj1.trace]);
         })
-        console.log(narrow)
-        createGraph("regression",'plot2',[narrow.trace]);
         var data = $.get('/betweenWallsLidar');
         var tm = data.done(function (resp) {
             console.log("JSON DATA", resp.x);
-            var obj = new Mychart(resp.x,resp.y,);
+            var obj = new Mychart(resp.x,resp.y,"between walls lidar data",'plot3');
             createGraph("between walls lidar data",'plot3',[obj.trace]);
         })
         var data = $.get('/error');
