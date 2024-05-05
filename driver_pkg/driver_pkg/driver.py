@@ -153,7 +153,7 @@ class Driver():
                 #print(time_step)
                 v_e=(s_e-self.previous_error)/time_step
                 #print(v_e)
-                scaled_error=float(s_e*1+v_e*0.1+e*0)
+                scaled_error=float(s_e*1.5+v_e*0.3+e*0)
                 # if scaled_error>self.saturation:
                 #     scaled_error=self.saturation
                 # elif scaled_error<-self.saturation:
@@ -294,8 +294,8 @@ class Driver():
         
         #avg_left_distance = np.min([self.in_wall,np.mean(left_distance)])
         #avg_right_distance = np.min([self.in_wall,np.mean(right_distance)])
-        r_indices=np.argwhere(right_x<1).flatten()
-        l_indices=np.argwhere(left_x<1).flatten()
+        r_indices=np.argwhere(right_x<1.5).flatten()
+        l_indices=np.argwhere(left_x<1.5).flatten()
         r_x=[]
         r_y=[]
         l_x=[]
