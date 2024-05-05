@@ -263,15 +263,16 @@ class Driver():
         l_angle_with_y=math.degrees(np.arctan(-1/l_slope))
 
         print(r_angle_with_y,l_angle_with_y)
+
+        avg_right = np.mean(right_x)
+        avg_left = np.mean(left_x)
         
-        if len(r_indices)>=len(l_indices):
+        if avg_right <= avg_left 
             e=r_angle_with_y #-l_angle_with_y
             print("right wall")
-        if (len(l_indices))>(len(r_indices)):
+        else:
             print("lef wall")
             e=-l_angle_with_y
-        else:
-            e=0
 
         return math.radians(e)
 
