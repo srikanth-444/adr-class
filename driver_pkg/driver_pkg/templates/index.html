@@ -2,7 +2,7 @@
 <html lang="en">
     
  <head>
-    <meta http-equiv="refresh" content="1" >
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
     <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -104,12 +104,12 @@
         var data = $.get('/rightTurnLidar');
         var tm = data.done(function (resp) {
             console.log("JSON DATA", resp.x);
-            var obj = new Mychart(resp.x,resp.y,);
+            var obj = new Mychart(resp.x,resp.y);
             createGraph("right lidar data",'plot1',[obj.trace]);
         })
         var data = $.get('/narrowLidar');
         var narrow = data.done(function (resp) {
-            var obj = new Mychart(resp.x,resp.y,);
+            var obj = new Mychart(resp.x,resp.y);
             return obj
             
         })
