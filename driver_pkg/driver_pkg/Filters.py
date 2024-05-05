@@ -9,25 +9,16 @@ class Filters:
         std=np.mean(matrix)
         
 
-        
-        while True:
-            for i in range(len(matrix)):
-                if i==0:
-                    matrix[i]=matrix[i+1]
-                elif i==len(matrix)-1:
-                    matrix[i]=matrix[i-1]
-                    
-                elif matrix[i]>=mean+1*std:
-                    matrix[i]=(matrix[i-1]+matrix[i+1])/2
+        indicies=[]
+        for i in range(len(matrix)) :        
+            if matrix[i]<=mean+1*std:
+                indicies.append(i)
+
                 
-            if(mean-np.mean(matrix))<0.01:
-                break
-            mean=np.mean(matrix)
-            std=np.std(matrix)
             
             
         
-        return(matrix)
+        return(indicies)
     
 
 if __name__== '__main__':
