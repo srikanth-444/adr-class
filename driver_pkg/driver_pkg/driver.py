@@ -267,7 +267,7 @@ class Driver():
         avg_right = np.mean(right_x)
         avg_left = np.mean(left_x)
         
-        if avg_right <= avg_left 
+        if avg_right <= avg_left:
             e=r_angle_with_y #-l_angle_with_y
             print("right wall")
         else:
