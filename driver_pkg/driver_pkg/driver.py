@@ -265,7 +265,7 @@ class Driver():
         e=r_angle_with_y+l_angle_with_y
         print(e,r_angle_with_y,l_angle_with_y)
 
-        return e
+        return math.radians(e)
 
         
     def steer_between_walls(self,left_distances,right_distances):
