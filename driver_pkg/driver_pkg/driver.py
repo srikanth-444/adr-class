@@ -237,8 +237,8 @@ class Driver():
         right_y=front_right* np.cos(np.deg2rad(angle_matrix))
 
         #print(left_x,right_x)
-        r_indices=np.argwhere(right_x<0.2).flatten()
-        l_indices=np.argwhere(left_x<0.2).flatten()
+        r_indices=np.argwhere(right_x<1.2).flatten()
+        l_indices=np.argwhere(left_x<1.2).flatten()
         r_x=[]
         r_y=[]
         l_x=[]
@@ -340,8 +340,14 @@ class Driver():
             l_x.append(left_x[i])
             l_y.append(left_y[i])
 
-        avg_right_distance = np.mean(r_x)
-        avg_left_distance = np.mean(l_x)
+        if not r_x:
+            avg_right_distance=1.5
+        else:
+            avg_right_distance = np.mean(r_x)
+        if not l_x:
+            avg_left_distance=1.5
+        else:
+            avg_left_distance = np.mean(l_x)
         #print(avg_right_distance)
         #print(avg_left_distance)
 
