@@ -262,7 +262,7 @@ class Driver():
         r_angle_with_y=math.degrees(np.arctan(-1/r_slope))
         l_angle_with_y=math.degrees(np.arctan(-1/l_slope))
 
-        print(e,r_angle_with_y,l_angle_with_y)
+        print(r_angle_with_y,l_angle_with_y)
         
         if len(r_indices)>=len(l_indices):
             e=r_angle_with_y #-l_angle_with_y
