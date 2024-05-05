@@ -25,6 +25,7 @@ narrow_webVisuals=Webvisual()
 right_steer_webVsiuals=Webvisual()
 steer_btween_walls=Webvisual()
 w_error = Webvisual()
+points = Webvisual()
 
 @Lidar_BLUEPRINT.route('/rightTurnLidar', methods=["GET", "POST"])
 def rightlidar():
@@ -52,6 +53,13 @@ def W_error():
     data ={
         "x":w_error.x_data[-10:],
         "y":w_error.y_data[-10:]
+    }
+    return data
+@Lidar_BLUEPRINT.route('/points', methods=["GET", "POST"])
+def regression_points():
+    data ={
+        "x":points.x_data,
+        "y":points.y_data
     }
     return data
 @Lidar_BLUEPRINT.route('/receive_data', methods=['POST'])
@@ -232,8 +240,8 @@ class Driver():
         right_y=front_right* np.cos(np.deg2rad(angle_matrix))
 
         #print(left_x,right_x)
-        r_indices=np.argwhere(right_x<12).flatten()
-        l_indices=np.argwhere(left_x<12).flatten()
+        r_indices=np.argwhere(right_x<1.2).flatten()
+        l_indices=np.argwhere(left_x<1.2).flatten()
         r_x=[]
         r_y=[]
         l_x=[]
@@ -262,6 +270,9 @@ class Driver():
         l_regression_line = l_slope * left_x + l_intercept
         narrow_webVisuals.x_data=np.concatenate((np.negative(left_x[::-1]),right_x)).tolist()
         narrow_webVisuals.y_data=np.concatenate((l_regression_line[::-1],r_regression_line)).tolist()
+
+        points.x_data=np.concatenate((np.negative(left_x[::-1]),right_x)).tolist()
+        points.y_data=np.concatenate((left_y[::-1],right_y)).tolist()
         #front_right_max_distance=np.mean(front_right)
         #front_left_max_distance=np.mean(front_left)
         #print(front_right_max_distance,front_left_max_distance)

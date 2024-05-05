@@ -108,11 +108,12 @@
             createGraph("right lidar data",'plot1',[obj.trace]);
         })
         var data = $.get('/narrowLidar');
-        var tm = data.done(function (resp) {
-            console.log("JSON DATA", resp.x);
+        var narrow = data.done(function (resp) {
             var obj = new Mychart(resp.x,resp.y,);
-            createGraph("regression",'plot2',[obj.trace]);
+            return obj
+            
         })
+        createGraph("regression",'plot2',[narrow.trace]);
         var data = $.get('/betweenWallsLidar');
         var tm = data.done(function (resp) {
             console.log("JSON DATA", resp.x);
