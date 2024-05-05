@@ -273,8 +273,8 @@ class Driver():
         
         
         #print('steer between walls')
-        left = np.clip(left_distances,0.1,1.5)
-        right =np.clip(right_distances,0.1,1.5)
+        left = np.clip(left_distances,0.1,5)
+        right =np.clip(right_distances,0.1,5)
 
         
 
