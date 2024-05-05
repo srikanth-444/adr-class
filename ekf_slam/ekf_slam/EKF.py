@@ -41,6 +41,7 @@ class EKF():
         #extract state and control variables for readability
         theta = self.mu[2]
         v = u1[0] * self.speed_scale
+        v = 0
 
         #use bicycle model for predication step over one time step
         mu1_bar = self.bicycle_model(u1,dt)
