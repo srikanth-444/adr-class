@@ -324,7 +324,7 @@ class Driver():
         #print(avg_right_distance)
         #print(avg_left_distance)
 
-        scaled_error = (1.5-avg_right_distance)/(1.5+avg_right_distance)
+        scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)
         
         
     
