@@ -17,7 +17,7 @@ from deepracer_interfaces_pkg.msg import ServoCtrlMsg
     
 class Drive(Node):
 
-    def __init__(self):
+    def __init__(self,mode):
         super().__init__('Drive')
 
         self.get_logger().info("webserver_publisher_node started")
@@ -52,14 +52,14 @@ class Drive(Node):
         # steering publisher
         self.steering_publisher= self.create_publisher(ServoCtrlMsg,'/ctrl_pkg/servo_msg',1)
 
-        timer_period = 0.1
+        timer_period = 0.1/3
 
         self.timer = self.create_timer(timer_period, self.drive_timer_callback)
 
         #initial values of steering and throttle
         self.angle=0.0
         self.throttle=0.0
-        self.driver=Driver()
+        self.driver=Driver(mode)
         
         self.distance_matrix=np.array([])
         self.flag=0.0
@@ -111,7 +111,7 @@ class Drive(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    drive = Drive()
+    drive = Drive(mode=1)
     try:
         try:
             res=drive.set_lidar_configuration()
@@ -138,7 +138,40 @@ def main(args=None):
 
         drive.destroy_node()
         rclpy.shutdown()
-    
+
+
+    def reverse(args=None):
+        rclpy.init(args=args)
+
+        drive = Drive(mode=0)
+        try:
+            try:
+                res=drive.set_lidar_configuration()
+                if (res.error==1):
+                    raise Exception
+                
+
+            except:
+                drive.get_logger().error("lidar config wrong you idiot")
+                rclpy.shutdown()
+        
+
+            drive.get_logger().info('lidar has been configured')
+            executor = MultiThreadedExecutor()
+            rclpy.spin(drive,executor)
+        except KeyboardInterrupt:
+            msg = ServoCtrlMsg()   
+            drive.angle=0.0
+            drive.throttle=0.0                                      
+            msg.angle= drive.angle 
+            msg.throttle= drive.throttle
+            drive.steering_publisher.publish(msg)
+            drive.get_logger().info("message published steering : %f throttle: %f" %(msg.angle,msg.throttle))
+
+            drive.destroy_node()
+            rclpy.shutdown()
 
 if __name__ == '__main__':
     main()
+    
+    

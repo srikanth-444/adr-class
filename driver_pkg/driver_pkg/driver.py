@@ -71,10 +71,15 @@ def receive_data():
 
 
 class Driver():
-    def __init__(self) -> None:
+    def __init__(self,mode) -> None:
+
+        self.mode=mode
         self.filter=Filters()
         self.distance_matrix=np.array([])
-        self.throttle=0.5
+        if self.mode==1:
+            self.throttle=0.5
+        if self.mode==0:
+            self.throttle=-0.5    
         self.angle=0.0
         self.flag=0
         self.viz=Visuals()
@@ -91,6 +96,8 @@ class Driver():
         self.start_time=time()
         self.previous_error=0
         self.previous_o_error=0
+        self.x_gain= 2.25
+        self.o_gain=0.1
         
         
 
@@ -131,8 +138,16 @@ class Driver():
             if(self.turn_counter >= 15):
                 self.turn_counter = 0
 
-            left_distances=self.distance_matrix[0:self.distance_matrix.size//2]
-            right_distances=self.distance_matrix[self.distance_matrix.size//2+1 :]
+
+            if self.mode==1:
+                left_distances=self.distance_matrix[0:self.distance_matrix.size//2]
+                right_distances=self.distance_matrix[self.distance_matrix.size//2+1 :]
+            if self.mode==0:
+                left_distances=self.distance_matrix[0:self.distance_matrix.size//2]
+                right_distances=self.distance_matrix[self.distance_matrix.size//2+1 :]
+                right_distances=right_distances[::-1]
+                left_distances=left_distances[::-1]
+
 
             right_distances=right_distances[::-1]
             #print(right_distances)
@@ -152,20 +167,14 @@ class Driver():
             if abs(a)>0:
                 self.angle=a
                 self.flag=1
-            # elif(abs(e)>0):
-            #      self.angle=float(e/90)
-            #      self.flag=2
             else:
                 time_step=self.start_time-time()
                 #print(time_step)
                 v_e=(s_e-self.previous_error)/time_step
                 v_o_e=(e-self.previous_o_error)/time_step
                 #print(v_e)
-                scaled_error=float(s_e*2.2+e*0.1)#v_o_e*0.1)
-                # if scaled_error>self.saturation:
-                #     scaled_error=self.saturation
-                # elif scaled_error<-self.saturation:
-                #     scaled_error=-self.saturation
+                scaled_error=float(s_e*self.x_gain+e*self.o_gain)#v_o_e*0.1)
+               
                 self.angle= scaled_error
                 self.flag=0
                 self.start_time=time()
@@ -178,46 +187,16 @@ class Driver():
     def scan_for_turn(self,left_distances,right_distances):
         
         
-        #left=left_distances[30:90]
-        right=right_distances[60:90]
-        angle_matrix=np.array(range(60,90,1))
-
-
-        #front_right=self.filter.signal_smoothing_filter(right_distances[0:5])
-        #front_left=self.filter.signal_smoothing_filter(left_distances[0:5])
-
-        #self.viz.set_distance(right)
-        #self.viz.get_visuals()
         
-        #print(right,left)
-
-        # for i in range(3):
-        #       right[i] = min([5,right[i]])
-        #       left[i] = min([5,left[i]])
-
-        #left_max_distance=left[np.argmax(left)]
-        #right_max_distance=right[np.argmax(right)]
-        #front_right_max_distance=max(front_right)
-        #front_left_max_distance=max(front_left)
+        right=right_distances[30:90]
+        angle_matrix=np.array(range(30,90,1))
 
         x= right *np.sin(np.deg2rad(angle_matrix))
         y= right *np.cos(np.deg2rad(angle_matrix))
 
         right_steer_webVsiuals.x_data=x.tolist()
         right_steer_webVsiuals.y_data=y.tolist()
-        #print(left_max_distance,right_max_distance,front_right_max_distance)
-        # if( right_max_distance>=left_max_distance and right_max_distance>=4.5):
-        #         e=np.argmax(right)*6
-        #         #print(-e)
-        #         return -e
-        # # elif( front_right_max_distance>=front_left_max_distance and front_right_max_distance>=4):
-        # #           e=np.argmax(front_right)*6
-        # #          #print(-e)
-        # #           return -e
-        # elif( left_max_distance>right_max_distance and left_max_distance>=4.5):
-        #          e=30+np.argmax(left)*6
-        #          #print(-e)
-        #          return e
+     
         r_avg=np.mean(x)
         
         #print(r_avg)
@@ -276,9 +255,7 @@ class Driver():
 
         points.x_data=np.concatenate((np.negative(l_x[::-1]),r_x)).tolist()
         points.y_data=np.concatenate((l_y[::-1],r_y)).tolist()
-        #front_right_max_distance=np.mean(front_right)
-        #front_left_max_distance=np.mean(front_left)
-        #print(front_right_max_distance,front_left_max_distance)
+       
 
         #print(r_slope,l_slope)
 
@@ -286,16 +263,6 @@ class Driver():
         l_angle_with_y=math.degrees(np.arctan(-1/l_slope))
 
         print(r_angle_with_y,l_angle_with_y)
-
-        # avg_right = np.mean(right_x)
-        # avg_left = np.mean(left_x)
-        
-        # if avg_right <= avg_left:
-        #     e=r_angle_with_y #-l_angle_with_y
-        #     print("right wall")
-        # else:
-        #     print("lef wall")
-        #     e=-l_angle_with_y
 
         e = (r_angle_with_y - l_angle_with_y)/2
 
@@ -325,9 +292,7 @@ class Driver():
         steer_btween_walls.y_data=np.concatenate((left_y[::-1],right_y)).tolist()
         #print(distance)
         #print(angle_matrix)
-        
-        #avg_left_distance = np.min([self.in_wall,np.mean(left_distance)])
-        #avg_right_distance = np.min([self.in_wall,np.mean(right_distance)])
+       
         r_indices=np.argwhere(right_x<1.5).flatten()
         l_indices=np.argwhere(left_x<1.5).flatten()
         r_x=[]
@@ -346,23 +311,18 @@ class Driver():
         if not r_x:
             avg_right_distance=1.5
         else:
-            avg_right_distance = np.mean(r_x)
+            avg_right_distance = min(r_x)
         if not l_x:
             avg_left_distance=1.5
         else:
-            avg_left_distance = np.mean(l_x)
+            avg_left_distance = min(l_x)
         #print(avg_right_distance)
         #print(avg_left_distance)
 
         scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)
         
         
-        #scaled_error = 0.3-avg_right_distance
-
-        # if scaled_error>self.saturation:
-        #     scaled_error=self.saturation
-        # elif scaled_error<-self.saturation:
-        #     scaled_error=-self.saturation
+    
        
         return scaled_error
     
