@@ -314,11 +314,11 @@ class Driver():
         else:
             
             avg_right_distance = np.mean(r_x)
-            
+
         if not l_x:
             avg_left_distance=1.5
         else:
-            avg_left_distance = np.mean(l_x)-0.1
+            avg_left_distance = np.mean(l_x)-0.05
         #print(avg_right_distance)
         #print(avg_left_distance)
 
