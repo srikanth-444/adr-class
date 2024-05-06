@@ -99,6 +99,10 @@ class Driver():
         self.x_gain= 1.0
 
         self.o_gain=0
+
+        self.hard_steer_count = 0
+        self.zero_steer_count = 0
+        self.go_straight = False
         
         
 
@@ -176,7 +180,24 @@ class Driver():
                 v_o_e=(e-self.previous_o_error)/time_step
                 #print(s_e,e)
                 scaled_error=float(s_e*self.x_gain+e*self.o_gain)#v_o_e*0.1)
-               
+
+                if scaled_error >= 0.4:
+                    if self.hard_steer_count <= 7:
+                        self.hard_steer_count++
+                    else:
+                        self.go_straight = True
+
+                if self.go_straight:
+                    if self.zero_steer_count <= 12:
+                        self.zero_steer_count++
+                        scaled_error = 0
+                    else:
+                        self.zero_steer_count = 0
+                        self.hard_steer_count = 0
+                        self.go_straight = False
+                        
+                
+                        
                 self.angle= scaled_error
                 self.flag=0
                 self.start_time=time()
