@@ -183,13 +183,13 @@ class Driver():
 
                 if scaled_error >= 0.4:
                     if self.hard_steer_count <= 7:
-                        self.hard_steer_count++
+                        self.hard_steer_count += 1
                     else:
                         self.go_straight = True
 
                 if self.go_straight:
                     if self.zero_steer_count <= 12:
-                        self.zero_steer_count++
+                        self.zero_steer_count += 1
                         scaled_error = 0
                     else:
                         self.zero_steer_count = 0
