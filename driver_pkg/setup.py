@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'drive=driver_pkg.drivernode:main'
+            'drive=driver_pkg.drivernode:main',
+            'rdrive=driver_pkg.drivernode:reverse'
         ],
     },
 )
