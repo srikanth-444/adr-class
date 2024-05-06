@@ -172,7 +172,7 @@ class Driver():
                 #print(time_step)
                 v_e=(s_e-self.previous_error)/time_step
                 v_o_e=(e-self.previous_o_error)/time_step
-                #print(v_e)
+                print(s_e,e)
                 scaled_error=float(s_e*self.x_gain+e*self.o_gain)#v_o_e*0.1)
                
                 self.angle= scaled_error
@@ -262,7 +262,7 @@ class Driver():
         r_angle_with_y=math.degrees(np.arctan(-1/r_slope))
         l_angle_with_y=math.degrees(np.arctan(-1/l_slope))
 
-        print(r_angle_with_y,l_angle_with_y)
+        #print(r_angle_with_y,l_angle_with_y)
 
         e = (r_angle_with_y - l_angle_with_y)/2
 
