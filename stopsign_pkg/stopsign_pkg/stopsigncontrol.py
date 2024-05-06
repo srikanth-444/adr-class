@@ -112,7 +112,7 @@ class StopSignControl():
         # Detect blobs.
         keypoints = detector.detect(image)
          
-        print(len(keypoints))
+        #print(len(keypoints))
         if(len(keypoints) > 0):
              return 1
         else:
