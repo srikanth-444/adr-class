@@ -145,8 +145,8 @@ class Driver():
             if self.mode==0:
                 left_distances=self.distance_matrix[0:self.distance_matrix.size//2]
                 right_distances=self.distance_matrix[self.distance_matrix.size//2+1 :]
-                tmp=right_distances[::-1]
-                right_distances=left_distances[::-1]
+                tmp=right_distances
+                right_distances=left_distances
                 left_distances=tmp
 
 
