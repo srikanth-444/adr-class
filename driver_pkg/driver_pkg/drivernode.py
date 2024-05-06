@@ -13,6 +13,7 @@ from driver_pkg.app import app
 from deepracer_interfaces_pkg.msg import EvoSensorMsg
 from deepracer_interfaces_pkg.srv import LidarConfigSrv
 from deepracer_interfaces_pkg.msg import ServoCtrlMsg
+from custom_msg.msg import Throttle
     
     
 class Drive(Node):
@@ -39,6 +40,7 @@ class Drive(Node):
 
 
         self.lidar_message_sub_cb_grp = ReentrantCallbackGroup()
+        self.throttle_listen_message_sub_cb_grp = ReentrantCallbackGroup()
         #client for configuring lidar
         self.lidar_client=self.create_client(LidarConfigSrv,"/sensor_fusion_pkg/configure_lidar")
         while not self.lidar_client.wait_for_service(timeout_sec=1.0):
@@ -48,7 +50,7 @@ class Drive(Node):
 
         #lidar data subscriber
         self.lidar_subcriber= self.create_subscription(EvoSensorMsg, '/sensor_fusion_pkg/sensor_msg',self.lidar_listen,10,callback_group=self.lidar_message_sub_cb_grp)
-        
+        self.lidar_subcriber= self.create_subscription(Throttle, '/stop_sign/throttle',self.throttle_listen,10,callback_group=self.throttle_listen_message_sub_cb_grp)
         # steering publisher
         self.steering_publisher= self.create_publisher(ServoCtrlMsg,'/ctrl_pkg/servo_msg',1)
 
@@ -90,9 +92,13 @@ class Drive(Node):
         
         
         self.angle=self.driver.get_angle()
-        self.throttle=self.driver.get_throttle()
+        #self.throttle=self.driver.get_throttle()
         self.flag=self.driver.get_flag()
     
+    def throttle_listen(self, msg):
+        self.throttle=np.array(msg.throttle)
+        
+        
 
     def drive_timer_callback(self):
         msg = ServoCtrlMsg()   
