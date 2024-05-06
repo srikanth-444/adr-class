@@ -23,7 +23,7 @@ find_package(ament_cmake REQUIRED)
 
 find_package(rosidl_default_generators REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
-  "msg/throttle.msg"
+  "msg/Throttle.msg"
 )
 
 if(BUILD_TESTING)
