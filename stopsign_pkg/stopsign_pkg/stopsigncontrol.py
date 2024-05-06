@@ -49,7 +49,7 @@ class StopSignControl():
                 self.stop_count = 0
                 self.go_count = 0
                 
-            self.throttle = 0.5
+            self.throttle = 0.45
             self.flag = 0
             self.go_count += 1
 

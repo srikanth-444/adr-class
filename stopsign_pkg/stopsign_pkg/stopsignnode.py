@@ -77,7 +77,7 @@ def main(args=None):
         
         msg.throttle= stopsign.throttle
         stopsign.steering_publisher.publish(msg)
-        stopsign.get_logger().info("message published steering : %f throttle: %f" %(msg.angle,msg.throttle))
+        stopsign.get_logger().info("message published throttle: %f" %(msg.throttle))
 
         stopsign.destroy_node()
         rclpy.shutdown()
