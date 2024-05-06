@@ -96,7 +96,7 @@ class Driver():
         self.start_time=time()
         self.previous_error=0
         self.previous_o_error=0
-        self.x_gain= 2.25
+        self.x_gain= 2.3
         self.o_gain=0.1
         
         
@@ -189,8 +189,8 @@ class Driver():
         
         
         
-        right=right_distances[30:90]
-        angle_matrix=np.array(range(30,90,1))
+        right=right_distances[45:90]
+        angle_matrix=np.array(range(45,90,1))
 
         x= right *np.sin(np.deg2rad(angle_matrix))
         y= right *np.cos(np.deg2rad(angle_matrix))
