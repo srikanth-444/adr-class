@@ -181,7 +181,7 @@ class Driver():
                 #print(s_e,e)
                 scaled_error=float(s_e*self.x_gain+e*self.o_gain)#v_o_e*0.1)
 
-                if scaled_error >= 0.4:
+                if np.abs(scaled_error) >= 0.325:
                     if self.hard_steer_count <= 7:
                         self.hard_steer_count += 1
                     else:
