@@ -311,11 +311,11 @@ class Driver():
         if not r_x:
             avg_right_distance=1.5
         else:
-            avg_right_distance = min(r_x)
+            avg_right_distance = np.min(r_x)
         if not l_x:
             avg_left_distance=1.5
         else:
-            avg_left_distance = min(l_x)
+            avg_left_distance = np.min(l_x)
         #print(avg_right_distance)
         #print(avg_left_distance)
 
