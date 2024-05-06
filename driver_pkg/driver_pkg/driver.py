@@ -97,8 +97,8 @@ class Driver():
         self.previous_error=0
         self.previous_o_error=0
         self.x_gain= 2.2
-        
-        self.o_gain=0.05
+
+        self.o_gain=0.1
         
         
 
