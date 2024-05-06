@@ -96,7 +96,7 @@ class Driver():
         self.start_time=time()
         self.previous_error=0
         self.previous_o_error=0
-        self.x_gain= 2.2
+        self.x_gain= 2.5
         self.o_gain=0.05
         
         
@@ -210,8 +210,8 @@ class Driver():
             return 0.0
         
     def steering_narrow(self,left_distances,right_distances):
-        front_right=np.clip(right_distances[15:165],0.1,5)
-        front_left=np.clip(left_distances[15:165],0.1,5)
+        front_right=np.clip(right_distances[15:165],0.1,12)
+        front_left=np.clip(left_distances[15:165],0.1,12)
 
         
 
