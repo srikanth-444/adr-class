@@ -311,6 +311,7 @@ class Driver():
         if not r_x:
             avg_right_distance=1.5
         else:
+            print(min(r_x))
             avg_right_distance = np.mean(r_x)
         if not l_x:
             avg_left_distance=1.5
