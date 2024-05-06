@@ -19,6 +19,7 @@ class StopSign(Node):
 
         ###?????
         self.camera_message_sub_cb_grp = ReentrantCallbackGroup()
+        
 
         #camera image subscriber
         self.image_subcriber= self.create_subscription(Image, '/camera_pkg/display_mjpeg',self.camera_listen,10,callback_group=self.camera_message_sub_cb_grp)

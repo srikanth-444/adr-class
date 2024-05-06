@@ -96,8 +96,8 @@ class Driver():
         self.start_time=time()
         self.previous_error=0
         self.previous_o_error=0
-        self.x_gain= 2.35
-        self.o_gain=0.08
+        self.x_gain= 2.2
+        self.o_gain=0.05
         
         
 
@@ -203,15 +203,15 @@ class Driver():
         r_indices=np.argwhere(x>5).flatten()
         
         #print(r_avg)
-        if r_avg>7.5 and r_indices.size>=15:
+        if r_avg>7.5 and r_indices.size>=20:
             
             return -1.0
         else:
             return 0.0
         
     def steering_narrow(self,left_distances,right_distances):
-        front_right=np.clip(right_distances[15:165],0.1,12)
-        front_left=np.clip(left_distances[15:165],0.1,12)
+        front_right=np.clip(right_distances[15:165],0.1,5)
+        front_left=np.clip(left_distances[15:165],0.1,5)
 
         
 
@@ -222,8 +222,8 @@ class Driver():
         right_y=front_right* np.cos(np.deg2rad(angle_matrix))
 
         #print(left_x,right_x)
-        r_indices=np.argwhere(right_x<1.5).flatten()
-        l_indices=np.argwhere(left_x<1.5).flatten()
+        r_indices=np.argwhere(right_x<=1.5).flatten()
+        l_indices=np.argwhere(left_x<=1.5).flatten()
         r_x=[]
         r_y=[]
         l_x=[]
@@ -267,7 +267,7 @@ class Driver():
 
         #print(r_angle_with_y,l_angle_with_y)
 
-        e = (r_angle_with_y)/2
+        e = (r_angle_with_y-l_angle_with_y)/2
 
         return math.radians(e)
 
@@ -296,8 +296,8 @@ class Driver():
         #print(distance)
         #print(angle_matrix)
        
-        r_indices=np.argwhere(right_x<1.5).flatten()
-        l_indices=np.argwhere(left_x<1.5).flatten()
+        r_indices=np.argwhere(right_x<=1.5).flatten()
+        l_indices=np.argwhere(left_x<=1.5).flatten()
         r_x=[]
         r_y=[]
         l_x=[]
