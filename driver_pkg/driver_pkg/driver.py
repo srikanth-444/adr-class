@@ -96,7 +96,7 @@ class Driver():
         self.start_time=time()
         self.previous_error=0
         self.previous_o_error=0
-        self.x_gain= 2.2
+        self.x_gain= 2.35
         self.o_gain=0.08
         
         
@@ -199,9 +199,11 @@ class Driver():
         right_steer_webVsiuals.y_data=y.tolist()
      
         r_avg=np.mean(x)
+
+        r_indices=np.argwhere(x>5).flatten()
         
         #print(r_avg)
-        if r_avg>7.5:
+        if r_avg>7.5 and r_indices.size>=15:
             
             return -1.0
         else:
