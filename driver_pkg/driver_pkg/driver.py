@@ -96,8 +96,8 @@ class Driver():
         self.start_time=time()
         self.previous_error=0
         self.previous_o_error=0
-        self.x_gain= 2.25
-        self.o_gain=0.1
+        self.x_gain= 2.2
+        self.o_gain=0.08
         
         
 
