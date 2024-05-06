@@ -267,7 +267,7 @@ class Driver():
 
         #print(r_angle_with_y,l_angle_with_y)
 
-        e = (r_angle_with_y - l_angle_with_y)/2
+        e = (r_angle_with_y)/2
 
         return math.radians(e)
 
@@ -320,11 +320,11 @@ class Driver():
         if not l_x:
             avg_left_distance=1.5
         else:
-            avg_left_distance = np.mean(l_x)-0.05
+            avg_left_distance = np.mean(l_x)
         #print(avg_right_distance)
         #print(avg_left_distance)
 
-        scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)
+        scaled_error = (1.5-avg_right_distance)/(1.5+avg_right_distance)
         
         
     
