@@ -6,7 +6,7 @@ from rclpy.executors import MultiThreadedExecutor
 from rclpy.callback_groups import ReentrantCallbackGroup
 
 from sensor_msgs.msg import Image
-from deepracer_interfaces_pkg.msg import ServoCtrlMsg
+from custom_msg.msg import Throttle
 
 from cv_bridge import CvBridge, CvBridgeError
 
@@ -24,9 +24,9 @@ class StopSign(Node):
         self.image_subcriber= self.create_subscription(Image, '/camera_pkg/display_mjpeg',self.camera_listen,10,callback_group=self.camera_message_sub_cb_grp)
         
         # steering publisher
-        self.steering_publisher= self.create_publisher(ServoCtrlMsg,'/ctrl_pkg/servo_msg',1)
+        self.steering_publisher= self.create_publisher(Throttle,'/stop_sign/throttle',1)
 
-        timer_period = 0.1
+        timer_period = 0.1/3
 
         self.timer = self.create_timer(timer_period, self.drive_timer_callback)
 
@@ -51,9 +51,7 @@ class StopSign(Node):
     
 
     def drive_timer_callback(self):
-        msg = ServoCtrlMsg()   
-                                                    
-        msg.angle= self.angle 
+        msg = Throttle()   
         msg.throttle= self.throttle
         self.steering_publisher.publish(msg)
         self.get_logger().info("message published throttle: %f flag: %f"%(msg.throttle,float(self.flag)))
@@ -73,10 +71,10 @@ def main(args=None):
         executor = MultiThreadedExecutor()
         rclpy.spin(stopsign,executor)
     except KeyboardInterrupt:
-        msg = ServoCtrlMsg()   
+        msg = Throttle()   
         stopsign.angle=0.0
         stopsign.throttle=0.0                                      
-        msg.angle= stopsign.angle 
+        
         msg.throttle= stopsign.throttle
         stopsign.steering_publisher.publish(msg)
         stopsign.get_logger().info("message published steering : %f throttle: %f" %(msg.angle,msg.throttle))
