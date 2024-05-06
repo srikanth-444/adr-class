@@ -6,17 +6,20 @@ def generate_launch_description():
         Node(
             package='driver_pkg',
             executable='drive',
-            name='driver'
+            name='driver',
+            output='screen'
         ),
         Node(
             package='ekf_slam',
             executable='ekf_slam',
-            name='slam'
+            name='slam',
+            output='screen'
         ),
         Node(
-            package='stop_sign',
+            package='stopsign_pkg',
             executable='stopsign',
-            name='stop'
+            name='stop',
+            output='screen'
            
         )
     ])
