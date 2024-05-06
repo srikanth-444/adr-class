@@ -96,7 +96,7 @@ class Drive(Node):
         self.flag=self.driver.get_flag()
     
     def throttle_listen(self, msg):
-        self.throttle=np.array(msg.throttle)
+        self.throttle=msg.throttle
         
         
 
