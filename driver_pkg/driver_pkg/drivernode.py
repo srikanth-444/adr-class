@@ -140,38 +140,42 @@ def main(args=None):
         rclpy.shutdown()
 
 
-    def reverse(args=None):
-        rclpy.init(args=args)
+def reverse(args=None):
+    rclpy.init(args=args)
 
-        drive = Drive(mode=0)
+    drive = Drive(mode=0)
+    try:
         try:
-            try:
-                res=drive.set_lidar_configuration()
-                if (res.error==1):
-                    raise Exception
-                
+            res=drive.set_lidar_configuration()
+            if (res.error==1):
+                raise Exception
+            
 
-            except:
-                drive.get_logger().error("lidar config wrong you idiot")
-                rclpy.shutdown()
-        
-
-            drive.get_logger().info('lidar has been configured')
-            executor = MultiThreadedExecutor()
-            rclpy.spin(drive,executor)
-        except KeyboardInterrupt:
-            msg = ServoCtrlMsg()   
-            drive.angle=0.0
-            drive.throttle=0.0                                      
-            msg.angle= drive.angle 
-            msg.throttle= drive.throttle
-            drive.steering_publisher.publish(msg)
-            drive.get_logger().info("message published steering : %f throttle: %f" %(msg.angle,msg.throttle))
-
-            drive.destroy_node()
+        except:
+            drive.get_logger().error("lidar config wrong you idiot")
             rclpy.shutdown()
+    
+
+        drive.get_logger().info('lidar has been configured')
+        executor = MultiThreadedExecutor()
+        rclpy.spin(drive,executor)
+    except KeyboardInterrupt:
+        msg = ServoCtrlMsg()   
+        drive.angle=0.0
+        drive.throttle=0.0                                      
+        msg.angle= drive.angle 
+        msg.throttle= drive.throttle
+        drive.steering_publisher.publish(msg)
+        drive.get_logger().info("message published steering : %f throttle: %f" %(msg.angle,msg.throttle))
+
+        drive.destroy_node()
+        rclpy.shutdown()
 
 if __name__ == '__main__':
     main()
+
+
+if __name__=="__reverse__":
+    reverse()
     
     
