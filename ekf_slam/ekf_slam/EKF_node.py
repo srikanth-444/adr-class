@@ -61,7 +61,7 @@ def main(args=None):
         executor = MultiThreadedExecutor()
         rclpy.spin(ekf_node,executor)
     except KeyboardInterrupt:
-        print(self.EKF.state_hisotry)
+        print(self.EKF.state_history)
         ekf_node.destroy_node()
         rclpy.shutdown()
     
