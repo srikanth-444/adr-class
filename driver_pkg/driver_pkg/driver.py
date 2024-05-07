@@ -96,9 +96,15 @@ class Driver():
         self.start_time=time()
         self.previous_error=0
         self.previous_o_error=0
-        self.x_gain= 2.0
 
-        self.o_gain=0.1
+        if self.mode==1:
+            self.x_gain= 2.0
+
+            self.o_gain=0.1
+        if self.mode==0:
+            self.x_gain= 1.0
+
+            self.o_gain=0.1
 
         self.hard_steer_count = 0
         self.zero_steer_count = 0
