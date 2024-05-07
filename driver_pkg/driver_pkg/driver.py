@@ -177,7 +177,10 @@ class Driver():
             w_error.x_data=self.time_m
 
             if abs(a)>0:
-                self.angle=a
+                if self.mode==1:
+                    self.angle=a
+                if self.mode==0:
+                    self.angle=-a
                 self.flag=1
             else:
                 time_step=0.1/3
