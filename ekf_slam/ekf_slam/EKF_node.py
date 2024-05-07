@@ -61,7 +61,6 @@ def main(args=None):
         executor = MultiThreadedExecutor()
         rclpy.spin(ekf_node,executor)
     except KeyboardInterrupt:
-        np.savetxt("EKF_data.csv",ekf_node.EKF.state_history,delimiter=",")
         ekf_node.destroy_node()
         rclpy.shutdown()
     
