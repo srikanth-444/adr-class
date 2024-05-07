@@ -361,7 +361,8 @@ class Driver():
         scaled_error = (avg_left_distance-avg_right_distance)/(avg_left_distance+avg_right_distance)
         
         
-    
+        if math.isnan(scaled_error):
+            scaled_error = 0
        
         return scaled_error
     
