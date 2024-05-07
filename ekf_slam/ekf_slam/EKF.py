@@ -11,22 +11,20 @@ class EKF():
         self.Sigma = np.zeros([3,3])
         self.prev_time = 0
         self.dt = 0
-        self.speed_scale = 2 ##NEED TO CHANGE BASED ON MEASUREMENTS
+        self.speed_scale = 1 ##NEED TO CHANGE BASED ON MEASUREMENTS
         self.state_history = []
         self.cov_history = []
-        np.set_printoptions(threshold=np.inf)
+        self.L = 0.15 ##NEED TO CHANGE BASED ON MEASUREMENTS
         
     def bicycle_model(self,u1,dt):
 
-        L = 0.2 ##NEED TO CHANGE BASED ON MEASUREMENTS
         v = u1[0]*self.speed_scale
-        v = 0
         
         dmu_dt = np.zeros([3,1])
         dmu_dt[0] = v*np.cos(self.mu[2])
         dmu_dt[1] = v*np.sin(self.mu[2])
         u1[1] = 0
-        dmu_dt[2] = v*np.tan(u1[1])/L
+        dmu_dt[2] = v*np.tan(u1[1])/self.L
 
         mu1 = self.mu + dmu_dt*dt
         
@@ -41,7 +39,6 @@ class EKF():
         #extract state and control variables for readability
         theta = self.mu[2]
         v = u1[0] * self.speed_scale
-        v = 0
 
         #use bicycle model for predication step over one time step
         mu1_bar = self.bicycle_model(u1,dt)
