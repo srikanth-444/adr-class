@@ -50,7 +50,7 @@ class Drive(Node):
 
         #lidar data subscriber
         self.lidar_subcriber= self.create_subscription(EvoSensorMsg, '/sensor_fusion_pkg/sensor_msg',self.lidar_listen,10,callback_group=self.lidar_message_sub_cb_grp)
-        self.throttle_subcriber= self.create_subscription(Throttle, '/stop_sign/throttle',self.throttle_listen,10,callback_group=self.throttle_listen_message_sub_cb_grp)
+        #self.throttle_subcriber= self.create_subscription(Throttle, '/stop_sign/throttle',self.throttle_listen,10,callback_group=self.throttle_listen_message_sub_cb_grp)
         # steering publisher
         self.steering_publisher= self.create_publisher(ServoCtrlMsg,'/ctrl_pkg/servo_msg',1)
 
@@ -93,7 +93,7 @@ class Drive(Node):
         
         
         self.angle=self.driver.get_angle()
-        #self.throttle=self.driver.get_throttle()
+        self.throttle=self.driver.get_throttle()
         self.flag=self.driver.get_flag()
     
     def throttle_listen(self, msg):
