@@ -12,6 +12,7 @@ class EKF():
         self.prev_time = 0
         self.dt = 0
         self.speed_scale = 0.01 ##NEED TO CHANGE BASED ON MEASUREMENTS
+        self.angle_scale = np.pi/2 ##NEED TO CHANGE BASED ON MEASUREMENTS
         self.state_history = []
         self.cov_history = []
         self.L = 0.15 ##NEED TO CHANGE BASED ON MEASUREMENTS
@@ -23,8 +24,7 @@ class EKF():
         dmu_dt = np.zeros([3,1])
         dmu_dt[0] = v*np.cos(self.mu[2])
         dmu_dt[1] = v*np.sin(self.mu[2])
-        u1[1] = 0
-        dmu_dt[2] = v*np.tan(u1[1])/self.L
+        dmu_dt[2] = v*np.tan(u1[1] * self.angle_scale)/self.L
 
         mu1 = self.mu + dmu_dt*dt
         
