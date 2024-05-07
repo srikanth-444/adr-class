@@ -101,7 +101,7 @@ class EKF():
         # Create simpleICP object, add point clouds, and run algorithm!
         icp = SimpleICP()
         icp.add_point_clouds(pc_fix, pc_mov)
-        H, X_mov_transformed, rigid_body_transformation_params, distance_residuals = icp.run(max_overlap_distance=2, min_change = 20, max_iterations = 5)
+        H, X_mov_transformed, rigid_body_transformation_params, distance_residuals = icp.run(max_overlap_distance=1, min_change = 20, max_iterations = 5)
 
         dstate = np.zeros([3,1])
         dstate[0] = rigid_body_transformation_params.tx.estimated_value
