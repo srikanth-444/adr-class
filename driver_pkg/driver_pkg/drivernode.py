@@ -99,7 +99,7 @@ class Drive(Node):
     def throttle_listen(self, msg):
 
         if self.mode==1:
-            self.throttle=msg.throttle
+            self.throttle=self.driver.get_throttle()
         if self.mode==0:
             self.throttle=self.driver.get_throttle()
         
