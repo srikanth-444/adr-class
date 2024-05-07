@@ -181,8 +181,8 @@ class Driver():
                 #print(s_e,e)
                 scaled_error=float(s_e*self.x_gain+e*self.o_gain)#v_o_e*0.1)
 
-                if np.abs(scaled_error) >= 0.325:
-                    if self.hard_steer_count <= 7:
+                if np.abs(scaled_error) >= 0.35:
+                    if self.hard_steer_count <= 5:
                         self.hard_steer_count += 1
                     else:
                         self.go_straight = True
@@ -190,10 +190,10 @@ class Driver():
                 if self.go_straight:
                     if self.zero_steer_count <= 12:
                         self.zero_steer_count += 1
-                        scaled_error = 0
+                        scaled_error = 0.0
                     else:
-                        self.zero_steer_count = 0
-                        self.hard_steer_count = 0
+                        self.zero_steer_count = 0.0
+                        self.hard_steer_count = 0.0
                         self.go_straight = False
                         
                 
