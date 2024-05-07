@@ -87,7 +87,7 @@ class EKF():
 
         print(u1[1])
         
-        np.savetxt("EKF_data.csv",self.state_history,delimiter=",")
+        np.savetxt("EKF_data.csv",np.array(self.state_history),delimiter=",")
 
     def observation(self,point_cloud):
 
