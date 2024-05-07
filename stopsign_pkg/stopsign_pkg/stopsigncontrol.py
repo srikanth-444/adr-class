@@ -6,7 +6,7 @@ import cv2
 
 class StopSignControl():
     def __init__(self) -> None:
-        self.throttle=0.45
+        self.throttle=0.0
         self.angle=0.0
         self.go_count = 0
         self.stop_count = 0
@@ -39,7 +39,7 @@ class StopSignControl():
 
         if(stop and self.stop_count < 75 and self.go_count > 75):
 
-            self.throttle = 0.45
+            self.throttle = 0.0
             self.flag = 1
             self.stop_count += 1
 
@@ -91,9 +91,9 @@ class StopSignControl():
         
         
         # Filter by Area.
-        # params.filterByArea = True
-        # params.minArea = 1000
-        #params.maxArea = 10000
+        params.filterByArea = True
+        params.minArea = 1000
+        params.maxArea = 10000
         
         # # Filter by Circularity
         # params.filterByCircularity = True
