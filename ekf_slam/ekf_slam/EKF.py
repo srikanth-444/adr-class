@@ -84,6 +84,7 @@ class EKF():
         print(self.cov_history)
         print("")
         print(self.state_history)
+        np.savetxt("EKF_data.csv",self.state_history,delimiter=",")
 
     def observation(self,point_cloud):
 
