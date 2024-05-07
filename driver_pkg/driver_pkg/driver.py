@@ -207,7 +207,10 @@ class Driver():
                         
                 
                         
-                self.angle= scaled_error
+                if self.mode==1:
+                    self.angle=scaled_error
+                if self.mode==0:
+                    self.angle=-scaled_error
                 self.flag=0
                 self.start_time=time()
                 self.previous_error=s_e
