@@ -71,9 +71,9 @@ class EKF():
         #Perform correction step on the mean and covariance of the state
         self.mu = mu1_bar + np.matmul(Kt,(z1 - mu1_bar))
         self.Sigma = np.matmul((np.eye(3,3) - np.matmul(Kt,Ht)),Sigma1_bar)
-        # print(z1-mu1_bar)
-        # print(Kt)
-        # print(np.matmul(Kt,(z1 - mu1_bar)))
+        print(z1-mu1_bar)
+        print(Kt)
+        print(np.matmul(Kt,(z1 - mu1_bar)))
         print("mu = ", self.mu)
         print("sigma = ", self.Sigma)
         print("dt = ", dt)
