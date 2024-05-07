@@ -74,7 +74,9 @@ class EKF():
         self.state_history.append(self.mu)
         self.cov_history.append(self.Sigma)
 
-        print(self.mu[0],self.mu[1])
+        print(self.cov_history)
+        peint("")
+        print(self.state_history)
 
     def observation(self,point_cloud):
 
