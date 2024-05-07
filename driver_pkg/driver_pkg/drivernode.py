@@ -61,6 +61,7 @@ class Drive(Node):
         #initial values of steering and throttle
         self.angle=0.0
         self.throttle=0.0
+        self.mode=mode
         self.driver=Driver(mode)
         
         self.distance_matrix=np.array([])
@@ -96,7 +97,11 @@ class Drive(Node):
         self.flag=self.driver.get_flag()
     
     def throttle_listen(self, msg):
-        self.throttle=msg.throttle
+
+        if self.mode==1:
+            self.throttle=msg.throttle
+        if self.mode==0:
+            self.throttle=self.driver.get_throttle()
         
         
 
