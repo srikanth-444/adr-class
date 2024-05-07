@@ -33,6 +33,8 @@ class EKF_node(Node):
 
         self.dt = 0.1
 
+        self.big_angle = False
+
     def lidar_listen(self, msg):
 
         distance_matrix=np.array(msg.lidar_data)
@@ -47,6 +49,7 @@ class EKF_node(Node):
     def control_listen(self,msg):
 
         start_time = time()
+            
         u = np.array([msg.throttle,msg.angle])
         self.EKF.EKF_step(u,self.point_cloud,self.dt)
         self.dt = time()-start_time
