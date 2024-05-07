@@ -96,12 +96,12 @@ class StopSignControl():
         # params.maxArea = 10000
         
         # # Filter by Circularity
-        params.filterByCircularity = True
-        params.minCircularity = 0.8
+        # params.filterByCircularity = True
+        # params.minCircularity = 0.8
         
-        # Filter by Convexity
-        params.filterByConvexity = True
-        params.minConvexity = 0.8
+        # # Filter by Convexity
+        # params.filterByConvexity = True
+        # params.minConvexity = 0.8
         
         # # Filter by Inertia
         # params.filterByInertia = True

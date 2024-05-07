@@ -303,6 +303,9 @@ class Driver():
 
         e = (r_angle_with_y-l_angle_with_y)/2
 
+        if math.isnan(e):
+            e = 0
+
         return math.radians(e)
 
         
