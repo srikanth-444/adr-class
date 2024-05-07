@@ -12,7 +12,7 @@ def generate_launch_description():
         ),
         Node(
             package='driver_pkg',
-            executable='drive',
+            executable='rdrive',
             name='driver',
             output='screen'
         ),   
