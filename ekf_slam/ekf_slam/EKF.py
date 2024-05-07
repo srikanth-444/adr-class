@@ -26,7 +26,10 @@ class EKF():
         dmu_dt[1] = v*np.sin(self.mu[2])
         dmu_dt[2] = v*np.tan(u1[1] * self.angle_scale)/self.L
 
-        dt_vect = np.array([ [dt], [dt], [0.5] ])
+        dt_vect = np.zeros([3,1])
+        dt_vect[0] = dt
+        dt_vect[1] = dt
+        dt_vect[2] = 0.5
 
         mu1 = self.mu + dmu_dt*dt_vect
         
