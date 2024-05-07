@@ -59,17 +59,19 @@ class EKF():
      
         #determine the state estimate based on observations
         z1 = self.observation(point_cloud)
-        
+
         print("mu1_bar = ", mu1_bar)
         print("z1 = ", z1)
 
         #Perform correction step on the mean and covariance of the state
         self.mu = mu1_bar + np.matmul(Kt,(z1 - mu1_bar))
         self.Sigma = np.matmul((np.eye(3,3) - np.matmul(Kt,Ht)),Sigma1_bar)
-        print(z1-mu1_bar)
-        print(Kt)
-        print(np.matmul(Kt,(z1 - mu1_bar)))
-        print(self.mu)
+        # print(z1-mu1_bar)
+        # print(Kt)
+        # print(np.matmul(Kt,(z1 - mu1_bar)))
+        print("mu = ", self.mu)
+        print("sigma = ", self.Sigma)
+        print("dt = ", dt)
 
         self.state_history.append(self.mu)
         self.cov_history.append(self.Sigma)
