@@ -6,7 +6,7 @@ import cv2
 
 class StopSignControl():
     def __init__(self) -> None:
-        self.throttle=0.0
+        self.throttle=0.5
         self.angle=0.0
         self.go_count = 0
         self.stop_count = 0
@@ -35,7 +35,7 @@ class StopSignControl():
         self.stop_history[:-1] = self.stop_history[1:]
         self.stop_history[-1] = sign_visible
 
-        stop = np.sum(self.stop_history) > 5
+        stop = np.sum(self.stop_history) > 3
 
         if(stop and self.stop_count < 75 and self.go_count > 75):
 
