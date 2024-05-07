@@ -14,7 +14,8 @@ class StopSignControl():
         self.stop_history = np.zeros([1,10])
 
     def get_throttle(self):
-        return self.throttle
+        return 0.4
+        #return self.throttle
 
     def set_throttle(self, value):
         self.throttle = value
