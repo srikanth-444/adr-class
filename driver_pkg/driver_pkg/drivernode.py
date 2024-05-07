@@ -54,7 +54,7 @@ class Drive(Node):
         # steering publisher
         self.steering_publisher= self.create_publisher(ServoCtrlMsg,'/ctrl_pkg/servo_msg',1)
 
-        timer_period = 0.1/3
+        timer_period = 0.1
 
         self.timer = self.create_timer(timer_period, self.drive_timer_callback)
 
