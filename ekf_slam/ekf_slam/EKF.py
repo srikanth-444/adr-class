@@ -26,15 +26,17 @@ class EKF():
         dmu_dt[1] = v*np.sin(self.mu[2])
         dmu_dt[2] = v*np.tan(u1[1] * self.angle_scale)/self.L
 
-        mu1 = self.mu + dmu_dt*dt
+        dt_vect = np.array([ [dt], [dt], [0.5] ])
+
+        mu1 = self.mu + dmu_dt*dt_vect
         
         return mu1
     
     def EKF_step(self, u1, point_cloud, dt):
 
         #Noise variables
-        Rt = np.random.random((3, 3))/10
-        Qt = np.random.random((3, 3))
+        Rt = np.ones([3,3])*0.1
+        Qt = np.ones([3,3])*0.5
 
         #extract state and control variables for readability
         theta = self.mu[2]
