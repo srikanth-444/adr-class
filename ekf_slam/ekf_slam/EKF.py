@@ -12,7 +12,7 @@ class EKF():
         self.prev_time = 0
         self.dt = 0
         self.speed_scale = 0.5 ##NEED TO CHANGE BASED ON MEASUREMENTS
-        self.angle_scale = np.pi/2 ##NEED TO CHANGE BASED ON MEASUREMENTS
+        self.angle_scale = np.pi/6 ##NEED TO CHANGE BASED ON MEASUREMENTS
         self.state_history = []
         self.cov_history = []
         self.L = 0.15 ##NEED TO CHANGE BASED ON MEASUREMENTS
