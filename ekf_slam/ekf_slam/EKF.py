@@ -29,7 +29,7 @@ class EKF():
         dt_vect = np.zeros([3,1])
         dt_vect[0] = dt
         dt_vect[1] = dt
-        dt_vect[2] = 0.2
+        dt_vect[2] = 0.1
 
         mu1 = self.mu + dmu_dt*dt_vect
         
