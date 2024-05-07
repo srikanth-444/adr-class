@@ -11,7 +11,7 @@ class EKF():
         self.Sigma = np.zeros([3,3])
         self.prev_time = 0
         self.dt = 0
-        self.speed_scale = 1 ##NEED TO CHANGE BASED ON MEASUREMENTS
+        self.speed_scale = 0.01 ##NEED TO CHANGE BASED ON MEASUREMENTS
         self.state_history = []
         self.cov_history = []
         self.L = 0.15 ##NEED TO CHANGE BASED ON MEASUREMENTS
