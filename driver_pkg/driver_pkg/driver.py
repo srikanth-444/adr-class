@@ -126,7 +126,8 @@ class Driver():
         self.throttle = value
 
     def get_angle(self):
-        return self.angle
+        return 0
+        #return self.angle
 
     def set_angle(self, value):
         self.angle = value
