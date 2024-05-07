@@ -96,9 +96,9 @@ class Driver():
         self.start_time=time()
         self.previous_error=0
         self.previous_o_error=0
-        self.x_gain= 1.0
+        self.x_gain= 2.0
 
-        self.o_gain=0
+        self.o_gain=0.1
 
         self.hard_steer_count = 0
         self.zero_steer_count = 0
@@ -174,12 +174,12 @@ class Driver():
                 self.angle=a
                 self.flag=1
             else:
-                time_step=self.start_time-time()
+                time_step=0.1/3
                 #print(time_step)
                 v_e=(s_e-self.previous_error)/time_step
                 v_o_e=(e-self.previous_o_error)/time_step
                 #print(s_e,e)
-                scaled_error=float(s_e*self.x_gain+e*self.o_gain)#v_o_e*0.1)
+                scaled_error=float(s_e*self.x_gain+e*self.o_gain)#+v_e*0.1)
 
                 if np.abs(scaled_error) >= 0.35:
                     if self.hard_steer_count <= 5:
@@ -222,7 +222,7 @@ class Driver():
      
         r_avg=np.mean(x)
 
-        r_indices=np.argwhere(x>5).flatten()
+        r_indices=np.argwhere(x>6).flatten()
         
         #print(r_avg)
         if r_avg>7.5 and r_indices.size>=20:
@@ -232,8 +232,8 @@ class Driver():
             return 0.0
         
     def steering_narrow(self,left_distances,right_distances):
-        front_right=np.clip(right_distances[15:165],0.1,12)
-        front_left=np.clip(left_distances[15:165],0.1,12)
+        front_right=np.clip(right_distances[15:90],0.1,12)
+        front_left=np.clip(left_distances[15:90],0.1,12)
 
         
 
@@ -244,8 +244,8 @@ class Driver():
         right_y=front_right* np.cos(np.deg2rad(angle_matrix))
 
         #print(left_x,right_x)
-        r_indices=np.argwhere(right_x<=1.5).flatten()
-        l_indices=np.argwhere(left_x<=1.5).flatten()
+        r_indices=np.argwhere(right_x<=2).flatten()
+        l_indices=np.argwhere(left_x<=2).flatten()
         r_x=[]
         r_y=[]
         l_x=[]
