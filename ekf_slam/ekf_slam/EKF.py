@@ -75,7 +75,7 @@ class EKF():
         self.cov_history.append(self.Sigma)
 
         print(self.cov_history)
-        peint("")
+        print("")
         print(self.state_history)
 
     def observation(self,point_cloud):
